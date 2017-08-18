@@ -8,10 +8,10 @@ if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
 }
             /*$PDFPagos = new PDFPagos();
-            $pdf = $PDFPagos->cuadroRCVAsistir(array('idSolicitudPlan'=> 68));*/
+            $pdf = $PDFPagos->cuadroTUGRUERO(array('idSolicitudPlan'=> 115));*/
 $values = $_REQUEST;
     if(!isset($values['IdV']) or $values['IdV']==''){
-        $values['IdV'] = '1';
+        $values['IdV'] = '3';
     }else{
         $SolicitudPlan = new SolicitudPlan();
         $cuenta_idv = $SolicitudPlan->getCuentaIdV($values['IdV']);
@@ -238,7 +238,7 @@ $values = array_merge($values,$_FILES);
 												<ul class="dropdown-menu dropdown-menu-right">
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Cuadro póliza</a></li>
-												  <li><a href="'.full_url.'/web/files/Cuadros/'.$idSolicitudPlan.'_rcv.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
+												  <li><a href="'.full_url.'/web/files/Cuadros/'.$idSolicitudPlan.'_CCCT_rcv.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
 												</ul>
 										  </div>'
 						);	
@@ -327,69 +327,17 @@ $values = array_merge($values,$_FILES);
 	$fichero_subido = $carpeta."/";
             //print_r($_FILES);die;
             if(isset($files['CedulaDoc']) and $files['CedulaDoc']['size']>0){
-                 
-                $nombreArchivo = "Cedula_".$values['idSolicitudPlan'].".".pathinfo($_FILES['CedulaDoc']['name'],PATHINFO_EXTENSION);
+                $nombreArchivo = "Cedula_CCCT_".$values['idSolicitudPlan'].".".pathinfo($_FILES['CedulaDoc']['name'],PATHINFO_EXTENSION);
                 if (move_uploaded_file($files['CedulaDoc']['tmp_name'], $fichero_subido.$nombreArchivo)){
                     //inserto en bd;
-                    if($values['action']=='add'){
+                   
+                    $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'],"Cedula");
+                    if($NombreDocumento == ''){
                         $SolicitudDocumentos->saveSolicitudDocumentos($idSolicitudPlan, "Cedula", $nombreArchivo);
-
                     }else{
-                       
                         $SolicitudDocumentos->updateSolicitudDocumentos($idSolicitudPlan, "Cedula", $nombreArchivo);
-
                     }
                         
-                }
-
-            }
-            if(isset($files['CarnetCirculacion']) and $files['CarnetCirculacion']['size']>0){
-                $nombreArchivo = "CarnetCirculacion_".$values['idSolicitudPlan'].".".pathinfo($_FILES['CarnetCirculacion']['name'],PATHINFO_EXTENSION);
-                if (move_uploaded_file($files['CarnetCirculacion']['tmp_name'], $fichero_subido.$nombreArchivo)){
-                    if($values['action']=='add'){
-                        $SolicitudDocumentos->saveSolicitudDocumentos($idSolicitudPlan, "CarnetCirculacion", $nombreArchivo);
-                    }else {
-                        $SolicitudDocumentos->updateSolicitudDocumentos($idSolicitudPlan, "CarnetCirculacion", $nombreArchivo);
-  
-                    }
-                }
-
-            }
-            if(isset($files['DEP1']) and $files['DEP1']['size']>0){
-                $nombreArchivo = "DEP1_".$values['idSolicitudPlan'].".".pathinfo($_FILES['DEP1']['name'],PATHINFO_EXTENSION);
-                if (move_uploaded_file($files['DEP1']['tmp_name'], $fichero_subido.$nombreArchivo)){
-                    if($values['action']=='add'){
-                        $SolicitudDocumentos->saveSolicitudDocumentos($idSolicitudPlan, "DEP1", $nombreArchivo);
- 
-                    }else{
-                        $SolicitudDocumentos->updateSolicitudDocumentos($idSolicitudPlan, "DEP1", $nombreArchivo);
-
-                    }
-                }
-
-            }
-            if(isset($files['DEP2']) and $files['DEP2']['size']>0){
-                $nombreArchivo = "DEP2_".$values['idSolicitudPlan'].".".pathinfo($_FILES['DEP2']['name'],PATHINFO_EXTENSION);
-                if (move_uploaded_file($files['DEP2']['tmp_name'], $fichero_subido.$nombreArchivo)){
-                    if($values['action']=='add'){
-                        $SolicitudDocumentos->saveSolicitudDocumentos($idSolicitudPlan, "DEP2", $nombreArchivo);
-                    }else{
-                        $SolicitudDocumentos->updateSolicitudDocumentos($idSolicitudPlan, "DEP2", $nombreArchivo);
- 
-                    }
-                }
-
-            }
-            if(isset($files['DEP3']) and $files['DEP3']['size']>0){
-                $nombreArchivo = "DEP3_".$values['idSolicitudPlan'].".".pathinfo($_FILES['DEP3']['name'],PATHINFO_EXTENSION);
-                if (move_uploaded_file($files['DEP3']['tmp_name'], $fichero_subido.$nombreArchivo)){
-                    if($values['action']=='add'){
-                        $SolicitudDocumentos->saveSolicitudDocumentos($idSolicitudPlan, "DEP3", $nombreArchivo);
-  
-                    }else{
-                        $SolicitudDocumentos->updateSolicitudDocumentos($idSolicitudPlan, "Deposito/Transferencia", $nombreArchivo);
-
-                    }
                 }
 
             }
@@ -446,10 +394,10 @@ $values = array_merge($values,$_FILES);
 			
 			$Mail = new Mail();
                         if($mail_poliza_tugruero == true){
-                            $Mail->sendMessagePolizaBienvenida($values);
+                            //$Mail->sendMessagePolizaBienvenida($values);
 
                         }else{
-                            $Mail->sendMessagePolizaBienvenidaRCV($values);
+                            //$Mail->sendMessagePolizaBienvenidaRCV($values);
                         }
 			
         }

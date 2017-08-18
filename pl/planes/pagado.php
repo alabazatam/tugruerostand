@@ -19,7 +19,7 @@
 </nav>
 </br></br></br></br></br></br></br>
 <div class='col-sm-3'></div>
-<div  class='col-sm-6 alert alert-success'>
+<div  class='col-sm-6 alert alert-success text-center'>
     ¡LISTO! Ya procesamos su petición.</div>
 <div class='col-sm-3'></div>
 <div class='col-sm-12 text-center'>

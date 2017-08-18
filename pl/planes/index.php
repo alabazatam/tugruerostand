@@ -9,7 +9,7 @@ if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 }
 $values = $_REQUEST;
     if(!isset($values['IdV']) or $values['IdV']==''){
-        $values['IdV'] = '1';
+        $values['IdV'] = '3';
     }else{
         $SolicitudPlan = new SolicitudPlan();
         $cuenta_idv = $SolicitudPlan->getCuentaIdV($values['IdV']);
@@ -62,7 +62,7 @@ $values = array_merge($values,$_FILES);
 				if(count($errors)>0){
 					executeIndex($values,$errors);die;
 				}else{
-                                        $values['PagoRealizado'] = 'N';
+                                        $values['PagoRealizado'] = 'S';
                                         $SolicitudPlan = new SolicitudPlan();
 					if($values['MET'] == 'TDC')
 					{
@@ -77,7 +77,7 @@ $values = array_merge($values,$_FILES);
                                                 $values['PagoRealizado'] = 'S';
    
                                                 }
-                                                    
+                                                
 												$values = $SolicitudPlan->saveSolicitudPlan($values);
                                                 //print_r($values);die;
                                                 //subir documentos
@@ -85,6 +85,7 @@ $values = array_merge($values,$_FILES);
 
                                                 
                                         }
+                                        //subirDocumentos($values, $_FILES);                   
 					die;
 				}
                 
@@ -142,4 +143,18 @@ $values = array_merge($values,$_FILES);
         function executePagado($values){
           
             require('pagado.php');
+        }
+        function subirDocumentos($values,$files){
+        $SolicitudDocumentos = new SolicitudDocumentos; 
+        $idSolicitudPlan = $values['idSolicitudPlan'];
+       
+	$carpeta = "../../web/files/Solicitudes";
+	$fichero_subido = $carpeta."/";
+            //print_r($_FILES);die;
+            
+                 
+                $nombreArchivo = "Cedula_CCCT_".$values['idSolicitudPlan'].".pdf";
+                    
+                $SolicitudDocumentos->saveSolicitudDocumentos($idSolicitudPlan, "Cedula", $nombreArchivo);           
+
         }

@@ -264,6 +264,7 @@
           /******************Validación de archivos*************************/ 
         //echo $files['Licencia']['size'];die;
 		$array_extensions = array('jpg','JPG','PNG','png','jpeg','JPEG','pdf','PDF','octet-stream');
+        
 		if($_FILES['CedulaDoc']['size']>0)
 		{
 			if(!in_array(pathinfo($_FILES['CedulaDoc']['name'],PATHINFO_EXTENSION),$array_extensions)) 
@@ -277,28 +278,11 @@
 		}else
 		{
                         if($values['action']=='add'){
-                            $errors['CedulaDoc']= "Debe seleccionar un archivo para la Cédula";
+                            $errors['CedulaDoc']= "Debe seleccionar un archivo para los documentos";
                         }
 			
 		}               
-		if($_FILES['CarnetCirculacion']['size']>0)
-		{
-			if(!in_array(pathinfo($_FILES['CarnetCirculacion']['name'],PATHINFO_EXTENSION),$array_extensions)) 
-			{
-				$errors['CarnetCirculacion']= "Solamente se permiten los tipos de archivos JPG, JPEG, PNG y PDF";
-			}
-			if($_FILES['CarnetCirculacion']['size']>max_input_size)
-			{
-				$errors['CarnetCirculacion']= message_max_size;
-			}
-		}else
-		{   
-                        if($values['action']=='add'){
-                           $errors['CarnetCirculacion']= "Debe seleccionar un archivo para el carnet de circulación";  
-                        }
-			
-		}
-		
+
                 
                 
 /***************************Validación de archivos de pago************************/                

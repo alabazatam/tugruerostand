@@ -92,6 +92,7 @@ $(document).ready(function() {
 		"autoWidth": true,
         "processing": true,
         "serverSide": true,
+        "sScrollY": "300",
 		 "sDom": 'ltrip',
         "ajax": "<?php echo full_url."/adm/solicitud_plan/index.php?action=list_json"?>",
 		"language": {

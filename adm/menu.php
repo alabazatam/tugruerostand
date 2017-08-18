@@ -36,7 +36,7 @@
                       </div><!-- /.container-fluid -->
                     </nav>          
         </div><!--fin menu mobile-->
-        <div class="col-sm-4 col-sm-offset-8">
+       <!-- <div class="col-sm-4 col-sm-offset-8">
             <div class="alert alert-dismissible text-right" role="alert">
 						<label class=""><small>Grueros online</small></label>
                         <a class="btn btn-success" type="button" onclick="showOnline('SI')">
@@ -45,10 +45,9 @@
                         <a class="btn btn-danger" type="button" onclick="showOnline('NO')">
 							<small> No </small> <span class="badge"><small id="NO"> 0 </small></span>
                         </a>
-                        <!--<a class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></a>-->
 
             </div>          
-        </div>
+        </div>-->
 <div class="modal fade" tabindex="-1" role="dialog" id="myModal2">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

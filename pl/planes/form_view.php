@@ -53,7 +53,7 @@
 		<label class="titulo_contratacion text-center">
 			Proceso de contratación Plan TU/GRUERO®
 		</label> 
-		<strong>(Parte 1 de 2)</strong>
+		<!--<strong>(Parte 1 de 2)</strong>-->
 		</div>
         <?php if(isset($errors['global']) and $errors['global']!=''):?>
         <div id="" class="alert alert-danger"><?php echo $errors['global'];?></div>
@@ -386,36 +386,6 @@
 
         <?php endif;?>
   </div>  
-	<div class="form-group col-sm-12">
-		<hr class="hr_subtitulo_planes">
-		<p class="subtitulo_planes"><strong>Método de pago</strong></p>
-	</div>
-  <div class="form-group col-sm-12">
-    <!--<label for="inputEmail3" class="control-label">Método de pago</label> <label class="text-danger"> * </label>-->
-    <div class="">
-		
-		<table>
-			<tr>
-				<td><input type="radio" name="MET" class="MET " value="TDC" <?php if(isset($values['MET']) and $values['MET']=='TDC') echo "checked='checked'";?>> Tarjeta de crédito </td>
-				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="MET" class="MET" value="DEP" <?php if(isset($values['MET']) and $values['MET']=='DEP') echo "checked='checked'";?>> Depósito o transferencia  </td>
-			</tr>
-			<tr>
-				<td align="center"><img src="<?php echo full_url;?>/web/img/fresh/medios_pagos/visa.png"> <img src="<?php echo full_url;?>/web/img/fresh/medios_pagos/mastercard.png"></td>
-				<td align="center"><i class="fa fa-file-text-o fa-3x btn-info"></i></td>
-			</tr>
-		</table>
-    <label class="">
-    </label>
-    <label class="">
-      
-    </label>
-    </div>
-        <?php if(isset($errors['MET']) and $errors['MET']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['MET'];?></div>
-
-        <?php endif;?>
-  </div>
-
 	<div class="col-sm-12">
 			<hr class="hr_subtitulo_planes">
 	</div>
@@ -424,36 +394,6 @@
 	  <p><b>Total a pagar con IVA:</b> <?php if(isset($values['precio']) and $values['precio']!='') echo "Bs. ".number_format($values['precio'],2,",",".")."."; else echo "Bs. 0,00 "?></p>
   </div>
 
-	<div class="col-sm-5">
-			
-	</div>
-	<div class="form-group col-sm-3">		
-		<?php
-
-			$options = array();
-			$options['input_name'] = 'ct_captcha'; // change name of input element for form post
-			$options['disable_flash_fallback'] = false; // allow flash fallback
-			$options['show_audio_button'] = false;
-			if (!empty($_SESSION['ctform']['captcha_error'])) {
-
-			$options['error_html'] = $_SESSION['ctform']['captcha_error'];
-			}
-
-			echo "<div id='captcha_container_1' class='text-center'>\n";
-			echo Securimage::getCaptchaHtml($options);
-			echo "\n</div><strong><p class='text-center small'>Respete letras mayúsculas y minúsculas</p></strong>\n";
-		?>
-        <?php if(isset($errors['captcha_error']) and $errors['captcha_error']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['captcha_error'];?></div>
-
-        <?php endif;?>
-
-
-
-	</div>
-	<div class="col-sm-4">
-		
-	</div>
         <?php if(isset($errors['global']) and $errors['global']!=''):?>
         <div id="" class="alert alert-danger col-sm-12"><?php echo $errors['global'];?></div>
 

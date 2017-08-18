@@ -255,9 +255,10 @@ $hidden = '';
               <?php endif;?>
         </div>
   <div class="form-group col-sm-12 RCV_SI CedulaDiv">
-      <label for="CedulaDoc" class="control-label">Cédula</label> <label class="text-danger"> * </label> 
+      <label for="CedulaDoc" class="control-label">Documentos</label> <label class="text-danger"> * </label> 
       <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "Cedula"); ?>
-      <?php if($NombreDocumento !=""):?>
+      <input type="hidden" value="<?php if($NombreDocumento !="") echo "1"; else echo "0";?>" name="existeCedulaDoc" id="existeCedulaDoc">
+       <?php if($NombreDocumento !=""):?>
         <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
             <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
         </a>
@@ -271,86 +272,6 @@ $hidden = '';
 
         <?php endif;?>
   </div>
-  <!--<div class="form-group col-sm-12 RCV_SI RifDiv">
-    <label for="RifDoc" class="control-label">Rif</label> <label class="text-danger"> * </label>
-      <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "Rif"); ?>
-      <?php if($NombreDocumento !=""):?>
-        <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
-            <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
-        </a>
-      <?php endif;?>
-    <div class="">
-        <input <?php echo $disabled;?> type="file" name="RifDoc" class="form-control "  id="RifDoc" accept="application/pdf,image/x-png,image/gif,image/jpeg">
-    </div>
-        <?php if(isset($errors['RifDoc']) and $errors['RifDoc']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['RifDoc'];?></div>
-
-        <?php endif;?>
-  </div>
-  <div class="form-group col-sm-12 RCV_SI LicenciaDiv">
-    <label for="Licencia" class="control-label">Licencia</label> <label class="text-danger"> * </label>
-      <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "Licencia"); ?>
-      <?php if($NombreDocumento !=""):?>
-        <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
-            <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
-        </a>
-      <?php endif;?>
-    <div class="">
-        <input <?php echo $disabled;?> type="file" name="Licencia" class="form-control "  id="Licencia" accept="application/pdf,image/x-png,image/gif,image/jpeg">
-    </div>
-        <?php if(isset($errors['Licencia']) and $errors['Licencia']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['Licencia'];?></div>
-
-        <?php endif;?>
-  </div>-->
-  <div class="form-group col-sm-12 CarnetCirculacionDiv">
-    <label for="CarnetCirculacion" class="control-label">Carnet de circulación</label> <label class="text-danger"> * </label>
-      <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "CarnetCirculacion"); ?>
-      <?php if($NombreDocumento !=""):?>
-        <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
-            <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
-        </a>
-      <?php endif;?>
-    <div class="">
-        <input <?php echo $disabled;?> type="file" name="CarnetCirculacion" class="form-control " id="CarnetCirculacion" accept="application/pdf,image/x-png,image/gif,image/jpeg">
-    </div>
-        <?php if(isset($errors['CarnetCirculacion']) and $errors['CarnetCirculacion']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['CarnetCirculacion'];?></div>
-
-        <?php endif;?>
-  </div>
-  <!--<div class="form-group col-sm-12 CertificadoMedicoDiv">
-    <label for="inputEmail3" class="control-label">Certificado médico</label> <label class="text-danger"> * </label>
-      <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "CertificadoMedico"); ?>
-      <?php if($NombreDocumento !=""):?>
-        <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
-            <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
-        </a>
-      <?php endif;?>
-    <div class="">
-        <input <?php echo $disabled;?> type="file" name="CertificadoMedico" class="form-control " id="CertificadoMedico" accept="application/pdf,image/x-png,image/gif,image/jpeg">
-    </div>
-        <?php if(isset($errors['CertificadoMedico']) and $errors['CertificadoMedico']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['CertificadoMedico'];?></div>
-
-        <?php endif;?>
-  </div>
-  <div class="form-group col-sm-12 CertificadoOrigenDiv">
-    <label for="certificadoOrigen" class="control-label">Certificado de origen del vehículo (Título de propiedad)</label> <label class="text-danger"> * </label>
-      <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "CertificadoOrigen"); ?>
-      <?php if($NombreDocumento !=""):?>
-        <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
-            <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
-        </a>
-      <?php endif;?>
-    <div class="">
-        <input <?php echo $disabled;?> type="file" name="CertificadoOrigen" class="form-control" id="CertificadoOrigen" accept="application/pdf,image/x-png,image/gif,image/jpeg">
-    </div>
-    <?php if(isset($errors['CertificadoOrigen']) and $errors['CertificadoOrigen']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['CertificadoOrigen'];?></div>
-
-        <?php endif;?>
-  </div>-->
         <div class="form-group col-sm-12">
           <label for="Clase" class="control-label">Clase</label> <label class="text-danger"> * </label>
           <div class="">
@@ -509,7 +430,7 @@ $hidden = '';
     <label for="inputEmail3" class="control-label">Método de pago</label> <label class="text-danger"> * </label>
     <div class="">
     <label class="radio-inline">
-      <input <?php echo $disabled_plan?>  <?php echo $disabled;?> type="radio" name="MET" class="MET" value="TDC" <?php if(isset($values['MET']) and $values['MET']=='TDC') echo "checked='checked'";?>>Tarjeta de crédito
+      <input <?php echo $disabled_plan?>  <?php echo $disabled;?> type="radio" name="MET" class="MET" value="TDC" <?php if(isset($values['MET']) and $values['MET']=='TDC') echo "checked='checked'";?>>Tarjeta de débito o crédito 
     </label>
     <label class="radio-inline">
       <input <?php echo $disabled_plan?> <?php echo $disabled;?>  type="radio" name="MET" class="MET" value="DEP" <?php if(isset($values['MET']) and $values['MET']=='DEP') echo "checked='checked'";?>> Depósito o transferencia
@@ -517,54 +438,6 @@ $hidden = '';
     </div>
         <?php if(isset($errors['MET']) and $errors['MET']!=''):?>
         <div id="" class="alert alert-danger"><?php echo $errors['MET'];?></div>
-
-        <?php endif;?>
-  </div>
-  <div class="form-group col-sm-12 DEPOSITO">
-    <label for="DEP1" class="control-label">Comprobante #1 </label> <label class="text-danger"> * </label>
-      <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "DEP1"); ?>
-      <?php if($NombreDocumento !=""):?>
-        <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
-            <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
-        </a>
-      <?php endif;?>
-    <div class="">
-        <input <?php echo $disabled;?> type="file" name="DEP1" class="form-control" id="DEP1" accept="application/pdf,image/x-png,image/gif,image/jpeg">
-    </div>
-        <?php if(isset($errors['DEP1']) and $errors['DEP1']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['DEP1'];?></div>
-
-        <?php endif;?>
-  </div>
-  <div class="form-group col-sm-12 DEPOSITO">
-    <label for="DEP2" class="control-label">Comprobante #2</label>
-      <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "DEP2"); ?>
-      <?php if($NombreDocumento !=""):?>
-        <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
-            <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
-        </a>
-      <?php endif;?>
-    <div class="">
-        <input <?php echo $disabled;?> type="file" name="DEP2" class="form-control " id="DEP2" accept="application/pdf,image/x-png,image/gif,image/jpeg">
-    </div>
-        <?php if(isset($errors['DEP2']) and $errors['DEP2']!=''):?>
-        <div id="" class="alert alert-danger"><?php echo $errors['DEP2'];?></div>
-
-        <?php endif;?>
-  </div>
-  <div class="form-group col-sm-12 DEPOSITO">
-    <label for="DEP3" class="control-label">Comprobante #3</label>
-      <?php $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'], "DEP3"); ?>
-      <?php if($NombreDocumento !=""):?>
-        <a class="" target="_blank" href="<?php echo full_url?>/web/files/Solicitudes/<?php echo $NombreDocumento;?>">
-            <i class="fa fa-eye alert alert-success" aria-hidden="true"> Descargar/Ver</i>
-        </a>
-      <?php endif;?>
-    <div class="">
-        <input <?php echo $disabled;?> type="file" name="DEP3" class="form-control " id="DEP3" accept="application/pdf,image/x-png,image/gif,image/jpeg">
-    </div>
-        <?php if(isset($errors['DEP3']) and $errors['DEP3']!=''):?>
-        <div class="alert alert-danger"><?php echo $errors['DEP3'];?></div>
 
         <?php endif;?>
   </div>
@@ -597,7 +470,7 @@ $hidden = '';
             <p class="subtitulo_planes"><strong>Datos de mercadopago</strong></p>
         </div>
       <div class="form-group col-sm-2">
-        <label for="id" class="control-label">Id</label> <label class="text-danger"> * </label>
+        <label for="id" class="control-label">Número de ticket</label> <label class="text-danger"> * </label>
         <div class="">
             <input <?php echo $disabled;?> type="text" name="id" class="form-control" autocomplete="off" id="id" maxlength="20" value="<?php if(isset($values['id']) and $values['id']!='') echo $values['id'];?>" placeholder="">
         </div>
@@ -610,6 +483,7 @@ $hidden = '';
         <label for="id" class="control-label">Tipo de tarjeta:</label> <label class="text-danger"> * </label>
         <div class="">
             <select class="form-control" name="payment_method_id">
+                <option value="débito" <?php if(isset($values['payment_method_id']) and $values['payment_method_id'] =='débito') echo "selected='selected'"?>>Débito</option>
                 <option value="visa" <?php if(isset($values['payment_method_id']) and $values['payment_method_id'] =='visa') echo "selected='selected'"?>>Visa</option>
                 <option value="mastercard" <?php if(isset($values['payment_method_id']) and $values['payment_method_id'] =='mastercard') echo "selected='selected'"?>>Mastercard</option>
             </select>
@@ -867,6 +741,10 @@ $('#rechazo').hide();
         }
     });    
     $('#btn-aprobar').click(function(){
+        if($('#existeCedulaDoc').val() == '0' || $('#existeCedulaDoc').val() == ''){
+            alert('Debe seleccionar el archivo con los documentos escaneados y luego presionar "Aceptar para guardarlo". ');
+            return false;
+        }    
         if($('#VigenciaDesde').val() == '' || $('#VigenciaHasta').val() == ''){
             alert('Debe indicar la vigencia ');
             return false;
