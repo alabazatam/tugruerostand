@@ -42,31 +42,7 @@
 			                            <input autocomplete="off" name='password' type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password.">
 			                        </div>
 			                    </div>
-			                   <div class="control-group form-group">
-			                        <div class="controls">
-										<?php
-											  // show captcha HTML using Securimage::getCaptchaHtml()
 
-											  $options = array();
-											  $options['input_name']             = 'ct_captcha'; // change name of input element for form post
-											  $options['disable_flash_fallback'] = false; // allow flash fallback
-											  $options['show_audio_button'] = false;
-
-											  if (!empty($_SESSION['ctform']['captcha_error'])) {
-												// error html to show in captcha output
-												$options['error_html'] = $_SESSION['ctform']['captcha_error'];
-											  }
-
-											  echo "<div id='captcha_container_1' class='text-center'>\n";
-											  echo Securimage::getCaptchaHtml($options);
-											  echo "\n</div><strong><p class='text-center small'>Respete letras mayúsculas y minúsculas</p>\n";
-										 ?>
-			 							
-							
-								                           
-			                           
-			                        </div>
-			                    </div>
 			                    <div class="control-group form-group text-center">
 										<button type="submit" class="btn-lg btn-success">Conectar <i class="fa fa-arrow-right"></i></button>
 			                    </div>

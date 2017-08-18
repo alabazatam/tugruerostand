@@ -39,15 +39,6 @@ $values = $_REQUEST;
 	function executeAcceso($values = null){
 		
 		$login = true;
-		$securimage = new Securimage();
-		$captcha = $values['ct_captcha'];
-		if ($securimage->check($captcha) == false) 
-		{
-				$errors['captcha_error'] = 'Incorrect security code entered<br />';
-				$values['error'] = "Imagen incorrecta";
-				require('login.php');die;
-		}else
-		{
 			if($login == false)
 			{
 				require('bienvenida.php');
@@ -80,7 +71,7 @@ $values = $_REQUEST;
 				
 				
 			}
-		}
+		
 	require('bienvenida.php');
 	}
 	function executeLogout($values = null){
