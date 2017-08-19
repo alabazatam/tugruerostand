@@ -33,16 +33,19 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeIndex($values = null)
 	{
-		require('list_view.php');
+		require('respaldo.php');
 	}
 	function executeGenerar($values = null)
 	{    
 		
 		$Respaldar = new Respaldar();
 		$Respaldar->generarRespaldo();
+        
+        $values['msg'] = "Respaldo generado satisfactoriamente.";            
+        executeNew($values);
 	}
 	function executeNew($values = null)
-	{
+	{   
 		$values['action'] = 'generar';
 		require('form_view.php');
 	}

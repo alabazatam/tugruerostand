@@ -12,7 +12,7 @@ table.dataTable tbody > tr > .seleccionado {
 }
 </style>
 <div class="">
-	<h1 class="text-center big_title">Solicitudes de planes</h1>
+	<h1 class="text-center">Solicitudes de planes</h1>
 	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
