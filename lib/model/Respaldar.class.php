@@ -48,7 +48,7 @@ class Respaldar {
 	('".$datos['idSolicitudPlan']."','".$datos['Nombres']."','".$datos['Apellidos']."', '".$datos['Correo']."', '".$datos['Cedula']."','".$datos['EstadoCivil']."',	'".$datos['FechaNacimiento']."','".$datos['Sexo']."' ,'".$datos['Rif']."', 
 	'".$datos['Estado']."',	'".$datos['Ciudad']."', '".$datos['Domicilio']."', '".$datos['Telefono']."','".$datos['Celular']."','".$datos['FechaSolicitud']."','".$datos['TipoPago']."', '".$datos['NumeroTransaccion']."', 
 	'".$datos['Clase']."', '".$datos['Marca']."', '".$datos['Modelo']."','".$datos['Anio']."','".$datos['Color']."','".$datos['Placa']."','".$datos['Tipo']."','".$datos['Puestos']."','".$datos['SerialMotor']."', '".$datos['SerialCarroceria']."','".$datos['Estatus']."', 
-	'".$datos['TotalSinIva']."', '".$datos['TotalConIva']."', '".$datos['PagoRealizado']."', '".$datos['Observacion']."', '".$datos['IdV']."', '".$datos['Kilometraje']."', '".$datos['CantidadServicios']."','".$datos['Respaldo']."','".$datos['IdRespaldo']."');\n");
+	'".$datos['TotalSinIva']."', '".$datos['TotalConIva']."', '".$datos['PagoRealizado']."', '".$datos['Observacion']."', '".$datos['IdV']."', '".$datos['Kilometraje']."', '".$datos['CantidadServicios']."','".$datos['Respaldo']."',null);\n");
 	}
 	
 	
