@@ -289,48 +289,7 @@
                 
                 
 /***************************Validación de archivos de pago************************/                
-                if($values['MET'] == "DEP"){
-                            
-
-	
-			if($_FILES['DEP1']['size']>0)
-			{
-				if(!in_array(pathinfo($_FILES['DEP1']['name'],PATHINFO_EXTENSION),$array_extensions)) 
-				{
-					$errors['DEP1']= "Solamente se permiten los tipos de archivos JPG, JPEG, PNG y PDF";
-				}
-				if($_FILES['DEP1']['size']>max_input_size)
-				{
-					$errors['DEP1']= message_max_size;
-				}
-			}else
-			{
-				$errors['DEP1']= "Debe seleccionar el archivo de transferencia o deposito bancario";
-			}
-			
-			if($_FILES['DEP2']['size']>0)
-			{
-				if(!in_array(pathinfo($_FILES['DEP2']['name'],PATHINFO_EXTENSION),$array_extensions)) 
-				{
-					$errors['DEP2']= "Solamente se permiten los tipos de archivos JPG, JPEG, PNG y PDF";
-				}
-				if($_FILES['DEP2']['size']>max_input_size)
-				{
-					$errors['DEP2']= message_max_size;
-				}
-			}
-			if($_FILES['DEP3']['size']>0)
-			{
-				if(!in_array(pathinfo($_FILES['DEP3']['name'],PATHINFO_EXTENSION),$array_extensions)) 
-				{
-					$errors['DEP3']= "Solamente se permiten los tipos de archivos JPG, JPEG, PNG y PDF";
-				}
-				if($_FILES['DEP3']['size']>max_input_size)
-				{
-					$errors['DEP3']= message_max_size;
-				}
-			}
-                }		               
+	               
                 
                
                 return $errors;

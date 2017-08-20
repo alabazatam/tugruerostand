@@ -127,7 +127,7 @@ $values = array_merge($values,$_FILES);
 		$values["carholder_name"] = $_REQUEST['carholder_name'];
 		$values["transaction_amount"] = $_REQUEST['transaction_amount'];
 		//print_r($valores);die;
-		if(isset($values["TipoPago"]) and $values['TipoPago'] !=''){
+		if(isset($values["TipoPago"]) and $values['TipoPago'] !='' and $values["TipoPago"] == $_REQUEST["MET"]){
 			$values['MET'] = $values["TipoPago"];
 		}else{
 			$values['MET'] = $_REQUEST["MET"];
@@ -169,7 +169,7 @@ $values = array_merge($values,$_FILES);
 		$SolicitudPlan = new SolicitudPlan();           
                 $errors = validate($values);
                 if(count($errors)>0){
-					//print_r($errors);die;
+					print_r($errors);die;
                    executeEdit($values,null,$errors); 
                 }else{
                     
