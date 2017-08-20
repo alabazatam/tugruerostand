@@ -132,6 +132,17 @@ $values = array_merge($values,$_FILES);
 		}else{
 			$values['MET'] = $_REQUEST["MET"];
 		}
+        if(!isset($values['MET']) or $values['MET']=='' ){
+            
+            $values['MET'] = $values["TipoPago"];
+            
+        }
+        if($values['SerialMotor'] == '' and $_REQUEST['SerialMotor'] !=''){
+			$values['SerialMotor'] = $_REQUEST['SerialMotor'];
+		}
+        if($values['SerialCarroceria'] == '' and $_REQUEST['SerialCarroceria'] !=''){
+			$values['SerialCarroceria'] = $_REQUEST['SerialCarroceria'];
+		}  
                 
 		if(isset($mercadopagodata["id"]) and $mercadopagodata['id'] !=''){
 			$values['id'] = $mercadopagodata["id"];
