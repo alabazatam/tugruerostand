@@ -41,7 +41,7 @@ $disabled_pagos = "";
 <div class="form-group col-sm-12">
 <h1 align="center">Proceso de contratación Plan TU/GRUERO®</h1>
 <form class="" method="POST" enctype="multipart/form-data">
-    <input type="text" id="action" name="action" value="<?php echo $values['action']?>">
+    <input type="hidden" id="action" name="action" value="<?php echo $values['action']?>">
     <input type="hidden" id="idSolicitudPlan" name="idSolicitudPlan" value="<?php if(isset($values['idSolicitudPlan']))echo $values['idSolicitudPlan']?>">
     <input type="hidden" id="IdV" name="IdV" value="<?php if(isset($values['IdV']))echo $values['IdV']?>">
     <input type="hidden" id="precio" name="precio" value="<?php if(isset($values['precio']))echo $values['precio']?>">
@@ -389,7 +389,7 @@ $disabled_pagos = "";
 		
 	</div>
   <div class="form-group col-sm-6">
-    <label for="SerialMotor" class="control-label">Serial de motor</label> <label class="text-danger">  </label>
+    <label for="SerialMotor" class="control-label">Serial de motor</label> <label class="text-danger"> * </label>
     <div class="">
         <input <?php echo $disabled;?>  type="text" name="SerialMotor" class="form-control" id="SerialMotor" autocomplete="off" maxlength="50" value="<?php if(isset($values['SerialMotor']) and $values['SerialMotor']!='') echo $values['SerialMotor'];?>">
     </div>
@@ -399,7 +399,7 @@ $disabled_pagos = "";
         <?php endif;?>
   </div>
   <div class="form-group col-sm-6">
-    <label for="SerialCarroceria" class="control-label">Serial de carrocería</label> <label class="text-danger">  </label>
+    <label for="SerialCarroceria" class="control-label">Serial de carrocería</label> <label class="text-danger"> * </label>
     <div class="">
         <input <?php echo $disabled;?>  type="text" name="SerialCarroceria" class="form-control" id="SerialCarroceria" autocomplete="off" maxlength="50" value="<?php if(isset($values['SerialCarroceria']) and $values['SerialCarroceria']!='') echo $values['SerialCarroceria'];?>">
     </div>
