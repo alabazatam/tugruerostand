@@ -137,7 +137,8 @@ class Respaldar {
 		$ConnectionORM = new ConnectionORM();
 		$q = $ConnectionORM->getConnect()->SolicitudPlan
 		->select("*")
-		->where("Respaldo=?",0);
+		->where("Respaldo=?",0)
+        ->and("SolicitudPlan.Estatus=?","ACT");
 		return $q;
 	}
 	function respaldoSolicitudPagoDetalle(){
@@ -145,7 +146,8 @@ class Respaldar {
 		$q = $ConnectionORM->getConnect()->SolicitudPagoDetalle
 		->select("*")
 		->join("SolicitudPlan","INNER JOIN SolicitudPlan sp on sp.idSolicitudPlan = SolicitudPagoDetalle.idSolicitudPlan")
-		->where("Respaldo=?",0);
+		->where("Respaldo=?",0)
+        ->and("SolicitudPlan.Estatus=?","ACT");
 		return $q;
 	}
 	function respaldoSolicitudPlanSeleccion(){
@@ -153,7 +155,8 @@ class Respaldar {
 		$q = $ConnectionORM->getConnect()->SolicitudPlanSeleccion
 		->select("*")
 		->join("SolicitudPlan","INNER JOIN SolicitudPlan sp on sp.idSolicitudPlan = SolicitudPlanSeleccion.idSolicitudPlan")
-		->where("Respaldo=?",0);
+		->where("Respaldo=?",0)
+        ->and("SolicitudPlan.Estatus=?","ACT");
 		
 		return $q;
 	}
@@ -162,7 +165,8 @@ class Respaldar {
 		$q = $ConnectionORM->getConnect()->SolicitudDocumentos
 		->select("*")
 		->join("SolicitudPlan","INNER JOIN SolicitudPlan sp on sp.idSolicitudPlan = SolicitudDocumentos.idSolicitudPlan")
-		->where("Respaldo=?",0);
+		->where("Respaldo=?",0)
+        ->and("SolicitudPlan.Estatus=?","ACT");
 		return $q;
 	}
 	function respaldoSolicitudAprobada(){
@@ -170,7 +174,8 @@ class Respaldar {
 		$q = $ConnectionORM->getConnect()->SolicitudAprobada
 		->select("*")
 		->join("SolicitudPlan","INNER JOIN SolicitudPlan sp on sp.idSolicitudPlan = SolicitudAprobada.idSolicitudPlan")
-		->where("Respaldo=?",0);
+		->where("Respaldo=?",0)
+        ->and("SolicitudPlan.Estatus=?","ACT");
 		return $q;
 	}
 	function respaldoPolizas(){
