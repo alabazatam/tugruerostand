@@ -139,7 +139,7 @@
 			
 			"type" => "text",
 			"label" => "Serial de motor",
-			"required" => false,
+			"required" => true,
 			"minlength" => 5,
 			"maxlength" => 30,
 		);
@@ -147,7 +147,7 @@
 			
 			"type" => "text",
 			"label" => "Serial de carroceria",
-			"required" => false,
+			"required" => true,
 			"minlength" => 5,
 			"maxlength" => 50,
 		);

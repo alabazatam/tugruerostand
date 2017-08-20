@@ -13,6 +13,7 @@ $disabled_plan = '';
 $isAprobada = false;
 $input_type = '';
 $hidden = '';
+$disabled_pagos = "";
 
 ?>
 <?php if(isset($values['Estatus']) and $values['Estatus']!='ENV'):?>
@@ -31,6 +32,7 @@ $hidden = '';
 
 <?php if(isset($values['idSolicitudPlan']) and $values['idSolicitudPlan']!=''):?>
     <?php $isAprobada = $SolicitudAprobada->isAprobada($values['idSolicitudPlan']);?>
+    <?php if($isAprobada) $disabled_pagos = "disabled = disabled";?>
 <?php endif;?>
 
 
@@ -430,10 +432,10 @@ $hidden = '';
     <label for="inputEmail3" class="control-label">Método de pago</label> <label class="text-danger"> * </label>
     <div class="">
     <label class="radio-inline">
-      <input  type="radio" name="MET" class="MET" value="TDC" <?php if(isset($values['MET']) and $values['MET']=='TDC') echo "checked='checked'";?>>Tarjeta de débito o crédito 
+      <input  type="radio" name="MET" class="MET" value="TDC" <?php if(isset($values['MET']) and $values['MET']=='TDC') echo "checked='checked'";?> <?php echo $disabled_pagos;?>>Tarjeta de débito o crédito 
     </label>
     <label class="radio-inline">
-      <input  type="radio" name="MET" class="MET" value="DEP" <?php if(isset($values['MET']) and $values['MET']=='DEP') echo "checked='checked'";?>> Depósito o transferencia
+      <input  type="radio" name="MET" class="MET" value="DEP" <?php if(isset($values['MET']) and $values['MET']=='DEP') echo "checked='checked'";?> <?php echo $disabled_pagos;?>> Depósito o transferencia
     </label>
     </div>
         <?php if(isset($errors['MET']) and $errors['MET']!=''):?>
@@ -482,7 +484,7 @@ $hidden = '';
       <div class="form-group col-sm-2">
         <label for="id" class="control-label">Tipo de tarjeta:</label> <label class="text-danger"> * </label>
         <div class="">
-            <select class="form-control" name="payment_method_id">
+            <select class="form-control" name="payment_method_id" <?php echo $disabled_pagos;?>>
                 <option value="débito" <?php if(isset($values['payment_method_id']) and $values['payment_method_id'] =='débito') echo "selected='selected'"?>>Débito</option>
                 <option value="visa" <?php if(isset($values['payment_method_id']) and $values['payment_method_id'] =='visa') echo "selected='selected'"?>>Visa</option>
                 <option value="mastercard" <?php if(isset($values['payment_method_id']) and $values['payment_method_id'] =='mastercard') echo "selected='selected'"?>>Mastercard</option>
