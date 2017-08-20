@@ -7,8 +7,8 @@ setlocale(LC_NUMERIC,"es_ES.UTF8");
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
 }
-            $PDFPagos = new PDFPagos();
-            $pdf = $PDFPagos->cuadroTUGRUERO(array('idSolicitudPlan'=> 1));
+             /*$PDFPagos = new PDFPagos();
+            $pdf = $PDFPagos->cuadroTUGRUERO(array('idSolicitudPlan'=> 1));*/
 $values = $_REQUEST;
     if(!isset($values['IdV']) or $values['IdV']==''){
         $values['IdV'] = '3';
@@ -115,10 +115,40 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeEdit($values = null,$msg = null, $errors = null)
 	{
-		
+		//print_r($_REQUEST);die;
 		$SolicitudPlan = new SolicitudPlan();
 		$values = $SolicitudPlan->getSolicitudPlanById($values);
-                $planes_seleccionados = $SolicitudPlan -> getPlanesSeleccionados($values['idSolicitudPlan']);
+		$SolicitudPagoDetalle = new SolicitudPagoDetalle();
+		$mercadopagodata = $SolicitudPagoDetalle->getPagoDetalleByID($values['idSolicitudPlan']);
+		$values["id"] = $_REQUEST['id'];
+		$values["MET"] = $_REQUEST['MET'];
+		$values["payment_method_id"] = $_REQUEST['payment_method_id'];
+		$values["payer_identification_number"] = $_REQUEST['payer_identification_number'];
+		$values["carholder_name"] = $_REQUEST['carholder_name'];
+		$values["transaction_amount"] = $_REQUEST['transaction_amount'];
+		//print_r($valores);die;
+		if(isset($values["TipoPago"]) and $values['TipoPago'] !=''){
+			$values['MET'] = $values["TipoPago"];
+		}else{
+			$values['MET'] = $_REQUEST["MET"];
+		}
+                
+		if(isset($mercadopagodata["id"]) and $mercadopagodata['id'] !=''){
+			$values['id'] = $mercadopagodata["id"];
+		}	
+		if(isset($mercadopagodata["payment_method_id"]) and $mercadopagodata['payment_method_id'] !=''){
+			$values['payment_method_id'] = $mercadopagodata["payment_method_id"];
+		}
+		if(isset($mercadopagodata["payer_identification_number"]) and $mercadopagodata['payer_identification_number'] !=''){
+			$values['payer_identification_number'] = $mercadopagodata["payer_identification_number"];
+		}
+		if(isset($mercadopagodata["carholder_name"]) and $mercadopagodata['carholder_name'] !=''){
+			$values['carholder_name'] = $mercadopagodata["carholder_name"];
+		}	
+		if(isset($mercadopagodata["transaction_amount"]) and $mercadopagodata['transaction_amount'] !=''){
+			$values['transaction_amount'] = $mercadopagodata["transaction_amount"];
+		}			
+		$planes_seleccionados = $SolicitudPlan -> getPlanesSeleccionados($values['idSolicitudPlan']);
 		if(count($planes_seleccionados)>0){
                     foreach($planes_seleccionados as $seleccionados){
                         if($seleccionados['Tipo']=='tugruero.com'){
@@ -136,14 +166,29 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeUpdate($values = null)
 	{
-		$SolicitudPlan = new SolicitudPlan();
-                                   
+		$SolicitudPlan = new SolicitudPlan();           
                 $errors = validate($values);
                 if(count($errors)>0){
+					//print_r($errors);die;
                    executeEdit($values,null,$errors); 
                 }else{
-                     
+                    
                     $SolicitudPlan->updateSolicitudPlan($values);
+					$SolicidPagoDetalle = new SolicitudPagoDetalle();
+					
+					$datos_pago = $SolicidPagoDetalle->getPagoDetalleByID($values['idSolicitudPlan']);
+					
+					if(!isset($datos_pago['idSolicitudPlan']) or $datos_pago['idSolicitudPlan'] == '' ){
+						
+							//echo "aaa";die;
+							$SolicidPagoDetalle->savePagoDetalle($values);
+												
+					}else{
+							
+							
+							$SolicidPagoDetalle->updatePagoDetalle($values);
+						
+					}
                     subirDocumentos($values,$_FILES);
                    
                     executeEdit($values,message_updated);die;   

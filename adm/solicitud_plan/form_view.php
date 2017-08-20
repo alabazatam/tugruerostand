@@ -39,7 +39,7 @@ $hidden = '';
 <div class="form-group col-sm-12">
 <h1 align="center">Proceso de contratación Plan TU/GRUERO®</h1>
 <form class="" method="POST" enctype="multipart/form-data">
-    <input type="hidden" id="action" name="action" value="<?php echo $values['action']?>">
+    <input type="text" id="action" name="action" value="<?php echo $values['action']?>">
     <input type="hidden" id="idSolicitudPlan" name="idSolicitudPlan" value="<?php if(isset($values['idSolicitudPlan']))echo $values['idSolicitudPlan']?>">
     <input type="hidden" id="IdV" name="IdV" value="<?php if(isset($values['IdV']))echo $values['IdV']?>">
     <input type="hidden" id="precio" name="precio" value="<?php if(isset($values['precio']))echo $values['precio']?>">
@@ -430,10 +430,10 @@ $hidden = '';
     <label for="inputEmail3" class="control-label">Método de pago</label> <label class="text-danger"> * </label>
     <div class="">
     <label class="radio-inline">
-      <input <?php echo $disabled_plan?>  <?php echo $disabled;?> type="radio" name="MET" class="MET" value="TDC" <?php if(isset($values['MET']) and $values['MET']=='TDC') echo "checked='checked'";?>>Tarjeta de débito o crédito 
+      <input  type="radio" name="MET" class="MET" value="TDC" <?php if(isset($values['MET']) and $values['MET']=='TDC') echo "checked='checked'";?>>Tarjeta de débito o crédito 
     </label>
     <label class="radio-inline">
-      <input <?php echo $disabled_plan?> <?php echo $disabled;?>  type="radio" name="MET" class="MET" value="DEP" <?php if(isset($values['MET']) and $values['MET']=='DEP') echo "checked='checked'";?>> Depósito o transferencia
+      <input  type="radio" name="MET" class="MET" value="DEP" <?php if(isset($values['MET']) and $values['MET']=='DEP') echo "checked='checked'";?>> Depósito o transferencia
     </label>
     </div>
         <?php if(isset($errors['MET']) and $errors['MET']!=''):?>
@@ -463,7 +463,7 @@ $hidden = '';
 
         <?php endif;?> 
   </div>   
-  <?php if(isset($values['action']) and $values['action']=='add'):?>
+  <?php if(isset($values['action'])):?>
 
     <div class="form-group col-sm-12" id="mercadopago">
         <div class="row">
@@ -525,28 +525,6 @@ $hidden = '';
         </div>
     </div>
   <?php endif;?>
-<?php if(isset($values['MET']) and $values['MET']=='TDC' and $values['action']!='add'):?>
-	<?php $mercadopagodata = $SolicitudPagoDetalle->getPagoDetalleByID($values['idSolicitudPlan']);?>
-    <div class="form-group col-sm-12">
-		<label>Detalle de Mercadopago</label>
-    </div>
-   
-    <div class="form-group col-sm-12">
-		<label>Id: </label>
-		<?php echo $mercadopagodata['id'];?>
-		<label>Tipo de tarjeta: </label>
-		<?php echo $mercadopagodata['payment_method_id'];?>
-		<label>Cédula: </label>
-		<?php echo $mercadopagodata['payer_identification_type'];?> <?php echo $mercadopagodata['payer_identification_number'];?>
-		<label>Nombre en tarjeta: </label>
-		<?php echo $mercadopagodata['carholder_name'];?>
-		<label>Monto de la transacción: </label>
-		<?php echo $mercadopagodata['transaction_amount'];?>
-		<label>Estatus: </label>
-		<?php echo $mercadopagodata['status'];?>
-    </div>	
-
-<?php endif;?>
 </div>
 
   
@@ -703,6 +681,7 @@ $('#rechazo').hide();
     calculaPrecioRcv();
     });
     $('.MET').change(function(e){
+		
         if($('.MET:checked').val() == 'DEP'){
             $('.DEPOSITO').show();
             $('#mercadopago').hide();

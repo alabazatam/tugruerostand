@@ -236,6 +236,9 @@
                 if(!isset($values['Tipo']) or $values['Tipo']=='' and $values['Clase']!='Moto'){
                     $errors['Tipo'] = 'Debe seleccionar el tipo de vehículo';
                 } 
+                if(!isset($values['MET']) or $values['MET']==''){
+                    $errors['MET'] = 'Debe indicar el método de pago';
+                }
                 if(isset($values['MET']) and $values['MET']=='TDC'){
                     if(!isset($values['id']) or $values['id']==''){
                         $errors['id'] = 'Debe colocar el id de la transacción';

@@ -609,6 +609,7 @@
                                 'Ciudad' => $values['Ciudad'],           
                                 'Domicilio' => $values['Domicilio'],
                                 'Telefono' => @$values['Telefono'],
+								 'TipoPago' => @$values['MET'],
 				'Celular' => @$values['Celular'],
                                 'Marca' => @$values['Marca'],
                                 'Modelo' => @$values['Modelo'],
@@ -657,7 +658,6 @@
 			);
 					
 			$ConnectionORM = new ConnectionORM();
-			$ConnectionAws = new ConnectionAws();
 			$q = $ConnectionORM->getConnect()->SolicitudPlan("idSolicitudPlan", $idSolicitudPlan)->update($array);	
                 }
 		public function getSolicitudPorPlaca($values){

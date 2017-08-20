@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Grueros Venezuela, Grúas Venezuela">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="<?php echo full_url;?>/web/img/favicon.png">
+    <link rel="shortcut icon" href="<?php echo full_url;?>/web/img/favicon.ico">
     <title>TUGRUERO®</title>
     <link href="<?php echo full_url;?>/web/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo full_url;?>/web/css/freelancer_app.css" rel="stylesheet">

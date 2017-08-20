@@ -85,10 +85,6 @@
 				$array_poliza['created_by'],
 				$array_poliza['updated_by']			
 				);
-			//inserto en aws 
-                     
-			$ConnectionAws= new ConnectionAws();
-			$q = $ConnectionAws->getConnect()->Polizas()->insert($array_poliza);
 			
 			
 		}
