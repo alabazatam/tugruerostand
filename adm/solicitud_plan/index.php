@@ -169,7 +169,7 @@ $values = array_merge($values,$_FILES);
 		$SolicitudPlan = new SolicitudPlan();           
                 $errors = validate($values);
                 if(count($errors)>0){
-					print_r($errors);die;
+					//print_r($errors);die;
                    executeEdit($values,null,$errors); 
                 }else{
                     
