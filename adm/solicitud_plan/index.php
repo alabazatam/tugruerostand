@@ -169,7 +169,19 @@ $values = array_merge($values,$_FILES);
 	function executeUpdate($values = null)
 	{
 		$SolicitudPlan = new SolicitudPlan();           
-                $errors = validate($values);
+        $errors = array();
+		
+				if($values["Estatus"] == "ACT"){
+                    subirDocumentos($values,$_FILES);
+                   
+                    executeEdit($values,message_updated);die; 
+				}
+				
+				$errors = validate($values);
+
+				
+				
+				
                 if(count($errors)>0){
 					//print_r($errors);die;
                    executeEdit($values,null,$errors); 
@@ -206,11 +218,12 @@ $values = array_merge($values,$_FILES);
 		$array_json = array();
 		$array_json['recordsTotal'] = $list_json_cuenta;
 		$array_json['recordsFiltered'] = $list_json_cuenta;
+		$SolicitudDocumentos = new SolicitudDocumentos();
 		if(count($list_json)>0)
 		{
 			foreach ($list_json as $list) 
 			{   
-                
+                $indicador_documento_vacio = "";
 				$idSolicitudPlan = $list['idSolicitudPlan'];
 				$status = $list['status'];
 				if($status == 'Desactivado')
@@ -222,7 +235,10 @@ $values = array_merge($values,$_FILES);
 					$message_status = "<label class='label label-success'>Activo</label>";
 				}
 				
-				
+				$NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($idSolicitudPlan,"Cedula");
+				if($NombreDocumento==''){
+					$indicador_documento_vacio = "<div><label class='label label-danger'>Falta documento</label></div>";
+				}
 				if($list['EstatusAbr']=="ENV")
 				{
 					$array_json['data'][] = array(
@@ -233,6 +249,7 @@ $values = array_merge($values,$_FILES);
 						"Plan" => $list['concatenado_plan'],
 						"Rif" => $list['Rif'],
 						"PrecioTotal" => number_format($list['PrecioTotal'],2,",","."),
+						"documentos" => $NombreDocumento, 
 						"Estatus" => $list['Estatus'],
 											"FechaSolicitud" => $list['FechaSolicitud'],
                                             "NombreVendedor" => $list['NombreVendedor'],
@@ -245,7 +262,7 @@ $values = array_merge($values,$_FILES);
 												<ul class="dropdown-menu dropdown-menu-right">
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												</ul>
-										  </div>'
+										  </div>'.$indicador_documento_vacio
 						);	
 				}else
 				{
@@ -273,6 +290,7 @@ $values = array_merge($values,$_FILES);
 						"Plan" => $list['concatenado_plan'],
 						"Rif" => $list['Rif'],
 						"PrecioTotal" => number_format($list['PrecioTotal'],2,",","."),
+						"documentos" => $NombreDocumento, 
 						"Estatus" => $list['Estatus'],
 											"FechaSolicitud" => $list['FechaSolicitud'],
                                                                                         "NombreVendedor" => $list['NombreVendedor'],
@@ -287,7 +305,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Cuadro póliza</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$idSolicitudPlan.'_CCCT_rcv.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
 												</ul>
-										  </div>'
+										  </div>'.$indicador_documento_vacio
 						);	
 					}elseif($plan_tugruero == true and $plan_rcv == false){
 					$array_json['data'][] = array(
@@ -298,6 +316,7 @@ $values = array_merge($values,$_FILES);
 						"Plan" => $list['concatenado_plan'],
 						"Rif" => $list['Rif'],
 						"PrecioTotal" => number_format($list['PrecioTotal'],2,",","."),
+						"documentos" => $NombreDocumento, 
 						"Estatus" => $list['Estatus'],
 											"FechaSolicitud" => $list['FechaSolicitud'],
                                                                                         "NombreVendedor" => $list['NombreVendedor'],
@@ -311,7 +330,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Cuadro póliza</a></li>
 												</ul>
-										  </div>'
+										  </div>'.$indicador_documento_vacio
 						);	
                                         }elseif($plan_tugruero == false and $plan_rcv == true){
                                                 $array_json['data'][] = array(
@@ -322,6 +341,7 @@ $values = array_merge($values,$_FILES);
 						"Plan" => $list['concatenado_plan'],
 						"Rif" => $list['Rif'],
 						"PrecioTotal" => number_format($list['PrecioTotal'],2,",","."),
+						"documentos" => $NombreDocumento, 
 						"Estatus" => $list['Estatus'],
 											"FechaSolicitud" => $list['FechaSolicitud'],
                                                                                         "NombreVendedor" => $list['NombreVendedor'],
@@ -335,7 +355,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$idSolicitudPlan.'_CCCT_rcv.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
 												</ul>
-										  </div>'
+										  </div>'.$indicador_documento_vacio
 						);	 
                                         }
 					
@@ -357,6 +377,7 @@ $values = array_merge($values,$_FILES);
                                 "Plan"=>"",
                                 "Rif"=>"",
                                 "PrecioTotal" =>"",
+								"documentos" => "",
                                 "Estatus" => "",
                                 "FechaSolicitud" => "",
                                 "NombreVendedor" => "",

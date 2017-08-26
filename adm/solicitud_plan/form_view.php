@@ -45,6 +45,8 @@ $disabled_pagos = "";
     <input type="hidden" id="idSolicitudPlan" name="idSolicitudPlan" value="<?php if(isset($values['idSolicitudPlan']))echo $values['idSolicitudPlan']?>">
     <input type="hidden" id="IdV" name="IdV" value="<?php if(isset($values['IdV']))echo $values['IdV']?>">
     <input type="hidden" id="precio" name="precio" value="<?php if(isset($values['precio']))echo $values['precio']?>">
+    <input type="hidden" id="Estatus" name="Estatus" value="<?php if(isset($values['Estatus']))echo $values['Estatus']?>">
+
     <?php if(isset($values['action']) and $values['action']!='add'):?>
     <div class="form-group col-sm-12 text-right PlanPrecio">
       <p><b>Total a pagar con IVA:</b> <?php if(isset($values['precio']) and $values['precio']!='') echo "Bs. ".number_format($values['precio'],2,",",".")."."; else echo " Bs. 0,00"?></p>
@@ -266,7 +268,7 @@ $disabled_pagos = "";
         </a>
       <?php endif;?>
     <div class="">
-        <input <?php echo $disabled;?> type="file" name="CedulaDoc" class="form-control "  id="CedulaDoc" accept="application/pdf,image/x-png,image/gif,image/jpeg">
+        <input type="file" name="CedulaDoc" class="form-control "  id="CedulaDoc" accept="application/pdf,image/x-png,image/gif,image/jpeg">
         
     </div>
         <?php if(isset($errors['CedulaDoc']) and $errors['CedulaDoc']!=''):?>
@@ -562,9 +564,8 @@ $disabled_pagos = "";
 
 <div class="form-group col-sm-12">
     <a class="btn btn-success" href="<?php echo full_url?>/adm/solicitud_plan/index.php">Regresar</a> 
-    <?php if((isset($values['action']) and $values['action']=='add')):?>
+    
 	<button class="btn btn-success" type="submit">Aceptar</button>  
-	<?php endif;?>	
 	<?php if((isset($values['Estatus']) and $values['Estatus']=='ENV')):?>
     <button class="btn btn-success" type="submit">Aceptar</button>    
     <button class="btn btn-info" type="button" id="aprobar"><i class="fa fa-check-circle"></i> Aprobar</button>  
@@ -722,10 +723,10 @@ $('#rechazo').hide();
         }
     });    
     $('#btn-aprobar').click(function(){
-        if($('#existeCedulaDoc').val() == '0' || $('#existeCedulaDoc').val() == ''){
+        /*if($('#existeCedulaDoc').val() == '0' || $('#existeCedulaDoc').val() == ''){
             alert('Debe seleccionar el archivo con los documentos escaneados y luego presionar "Aceptar para guardarlo". ');
             return false;
-        }    
+        }*/    
         if($('#VigenciaDesde').val() == '' || $('#VigenciaHasta').val() == ''){
             alert('Debe indicar la vigencia ');
             return false;
