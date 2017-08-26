@@ -20,10 +20,19 @@
 		public function getPlanesSelect()
 		{	
 			
-                        $ConnectionORM = new ConnectionORM();
+            $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->Planes
 			->select("*")
 			->where("Estado = 'A'");
+			return $q; 			
+		}
+		public function getDetallePlan($idPlan)
+		{	
+			
+            $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->Planes
+			->select("*")
+			->where("idPlan =?", $idPlan)->fetch();
 			return $q; 			
 		}
 		public function getPrecioPlan($idPlan)

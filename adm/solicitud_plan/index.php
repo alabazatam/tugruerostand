@@ -115,28 +115,19 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeEdit($values = null,$msg = null, $errors = null)
 	{
-		//print_r($_REQUEST);die;
+        
+        
 		$SolicitudPlan = new SolicitudPlan();
 		$values = $SolicitudPlan->getSolicitudPlanById($values);
+        //print_r($values);die;
 		$SolicitudPagoDetalle = new SolicitudPagoDetalle();
 		$mercadopagodata = $SolicitudPagoDetalle->getPagoDetalleByID($values['idSolicitudPlan']);
 		$values["id"] = $_REQUEST['id'];
-		$values["MET"] = $_REQUEST['MET'];
 		$values["payment_method_id"] = $_REQUEST['payment_method_id'];
 		$values["payer_identification_number"] = $_REQUEST['payer_identification_number'];
 		$values["carholder_name"] = $_REQUEST['carholder_name'];
 		$values["transaction_amount"] = $_REQUEST['transaction_amount'];
-		//print_r($valores);die;
-		if(isset($values["TipoPago"]) and $values['TipoPago'] !='' and $values["TipoPago"] == $_REQUEST["MET"]){
-			$values['MET'] = $values["TipoPago"];
-		}else{
-			$values['MET'] = $_REQUEST["MET"];
-		}
-        if(!isset($values['MET']) or $values['MET']=='' ){
-            
-            $values['MET'] = $values["TipoPago"];
-            
-        }
+
         if($values['SerialMotor'] == '' and $_REQUEST['SerialMotor'] !=''){
 			$values['SerialMotor'] = $_REQUEST['SerialMotor'];
 		}
@@ -468,15 +459,18 @@ $values = array_merge($values,$_FILES);
 	function executePrecioTugruero($values = null,$errors = array())
 	{
 
-            $array= array('precio' => '0');
+            $array = array('precio' => '0');
             $Planes = new Planes();
             $Puestos = $values['Puestos'];
             $idPlan = $values['id_plan'];
             $precio_plan = 0;         
             if($idPlan!=''){
+            $detalle_plan = $Planes->getDetallePlan($idPlan);
+            $cantidad_servicios = $detalle_plan["CantidadServicios"];
+            $kilometraje = $detalle_plan["Kilometraje"];
             $precio_plan = ($Planes->getPrecioPlan($idPlan));
             $precio_plan_formateado = number_format($precio_plan,2,",",".");
-            $array= array('precio' => $precio_plan_formateado, 'precio_sin_formato' => $precio_plan);  
+            $array= array("kilometraje"=>$kilometraje,"cantidad_servicios"=>$cantidad_servicios ,'precio' => $precio_plan_formateado, 'precio_sin_formato' => $precio_plan);  
             
             
              

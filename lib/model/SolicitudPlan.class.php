@@ -624,12 +624,81 @@
                                 'CantidadServicios' => @$values['CantidadServicios']
                                 
 			);
+            
                         
 		
 			$idSolicitudPlan = $values['idSolicitudPlan'];
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->SolicitudPlan("idSolicitudPlan", $idSolicitudPlan)->update($array_solicitud_plan);	
+                        
+                        //eliminar de las tables
+                        $q = $ConnectionORM->getConnect()->SolicitudPagoDetalle("idSolicitudPlan", $idSolicitudPlan)->delete();
+                        $q = $ConnectionORM->getConnect()->SolicitudPlanSeleccion("idSolicitudPlan", $idSolicitudPlan)->delete();
 
+                        //en caso de ser TDC almaceno en pago detalle
+                        if(isset($values['MET']) == 'TDC'){
+                            $array_solicitud_pago_detalle = array(
+                                "idSolicitudPlan" => $values['idSolicitudPlan'],
+                                "id" => $values['id'],
+                                "description" => "Pago de plan mediante la herramienta administrativa",
+                                "payment_method_id" => $values['payment_method_id'],
+                                "payer_identification_number" => $values['payer_identification_number'],
+                                "carholder_name" => $values['carholder_name'],
+                                "transaction_amount" => $values['transaction_amount'],
+                                "date_approved" => date('Y-m-d h:i:s'),
+                                "payer_id" => "guest",
+                                "payment_type_id" => 'credit_card',
+                                "payer_email" => $values['Correo']
+                            
+
+                            );
+                            $q = $ConnectionORM->getConnect()->SolicitudPagoDetalle()->insert($array_solicitud_pago_detalle);
+                        }
+
+                        
+                       
+                        
+                        //almaceno los planes contratados en la solicitud
+                        $array_planes = array();
+                        if(isset($values['idPlan']) and $values['idPlan']!=""){
+                                    //actualizo el km acorde a lo que existe en la tabla planes
+                                    //$datos_plan = $this->getDatosPlan($values['idPlan']);
+                                    //$this->updateCantidadServiciosKm($values['idSolicitudPlan'],$datos_plan);
+                                    /////////////////////////////////////////////
+                                    $array_planes = array($values['idPlan']);
+                                    $array_solicitud_plan_seleccion = array();
+                                    $array_solicitud_plan_seleccion['idSolicitudPlan'] = $values['idSolicitudPlan'];
+                                    $array_solicitud_plan_seleccion['idPlan'] = $values['idPlan'];
+                                    $array_solicitud_plan_seleccion['PrecioSinIva'] = $values['precio_tugruero'];
+                                    $array_solicitud_plan_seleccion['PrecioConIva'] = $values['precio_tugruero'];
+                                    $array_solicitud_plan_seleccion['FechaSolicitud'] = date('Y-m-d');
+                                    $q = $ConnectionORM->getConnect()->SolicitudPlanSeleccion()->insert($array_solicitud_plan_seleccion);
+                                    
+
+                        }
+                        
+			
+			$Planes = new Planes();
+			if(isset($values['RCV']) and $values['RCV']=='SI' and isset($values['Puestos'])){
+				
+				$id_plan_rcv = $Planes->getIdPlanRCV($values['Puestos']);
+
+                                if($id_plan_rcv > 0){
+       
+                                    $array_solicitud_plan_seleccion = array();
+                                    $array_solicitud_plan_seleccion['idSolicitudPlan'] = $values['idSolicitudPlan'];
+                                    $array_solicitud_plan_seleccion['idPlan'] = $id_plan_rcv;
+                                    $array_solicitud_plan_seleccion['PrecioSinIva'] = $values['precio_rcv'];
+                                    $array_solicitud_plan_seleccion['PrecioConIva'] = $values['precio_rcv'];
+                                    $array_solicitud_plan_seleccion['FechaSolicitud'] = date('Y-m-d');
+                                    $q = $ConnectionORM->getConnect()->SolicitudPlanSeleccion()->insert($array_solicitud_plan_seleccion);
+                                    //$this->updatePrecios($TotalConIva,$TotalSinIva,$values['idSolicitudPlan']);
+                                    //print_r($array_solicitud_plan_seleccion);die;
+                                }
+				
+			}
+			
+            
 			
 			return $q;
 			
