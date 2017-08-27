@@ -47,12 +47,7 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeIndex($values = null,$errors = array())
 	{       
-        $values['action'] = 'add';
-		//print_r($values);die;
-        
-                
-
-            
+        $values['action'] = 'add'; 
 		require('form_view.php');
 	}
 	function executeAdd($values = null,$errors = array())
