@@ -149,7 +149,10 @@ $values = array_merge($values,$_FILES);
 		}	
 		if(isset($mercadopagodata["transaction_amount"]) and $mercadopagodata['transaction_amount'] !=''){
 			$values['transaction_amount'] = $mercadopagodata["transaction_amount"];
-		}			
+		}else{
+            $values['transaction_amount'] = $values['precio'];
+        }
+        			
 		$planes_seleccionados = $SolicitudPlan -> getPlanesSeleccionados($values['idSolicitudPlan']);
 		if(count($planes_seleccionados)>0){
                     foreach($planes_seleccionados as $seleccionados){

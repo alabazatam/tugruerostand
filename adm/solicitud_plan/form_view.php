@@ -446,7 +446,7 @@ $disabled_pagos = "";
         <?php endif;?>
   </div>
   <div class="form-group col-sm-6">
-	  <label for="idPlan" class="">Precio plan Tugruero</label> <label class="text-danger"> * </label>
+	  <label for="idPlan" class="">Precio plan Tugruero</label>
     <div class="">
         <input type="text" <?php echo $disabled;?> <?php echo $disabled_plan;?> id="precio_tugruero" name="precio_tugruero" value="<?php if(isset($values['precio_tugruero']))echo $values['precio_tugruero']?>" onchange="calculaAmount();">
 
@@ -457,7 +457,7 @@ $disabled_pagos = "";
         <?php endif;?> 
   </div>
   <div class="form-group col-sm-6">
-	  <label for="idPlan" class="">Precio plan RCV </label> <label class="text-danger"> * </label>
+	  <label for="idPlan" class="">Precio plan RCV </label>
     <div class="">
         <input type="text" <?php echo $disabled;?> <?php echo $disabled_plan;?> readonly="" id="precio_rcv" name="precio_rcv" value="<?php if(isset($values['precio_rcv']))echo $values['precio_rcv']?>" onchange="calculaAmount();">
 
@@ -508,7 +508,7 @@ $disabled_pagos = "";
             <?php endif;?>
         </div> 
       <div class="form-group col-sm-3">
-          <label for="id" class="control-label">Nombre en tarjeta</label><small> &nbsp;&nbsp;&nbsp;&nbsp;(JOSE A PEREZ C) </small>
+          <label for="id" class="control-label">Nombre en tarjeta</label>
         <div class="">
             <input <?php echo $disabled;?> type="text" name="carholder_name" class="form-control" autocomplete="off" id="carholder_name" maxlength="20" value="<?php if(isset($values['carholder_name']) and $values['carholder_name']!='') echo $values['carholder_name'];?>" placeholder=""> 
         </div>
