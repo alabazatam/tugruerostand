@@ -567,7 +567,6 @@ $disabled_pagos = "";
     
 	<button class="btn btn-success" type="submit">Aceptar</button>  
 	<?php if((isset($values['Estatus']) and $values['Estatus']=='ENV')):?>
-    <button class="btn btn-success" type="submit">Aceptar</button>    
     <button class="btn btn-info" type="button" id="aprobar"><i class="fa fa-check-circle"></i> Aprobar</button>  
     <button class="btn btn-danger" type="button" id="rechazar"><i class="fa fa-times-circle"></i> Rechazar</button>  
     <?php endif;?>

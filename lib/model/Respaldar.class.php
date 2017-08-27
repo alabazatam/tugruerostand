@@ -138,8 +138,9 @@ class Respaldar {
 		$q = $ConnectionORM->getConnect()->SolicitudPlan
 		->select("*")
 		->where("Respaldo=?",0)
-        ->and("SolicitudPlan.Estatus=?","ACT");
-		return $q;
+        ->and("SolicitudPlan.Estatus=?","ACT")
+        ->and("(SELECT COUNT(*) FROM SolicitudDocumentos c WHERE c.idSolicitudPlan = SolicitudPlan.idSolicitudPlan ) > 0");
+        return $q;
 	}
 	function respaldoSolicitudPagoDetalle(){
 		$ConnectionORM = new ConnectionORM();
@@ -147,8 +148,9 @@ class Respaldar {
 		->select("*")
 		->join("SolicitudPlan","INNER JOIN SolicitudPlan sp on sp.idSolicitudPlan = SolicitudPagoDetalle.idSolicitudPlan")
 		->where("Respaldo=?",0)
-        ->and("sp.Estatus=?","ACT");
-		return $q;
+        ->and("sp.Estatus=?","ACT")
+        ->and("(SELECT COUNT(*) FROM SolicitudDocumentos c WHERE c.idSolicitudPlan = sp.idSolicitudPlan ) > 0");
+        return $q;
 	}
 	function respaldoSolicitudPlanSeleccion(){
 		$ConnectionORM = new ConnectionORM();
@@ -156,8 +158,8 @@ class Respaldar {
 		->select("*")
 		->join("SolicitudPlan","INNER JOIN SolicitudPlan sp on sp.idSolicitudPlan = SolicitudPlanSeleccion.idSolicitudPlan")
 		->where("Respaldo=?",0)
-        ->and("sp.Estatus=?","ACT");
-		
+        ->and("sp.Estatus=?","ACT")
+        ->and("(SELECT COUNT(*) FROM SolicitudDocumentos c WHERE c.idSolicitudPlan = sp.idSolicitudPlan ) > 0");		
 		return $q;
 	}
 	function respaldoSolicitudDocumentos(){
@@ -166,7 +168,9 @@ class Respaldar {
 		->select("*")
 		->join("SolicitudPlan","INNER JOIN SolicitudPlan sp on sp.idSolicitudPlan = SolicitudDocumentos.idSolicitudPlan")
 		->where("Respaldo=?",0)
-        ->and("sp.Estatus=?","ACT");
+        ->and("sp.Estatus=?","ACT")
+        ->and("(SELECT COUNT(*) FROM SolicitudDocumentos c WHERE c.idSolicitudPlan = sp.idSolicitudPlan ) > 0");
+
 		return $q;
 	}
 	function respaldoSolicitudAprobada(){
@@ -175,7 +179,8 @@ class Respaldar {
 		->select("*")
 		->join("SolicitudPlan","INNER JOIN SolicitudPlan sp on sp.idSolicitudPlan = SolicitudAprobada.idSolicitudPlan")
 		->where("Respaldo=?",0)
-        ->and("sp.Estatus=?","ACT");
+        ->and("sp.Estatus=?","ACT")
+        ->and("(SELECT COUNT(*) FROM SolicitudDocumentos c WHERE c.idSolicitudPlan = sp.idSolicitudPlan ) > 0");
 		return $q;
 	}
 	function respaldoPolizas(){

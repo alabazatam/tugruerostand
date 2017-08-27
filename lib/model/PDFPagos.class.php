@@ -621,8 +621,8 @@
 
 
 			
-			$pdf->Output(dir_cuadros."/". $values['idSolicitudPlan']."_CCCT_rcv.pdf", 'F');            
-                        //$pdf->Output(dir_cuadros."/".$values['idSolicitudPlan']."_rcv.pdf", 'I');   
+			$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');            
+                        //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');   
             
             
         }        
