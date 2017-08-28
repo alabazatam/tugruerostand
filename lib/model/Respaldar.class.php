@@ -98,39 +98,46 @@ class Respaldar {
 	
 	fclose($file);
 	
+		if(count($solicitud_plan_datos)>0){			
+			$zip = new ZipArchive();
+			$filename = $_SERVER["DOCUMENT_ROOT"]."/".main_folder."/web/files/Respaldos/admin_tugruero_".$fecha.".zip";
+			$options_cuadros = array('add_path' => 'Cuadros/', 'remove_all_path' => TRUE);
+			$options_solicitudes = array('add_path' => 'Solicitudes/', 'remove_all_path' => TRUE);
+				if($zip->open($filename,ZIPARCHIVE::CREATE)===true) {
+						$zip->addFile("../../web/files/Respaldos/admin_tugruero_$fecha.sql","admin_tugruero_$fecha.sql");
+						$zip->addGlob("../../web/files/Cuadros/*.pdf",GLOB_BRACE, $options_cuadros);
+						$zip->addGlob("../../web/files/Solicitudes/*",GLOB_BRACE, $options_solicitudes);
+						$zip->close();
+						//echo 'Creado '.$filename;
+				}
+				else {
+						echo 'Error creando '.$filename;die;
+				}
+				unlink($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/web/files/Respaldos/admin_tugruero_".$fecha.".sql");
+
+				$files_cuadros = glob("../../web/files/Cuadros/*"); // obtiene todos los archivos
+				foreach($files_cuadros as $file){
+				  if(is_file($file)) // si se trata de un archivo
+					unlink($file); // lo elimina
+				}
+				$files_solicitudes = glob("../../web/files/Solicitudes/*"); // obtiene todos los archivos
+				foreach($files_solicitudes as $file){
+				  if(is_file($file)) // si se trata de un archivo
+					unlink($file); // lo elimina
+				}	
+
+				$array_respaldo = array();
+				$array_respaldo['Nombre'] = "admin_tugruero_".$fecha.".zip";
+				$this->updateRespaldo();
+				$this->saveRespaldo($array_respaldo);
+				return true;
+		}else{
+			return false;
+			
+		}
 	
-	$zip = new ZipArchive();
- 
-	$filename = $_SERVER["DOCUMENT_ROOT"]."/".main_folder."/web/files/Respaldos/admin_tugruero_".$fecha.".zip";
-	$options_cuadros = array('add_path' => 'Cuadros/', 'remove_all_path' => TRUE);
-	$options_solicitudes = array('add_path' => 'Solicitudes/', 'remove_all_path' => TRUE);
-		if($zip->open($filename,ZIPARCHIVE::CREATE)===true) {
-				$zip->addFile("../../web/files/Respaldos/admin_tugruero_$fecha.sql","admin_tugruero_$fecha.sql");
-				$zip->addGlob("../../web/files/Cuadros/*.pdf",GLOB_BRACE, $options_cuadros);
-				$zip->addGlob("../../web/files/Solicitudes/*",GLOB_BRACE, $options_solicitudes);
-				$zip->close();
-				//echo 'Creado '.$filename;
-		}
-		else {
-				echo 'Error creando '.$filename;die;
-		}
-		unlink($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/web/files/Respaldos/admin_tugruero_".$fecha.".sql");
-		
-		$files_cuadros = glob("../../web/files/Cuadros/*"); // obtiene todos los archivos
-		foreach($files_cuadros as $file){
-		  if(is_file($file)) // si se trata de un archivo
-			unlink($file); // lo elimina
-		}
-		$files_solicitudes = glob("../../web/files/Solicitudes/*"); // obtiene todos los archivos
-		foreach($files_solicitudes as $file){
-		  if(is_file($file)) // si se trata de un archivo
-			unlink($file); // lo elimina
-		}	
-		
-        $array_respaldo = array();
-        $array_respaldo['Nombre'] = "admin_tugruero_".$fecha.".zip";
-		$this->updateRespaldo();
-        $this->saveRespaldo($array_respaldo);
+	
+
 	}
 
 	function respaldoSolicitudPlan(){

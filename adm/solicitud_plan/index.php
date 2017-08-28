@@ -404,10 +404,10 @@ $values = array_merge($values,$_FILES);
 	$fichero_subido = $carpeta."/";
             //print_r($_FILES);die;
             if(isset($files['CedulaDoc']) and $files['CedulaDoc']['size']>0){
+				
                 $nombreArchivo = "Cedula_CCCT_".$values['idSolicitudPlan'].".".pathinfo($_FILES['CedulaDoc']['name'],PATHINFO_EXTENSION);
                 if (move_uploaded_file($files['CedulaDoc']['tmp_name'], $fichero_subido.$nombreArchivo)){
                     //inserto en bd;
-                   
                     $NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($values['idSolicitudPlan'],"Cedula");
                     if($NombreDocumento == ''){
                         $SolicitudDocumentos->saveSolicitudDocumentos($idSolicitudPlan, "Cedula", $nombreArchivo);

@@ -39,9 +39,15 @@ $values = array_merge($values,$_FILES);
 	{    
 		
 		$Respaldar = new Respaldar();
-		$Respaldar->generarRespaldo();
+		$respaldado = $Respaldar->generarRespaldo();
+		
+		if($respaldado){
+			$values['msg'] = "Respaldo generado satisfactoriamente."; 
+		}else{
+			$values['error'] = "No se encontraron solicitudes con los parámetros para respaldar."; 
+		}
         
-        $values['msg'] = "Respaldo generado satisfactoriamente.";            
+                   
         executeNew($values);
 	}
 	function executeNew($values = null)

@@ -46,6 +46,10 @@ $(document).ready(function(){
 			$('.modal-body').html('<div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>');
 			$('#myModal').modal('show');
     <?php endif;?>
+    <?php if(isset($values['error']) and $values['error']!=''):?>
+			$('.modal-body').html('<div class="alert alert-danger" role="alert"><?php echo $values['error'];?></div>');
+			$('#myModal').modal('show');
+    <?php endif;?>
 });  
 </script>
 
