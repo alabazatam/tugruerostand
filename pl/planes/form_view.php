@@ -345,7 +345,7 @@
         <select name="Anio" id="Anio" class="form-control">
                     <option value="">Seleccione...</option>
 
-                <?php for($anio = (date('Y')-17); $anio<=date('Y'); $anio++):?>
+                <?php for($anio = (date('Y')-27); $anio<=date('Y'); $anio++):?>
                     <option value="<?php echo $anio?>" <?php if(isset($values['Anio']) and $anio == $values['Anio']) echo "selected='selected'";?>><?php echo $anio?></option>    
                 <?php endfor;?>
  

@@ -47,12 +47,7 @@ $values = array_merge($values,$_FILES);
 	}
 	function executeIndex($values = null,$errors = array())
 	{       
-        $values['action'] = 'add';
-		//print_r($values);die;
-        
-                
-
-            
+        $values['action'] = 'add'; 
 		require('form_view.php');
 	}
 	function executeAdd($values = null,$errors = array())
@@ -62,30 +57,26 @@ $values = array_merge($values,$_FILES);
 				if(count($errors)>0){
 					executeIndex($values,$errors);die;
 				}else{
-                                        $values['PagoRealizado'] = 'S';
-                                        $SolicitudPlan = new SolicitudPlan();
+                    $values['PagoRealizado'] = 'S';
+                    $SolicitudPlan = new SolicitudPlan();
 					if($values['MET'] == 'TDC')
-					{
-                                                $values = $SolicitudPlan->saveSolicitudPlan($values);
-
-                                                executeMercadoPago($values,$errors);
+					{                               
+                        $values = $SolicitudPlan->saveSolicitudPlan($values);
+                        executeMercadoPago($values,$errors);
                                                 
                                                 
 					}else
 					{
-                                                if(($_FILES['DEP1']['size']>0) or ($_FILES['DEP2']['size']>0) or ($_FILES['DEP3']['size']>0)){
-                                                $values['PagoRealizado'] = 'S';
+                        if(($_FILES['DEP1']['size']>0) or ($_FILES['DEP2']['size']>0) or ($_FILES['DEP3']['size']>0)){
+                            $values['PagoRealizado'] = 'S';
    
-                                                }
-                                                
-												$values = $SolicitudPlan->saveSolicitudPlan($values);
-                                                //print_r($values);die;
-                                                //subir documentos
-                                                executePagado($values);
-
-                                                
-                                        }
-                                        //subirDocumentos($values, $_FILES);                   
+                        }
+                        $values['MET'] = 'TDC';
+						$values = $SolicitudPlan->saveSolicitudPlan($values);
+                        executePagado($values);
+                       
+                    }
+                                                          
 					die;
 				}
                 

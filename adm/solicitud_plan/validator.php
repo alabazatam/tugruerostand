@@ -139,7 +139,7 @@
 			
 			"type" => "text",
 			"label" => "Serial de motor",
-			"required" => true,
+			"required" => false,
 			"minlength" => 5,
 			"maxlength" => 30,
 		);
@@ -147,7 +147,7 @@
 			
 			"type" => "text",
 			"label" => "Serial de carroceria",
-			"required" => true,
+			"required" => false,
 			"minlength" => 5,
 			"maxlength" => 50,
 		);
@@ -210,16 +210,16 @@
                         $errors['CantidadServicios'] = 'Debe indicar la cantidad de servicios';
                     }
                 }
-                if(isset($values['RCV']) and $values['RCV']=='SI'){
+                /*if(isset($values['RCV']) and $values['RCV']=='SI'){
                     if(!isset($values['SerialMotor']) or $values['SerialMotor']==''){
                         $errors['SerialMotor'] = 'Debe indicar el serial del motor';
                     }
                     if(!isset($values['SerialCarroceria']) or $values['SerialCarroceria']==''){
                         $errors['SerialCarroceria'] = 'Debe indicar el serial de carroceria';
                     } 
-                }
+                }*/
                 if(!isset($values['Clase']) or $values['Clase']==''){
-                    $errors['Sexo'] = 'Debe seleccionar la clase';
+                    $errors['Clase'] = 'Debe seleccionar la clase';
                 }
                 if(!isset($values['Sexo']) or $values['Sexo']==''){
                     $errors['Sexo'] = 'Debe seleccionar el sexo';
@@ -239,7 +239,7 @@
                 if(!isset($values['MET']) or $values['MET']==''){
                     $errors['MET'] = 'Debe indicar el método de pago';
                 }
-                if(isset($values['MET']) and $values['MET']=='TDC'){
+               /* if(isset($values['MET']) and $values['MET']=='TDC'){
                     if(!isset($values['id']) or $values['id']==''){
                         $errors['id'] = 'Debe colocar el id de la transacción';
                     }
@@ -255,7 +255,7 @@
                     if(!isset($values['transaction_amount']) or $values['transaction_amount']==''){
                         $errors['transaction_amount'] = 'Debe colocar el monto de la transacción';
                     }    
-                }
+                }*/
                 /*if(!isset($values['MET']) or $values['MET']==''){
                     $errors['MET'] = 'Debe indicar el método de pago';
                 }*/
@@ -281,7 +281,7 @@
 		}else
 		{
                         if($values['action']=='add'){
-                            $errors['CedulaDoc']= "Debe seleccionar un archivo para los documentos";
+                            //$errors['CedulaDoc']= "Debe seleccionar un archivo para los documentos";
                         }
 			
 		}               

@@ -53,7 +53,7 @@ define("image_url",full_url."/web/images/");
  define('mail_from',"tugruero@tugruero.com");
  define('message_updated',"Registro actualizado satisfactoriamente");
  define('message_created',"Registro creado satisfactoriamente");
- define('max_input_size',1000000);
+ define('max_input_size',5000000);
  define('message_max_size',"El archivo debe pesar máximo 10MB");
  define('IVA',1.12);
 //Class definition
@@ -64,8 +64,6 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/Utilitarios.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendors/swiftmailer/lib/swift_required.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendors/tcpdf/tcpdf.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/ValidateBase.class.php");
-require($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/vendors/securimage/securimage.php');
-require($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/vendors/Mobile-Detect/Mobile_Detect.php');
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Panels.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/SecurityBase.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/clean.php");

@@ -13,6 +13,7 @@ table.dataTable tbody > tr > .seleccionado {
 </style>
 <div class="">
 	<h1 class="text-center">Solicitudes de planes</h1>
+
 	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
@@ -48,8 +49,12 @@ table.dataTable tbody > tr > .seleccionado {
 				</tr>
 			</tfoot>
 		</table>
+	<!--<div class="col-sm-12 text-right" >
+		<h3>Leyenda :<small style="background-color:#f2dede">Registros por cargar documentos</small></h3>
+	</div>-->
+		
 		<a class="btn btn-default"  href="<?php echo full_url."/adm/solicitud_plan/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
-
+	
 </div>
 	<?php include('../../view_footer_solicitud.php')?>
 <script>
@@ -97,6 +102,12 @@ $(document).ready(function() {
         "ajax": "<?php echo full_url."/adm/solicitud_plan/index.php?action=list_json"?>",
 		"language": {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
+        },"rowCallback": function( row, data, index ) {
+
+            if ( data.documentos == "" || data.documentos == null ) {
+				//$(row).css("background-color","#eeae24");
+			 
+            }
         },
         "order": [[ 0, "desc" ]],
         "columns": [
@@ -114,7 +125,7 @@ $(document).ready(function() {
             { "data": "actions", "width": "15%"}
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 11 ] }
+          { 'bSortable': false, 'aTargets': [ 11 ,7] }
        ]				
     });
 	//click
