@@ -224,9 +224,11 @@ $values = array_merge($values,$_FILES);
 		$SolicitudDocumentos = new SolicitudDocumentos();
 		if(count($list_json)>0)
 		{
+            
 			foreach ($list_json as $list) 
 			{   
                 $indicador_documento_vacio = "";
+                $indicador_respaldo = "";
 				$idSolicitudPlan = $list['idSolicitudPlan'];
 				$status = $list['status'];
 				if($status == 'Desactivado')
@@ -242,6 +244,10 @@ $values = array_merge($values,$_FILES);
 				if($NombreDocumento==''){
 					$indicador_documento_vacio = "<div><label class='label label-danger'>Falta documento</label></div>";
 				}
+                if($list["Respaldo"]==1){
+                    $indicador_respaldo = "<div><label class='label label-success'>Respaldo efectuado</label></div>";
+                }
+                
 				if($list['EstatusAbr']=="ENV")
 				{
 					$array_json['data'][] = array(
@@ -265,7 +271,7 @@ $values = array_merge($values,$_FILES);
 												<ul class="dropdown-menu dropdown-menu-right">
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												</ul>
-										  </div>'.$indicador_documento_vacio
+										  </div>'.$indicador_documento_vacio.$indicador_respaldo
 						);	
 				}else
 				{
@@ -308,7 +314,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Cuadro Producto</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['PolizaAsistir'].'.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
 												</ul>
-										  </div>'.$indicador_documento_vacio
+										  </div>'.$indicador_documento_vacio.$indicador_respaldo
 						);	
 					}elseif($plan_tugruero == true and $plan_rcv == false){
 					$array_json['data'][] = array(
@@ -333,7 +339,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Cuadro producto</a></li>
 												</ul>
-										  </div>'.$indicador_documento_vacio
+										  </div>'.$indicador_documento_vacio.$indicador_respaldo
 						);	
                                         }elseif($plan_tugruero == false and $plan_rcv == true){
                                                 $array_json['data'][] = array(
@@ -358,7 +364,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['PolizaAsistir'].'.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
 												</ul>
-										  </div>'.$indicador_documento_vacio
+										  </div>'.$indicador_documento_vacio.$indicador_respaldo
 						);	 
                                         }
 					
