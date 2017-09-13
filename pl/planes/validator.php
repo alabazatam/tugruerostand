@@ -57,14 +57,6 @@
 			"label" => "Cédula",
 			"required" => true
 		);
-		$validator_values['Rif'] = array(
-			
-			"minlength" => 7,
-			"maxlength" => 11,
-			"type" => "text",
-			"label" => "RIF",
-			"required" => true
-		);
 		$validator_values['Correo'] = array(
 			
 			"minlength" => 1,
@@ -72,22 +64,6 @@
 			"type" => "email",
 			"label" => "",
 			"required" => true
-		);
-		$validator_values['Correo2'] = array(
-			
-			"minlength" => 1,
-			"maxlength" => 100,
-			"type" => "email",
-			"label" => "",
-			"required" => true
-		);
-		$validator_values['Telefono'] = array(
-			
-			"minlength" => 11,
-			"maxlength" => 11,
-			"type" => "number",
-			"label" => "Teléfono de habitación",
-			"required" => false
 		);
 		$validator_values['Celular'] = array(
 			
@@ -166,16 +142,8 @@
                 {
                     $errors['Cedula'] = "Verifique el formato de la cédula (V-1234567)";
                 }
-                if (!preg_match("/^[Vv,Ee][-][0-9]{6,9}$/", $values['Rif'], $matches))      
-                {
-                    $errors['Rif'] = "Verifique el formato del RIF (V-12345670)";
-                }
                 if (!preg_match("/^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$/", $values['FechaNacimiento'])) {
                      $errors['FechaNacimiento'] = "Verifique el formato de la fecha de nacimiento (01/01/1980)";
-                }
-                if ( isset($values['Telefono']) and $values['Telefono']!='' and !preg_match("/^[0][2][1-9][1-9][0-9]{7}$/", $values['Telefono'], $matches))      
-                {
-                    $errors['Telefono'] = "Formato o número incorrecto (Ejemplo: 02121234567))";
                 }
                 if (!preg_match("/^[0][4][1-2][2,4,6][0-9]{7}$/", $values['Celular'], $matches))      
                 {
@@ -208,9 +176,6 @@
                     
                     $errors['Tipo'] = 'Debe seleccionar el tipo de vehículo';
                 } 
-		if( (isset($values['Correo']) and isset($values['Correo2']) ) and $values['Correo'] != $values['Correo2']  ){
-                    $errors['Correo2'] = 'Los correos electrónicos deben coincidir';
-		}
                 
 
                 /**************valido que esa placa no se encuentre en una solicitud que este en proceso para evitar duplicados******************************************/

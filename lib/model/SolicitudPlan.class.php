@@ -419,7 +419,7 @@
 			$array_planes = array($values['idPlan']);
                         //actualizo el Kilometraje y la cantidad de servicios acorde al plan seleccionado
                         $datos_plan = $this->getDatosPlan($values['idPlan']);
-                        $this->updateCantidadServiciosKm($values['idSolicitudPlan'],$datos_plan);
+                        $this->updateCantidadServiciosKm($values['idSolicitudPlan'],$datos_plan,$values);
 			$Planes = new Planes();
 			if(isset($values['RCV']) and $values['RCV']=='SI' and isset($values['Puestos'])){
 				
@@ -437,9 +437,13 @@
                         $IVA = $Planes->getIvaPlan($plan);
 						$PrecioSinIva = $Planes->getPrecioPlan($plan);
 						$PrecioConIva = $Planes->getPrecioPlan($plan);
-                                                
-                                                
-                                                $PrecioConIva = $Planes->getPrecioPlan($plan);
+						$tipo_plan = $Planes->getTipoPlan($plan);
+						
+						if($tipo_plan!='RCV'){
+							$datos_precio = $Planes -> getDatosPreciosRecargas($plan, $values["Anio"]);
+							$PrecioSinIva = $datos_precio["PrecioRecarga"];
+							$PrecioConIva = $datos_precio["PrecioRecarga"];  
+						}
                                                 
 												
                                                 $TotalSinIva = $TotalSinIva + $PrecioConIva;
@@ -595,7 +599,9 @@
 			
 		}
 		function updateSolicitudPlan($values){	
+			//print_r($values);die;
 			$Utilitarios = new Utilitarios();
+			$precio_nuevo = $values["precio_tugruero"] + $values["precio_rcv"];
                             $array_solicitud_plan = array(
 				'Nombres' => @$values['Nombres'],
 				'Apellidos' => @$values['Apellidos'],
@@ -621,7 +627,11 @@
 				'SerialMotor' => @$values['SerialMotor'],
 				'SerialCarroceria' => @$values['SerialCarroceria'],
                                 'Kilometraje' => @$values['Kilometraje'],
-                                'CantidadServicios' => @$values['CantidadServicios']
+                                'CantidadServicios' => @$values['CantidadServicios'],
+								'CantidadServicios' => @$values['CantidadServicios'],
+								'TotalSinIva' => $precio_nuevo,
+								'TotalConIva' => $precio_nuevo,
+								
                                 
 			);
             
@@ -956,10 +966,13 @@
                             return $q; 
 
             }
-        function updateCantidadServiciosKm($idSolicitudPlan,$datos_plan){			
+        function updateCantidadServiciosKm($idSolicitudPlan,$datos_plan){	
+			$Planes = new Planes();
+            $recarga = $Planes->getDatosPreciosRecargas($datos_plan['idPlan'],$values['Anio']);
+			
             $array = array(
-                    'Kilometraje' => $datos_plan['Kilometraje'],
-                    'CantidadServicios' => $datos_plan['CantidadServicios']);
+                    'Kilometraje' => $recarga['Kilometraje'],
+                    'CantidadServicios' => $recarga['CantidadServicios']);
             $ConnectionORM = new ConnectionORM();
             $q = $ConnectionORM->getConnect()->SolicitudPlan("idSolicitudPlan", $idSolicitudPlan)->update($array);	
         

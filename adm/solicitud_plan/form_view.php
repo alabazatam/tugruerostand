@@ -48,7 +48,7 @@ $disabled_pagos = "";
     <input type="hidden" id="Estatus" name="Estatus" value="<?php if(isset($values['Estatus']))echo $values['Estatus']?>">
 
     <?php if(isset($values['action']) and $values['action']!='add'):?>
-    <div class="form-group col-sm-12 text-right PlanPrecio">
+    <div class="form-group col-sm-12 text-right PlanPrecio" id="totalpagar">
       <p><b>Total a pagar con IVA:</b> <?php if(isset($values['precio']) and $values['precio']!='') echo "Bs. ".number_format($values['precio'],2,",",".")."."; else echo " Bs. 0,00"?></p>
     </div>
     <?php endif;?>
@@ -103,7 +103,7 @@ $disabled_pagos = "";
         <?php endif;?>
   </div>
   <div class="form-group col-sm-3">
-    <label for="Rif" class=" control-label">RIF</label> <label class="text-danger"> * </label>
+    <label for="Rif" class=" control-label">RIF</label>
     <div class="">
         <input <?php echo $disabled;?> type="text" name="Rif" class="form-control" maxlength="11" autocomplete="off" value="<?php if(isset($values['Rif']) and $values['Rif']!='') echo $values['Rif'];?>" id="Rif" placeholder="Ejemplo: V-123456781">
     </div>
@@ -122,7 +122,7 @@ $disabled_pagos = "";
         <?php endif;?>
   </div>
   <div class="form-group col-sm-3">
-    <label for="Apellidos" class="2 control-label">Apellidos</label> <label class="text-danger"> * </label>
+    <label for="Apellidos" class="control-label">Apellidos</label> <label class="text-danger"> * </label>
     <div class="">
         <input <?php echo $disabled;?> type="text" name="Apellidos" class="form-control" autocomplete="off" maxlength="50" id="Apellidos" value="<?php if(isset($values['Apellidos']) and $values['Apellidos']!='') echo $values['Apellidos'];?>"  placeholder="Ejemplo: Alvarez Pérez">
     </div>
@@ -164,7 +164,7 @@ $disabled_pagos = "";
               <?php endif;?>
         </div>
   <div class="form-group col-sm-3">
-    <label for="FechaNacimiento" class="2 control-label">Fecha de nacimiento</label> <label class="text-danger"> * </label>
+    <label for="FechaNacimiento" class="control-label">Fecha de nacimiento</label> <label class="text-danger"> * </label>
     <div class="">
         <input <?php echo $disabled;?> type="text" name="FechaNacimiento" id="FechaNacimiento" class="form-control" autocomplete="off" maxlength="10" id="" value="<?php if(isset($values['FechaNacimiento']) and $values['FechaNacimiento']!='') echo $values['FechaNacimiento'];?>"  placeholder="Ejemplo: 01/01/1980">
     </div>
@@ -299,7 +299,7 @@ $disabled_pagos = "";
                     <option value="">Seleccione...</option>
             <?php if(count($marcas_list)>0):?>
                 <?php foreach($marcas_list as $marcas):?>
-                    <option value="<?php echo $marcas['Marca']?>" <?php if(isset($values['Marca']) and $marcas['Marca'] == $values['Marca']) echo "selected='selected'";?>><?php echo $marcas['Marca']?></option>    
+                    <option value="<?php echo $marcas['Marca']?>" class="<?php echo $marcas['Tipo'];?>" <?php if(isset($values['Marca']) and $marcas['Marca'] == $values['Marca']) echo "selected='selected'";?>><?php echo $marcas['Marca']?></option>    
                 <?php endforeach;?>
             <?php endif;?>
         </select>
@@ -346,7 +346,7 @@ $disabled_pagos = "";
         <select <?php echo $disabled;?> name="Anio" id="Anio" class="form-control">
                     <option value="">Seleccione...</option>
 
-                <?php for($anio = (date('Y')-27); $anio<=date('Y'); $anio++):?>
+                <?php for($anio = (date('Y')-37); $anio<=date('Y'); $anio++):?>
                     <option value="<?php echo $anio?>" <?php if(isset($values['Anio']) and $anio == $values['Anio']) echo "selected='selected'";?>><?php echo $anio?></option>    
                 <?php endfor;?>
  
@@ -641,7 +641,36 @@ $('#rechazo').hide();
         $('.DEPOSITO').hide();
         $('#mercadopago').hide();
 <?php endif;?>   
-
+<?php if(isset($values['Clase']) and $values['Clase']!=''):?>
+         ocultaMarcas('<?php echo $values['Clase']?>',false);
+<?php endif;?>
+	$('#Clase').change(function(e){
+		ocultaMarcas($(this).val(),true);
+    });
+	function ocultaMarcas(Clase,Cambio){
+		
+		if(Cambio){
+			$('#Marca option:eq("")').prop('selected', true);
+		}
+		
+		if(Clase != 'Moto'){
+			console.log("No es moto");
+			$('.1').css("font-weight","Bold");
+			$('.2').css("font-weight","normal");
+			$('.1').css("color","#000");
+			$('.2').css("color","#ccc");
+			$('.2').attr("disabled",true);
+			$('.1').attr("disabled",false);
+		}else{
+			console.log("si es moto");
+			$('.2').css("font-weight","Bold");
+			$('.1').css("font-weight","normal");
+			$('.2').css("color","#000");
+			$('.1').css("color","#ccc");
+			$('.1').attr("disabled",true);
+			$('.2').attr("disabled",false);
+		}
+	}
     $('#idPlan').change(function(e){
     calculaPrecioTugruero();       
     });
@@ -758,9 +787,10 @@ $('#rechazo').hide();
 });
 
     function calculaPrecioTugruero(){
+		var Anio = $("#Anio :selected").val();
         $.ajax({
         url: '<?php echo full_url?>/adm/solicitud_plan/index.php',
-	data: { action: "precio_tugruero",id_plan: $('#idPlan').val(), RCV: $('.RCV:checked').val(), Puestos: $('#Puestos').val()},
+	data: { action: "precio_tugruero","Anio": Anio,id_plan: $('#idPlan').val(), RCV: $('.RCV:checked').val(), Puestos: $('#Puestos').val()},
 	success: function(data){
             //$('.PlanPrecio').html("<p><b>Total a pagar:</b> " + data.precio + " Bs.</p>")
             $('#precio_tugruero').val(data.precio_sin_formato);
@@ -807,6 +837,10 @@ $('#rechazo').hide();
         console.log("precio_rcv" + precio_rcv);
         var total = parseFloat(precio_tugruero) + parseFloat(precio_rcv);
         $('#transaction_amount').val(total);
+		total = new Intl.NumberFormat("de-DE").format(total)
+
+		$("#totalpagar").html("<p><b>Total a pagar con IVA:</b> " + total + "</p>");     
+
         
     }
         
