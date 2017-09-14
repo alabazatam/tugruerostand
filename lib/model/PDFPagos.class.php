@@ -97,6 +97,12 @@
                                 . '<td colspan="2">SEXO:</td>'
                                 . '<td style="border-right-width:1px;">'.strtoupper($datos_cuadro['Sexo']).'</td>'
                                 . '</tr>'
+                                . '<tr>'
+                                . '<td  style="border-left-width:1px;">CELULAR:</td>'
+                                . '<td>'.$datos_cuadro['Celular'].'</td>'
+                                . '<td colspan="2">CORREO ELECTRÓNICO:</td>'
+                                . '<td colspan="5" style="border-right-width:1px;">'.$datos_cuadro['Correo'].'</td>'
+                                . '</tr>'
                                 . '<tr >'
                                 
                                 . ''
