@@ -711,6 +711,9 @@ $('#rechazo').hide();
     $('#Puestos').change(function(e){
     calculaPrecioRcv();
     });
+    $('#Anio').change(function(e){
+    calculaPrecioTugruero();
+    });	
     $('.MET').change(function(e){
 		
         if($('.MET:checked').val() == 'DEP'){
