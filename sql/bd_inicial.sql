@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.2.1 (64 bit)
-MySQL - 5.7.19-0ubuntu0.16.04.1 : Database - admin_tugruero_stand
+SQLyog Community v12.15 (64 bit)
+MySQL - 5.5.53-0ubuntu0.14.04.1 : Database - admin_tugruero_stand
 *********************************************************************
 */
 
@@ -13,8 +13,6 @@ MySQL - 5.7.19-0ubuntu0.16.04.1 : Database - admin_tugruero_stand
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`admin_tugruero_stand` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `admin_tugruero_stand`;
 
 /*Table structure for table `Aplicaciones` */
 
@@ -103,77 +101,100 @@ CREATE TABLE `Marcas` (
   `IdMarca` int(11) NOT NULL AUTO_INCREMENT,
   `Marca` varchar(100) NOT NULL,
   `Estado` varchar(1) NOT NULL DEFAULT 'A',
+  `Tipo` int(1) DEFAULT '1' COMMENT '1 vehiculo 2 moto',
   PRIMARY KEY (`IdMarca`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 
 /*Data for the table `Marcas` */
 
-insert  into `Marcas`(`IdMarca`,`Marca`,`Estado`) values 
-(1,'Acura','A'),
-(2,'Alfa Romeo','A'),
-(3,'Aston Martin','A'),
-(4,'Audi','A'),
-(5,'BMW','A'),
-(6,'BYD','A'),
-(7,'Buick','A'),
-(8,'Cadillac','A'),
-(9,'Chana','A'),
-(10,'Changhe','A'),
-(11,'Chery','A'),
-(12,'Chevrolet','A'),
-(13,'Chrysler','A'),
-(14,'Citroën','A'),
-(15,'Corvette','A'),
-(16,'Daewoo','A'),
-(17,'Dodge','A'),
-(18,'Dongfeng','A'),
-(19,'Ferrari','A'),
-(20,'Fiat','A'),
-(21,'Ford','A'),
-(22,'Geely','A'),
-(23,'Great Wall','A'),
-(24,'Hafei','A'),
-(25,'Haima','A'),
-(26,'Honda','A'),
-(27,'Hummer','A'),
-(28,'Hyundai','A'),
-(29,'Infiniti','A'),
-(30,'Isuzu','A'),
-(31,'JMC','A'),
-(32,'Jaguar','A'),
-(33,'Jeep','A'),
-(34,'Kia','A'),
-(35,'Lada','A'),
-(36,'Land Rover','A'),
-(37,'Lexus','A'),
-(38,'Lifan','A'),
-(39,'Lincoln','A'),
-(40,'Maserati','A'),
-(41,'Mazda','A'),
-(43,'Mercury','A'),
-(44,'Mini','A'),
-(45,'Mitsubishi','A'),
-(46,'Nissan','A'),
-(47,'Peugeot','A'),
-(48,'Pontiac','A'),
-(49,'Porsche','A'),
-(50,'Renault','A'),
-(51,'Saic Wuling','A'),
-(52,'Scion','A'),
-(53,'Seat','A'),
-(54,'Skoda','A'),
-(55,'Smart','A'),
-(56,'Subaru','A'),
-(57,'Suzuki','A'),
-(58,'Tata','A'),
-(59,'Toyota','A'),
-(60,'Tyanye','A'),
-(61,'Volkswagen','A'),
-(62,'Zhongxing','A'),
-(63,'Zotye','A'),
-(64,'Otra','A'),
-(65,'Daihatsu','A'),
-(66,'Saipa/Venirauto','A');
+insert  into `Marcas`(`IdMarca`,`Marca`,`Estado`,`Tipo`) values 
+(1,'Acura','A',1),
+(2,'Alfa Romeo','A',1),
+(3,'Aston Martin','A',1),
+(4,'Audi','A',1),
+(5,'BMW','A',1),
+(6,'BYD','A',1),
+(7,'Buick','A',1),
+(8,'Cadillac','A',1),
+(9,'Chana','A',1),
+(10,'Changhe','A',1),
+(11,'Chery','A',1),
+(12,'Chevrolet','A',1),
+(13,'Chrysler','A',1),
+(14,'Citroën','A',1),
+(15,'Corvette','A',1),
+(16,'Daewoo','A',1),
+(17,'Dodge','A',1),
+(18,'Dongfeng','A',1),
+(19,'Ferrari','A',1),
+(20,'Fiat','A',1),
+(21,'Ford','A',1),
+(22,'Geely','A',1),
+(23,'Great Wall','A',1),
+(24,'Hafei','A',1),
+(25,'Haima','A',1),
+(26,'Honda','A',1),
+(27,'Hummer','A',1),
+(28,'Hyundai','A',1),
+(29,'Infiniti','A',1),
+(30,'Isuzu','A',1),
+(31,'JMC','A',1),
+(32,'Jaguar','A',1),
+(33,'Jeep','A',1),
+(34,'Kia','A',1),
+(35,'Lada','A',1),
+(36,'Land Rover','A',1),
+(37,'Lexus','A',1),
+(38,'Lifan','A',1),
+(39,'Lincoln','A',1),
+(40,'Maserati','A',1),
+(41,'Mazda','A',1),
+(43,'Mercury','A',1),
+(44,'Mini','A',1),
+(45,'Mitsubishi','A',1),
+(46,'Nissan','A',1),
+(47,'Peugeot','A',1),
+(48,'Pontiac','A',1),
+(49,'Porsche','A',1),
+(50,'Renault','A',1),
+(51,'Saic Wuling','A',1),
+(52,'Scion','A',1),
+(53,'Seat','A',1),
+(54,'Skoda','A',1),
+(55,'Smart','A',1),
+(56,'Subaru','A',1),
+(57,'Suzuki','A',1),
+(58,'Tata','A',1),
+(59,'Toyota','A',1),
+(60,'Tyanye','A',1),
+(61,'Volkswagen','A',1),
+(62,'Zhongxing','A',1),
+(63,'Zotye','A',1),
+(64,'Otra','A',1),
+(65,'Daihatsu','A',1),
+(66,'Saipa/Venirauto','A',1),
+(67,'Yamaha','A',2),
+(68,'Bera','A',2),
+(69,'Triumph','A',2),
+(70,'United Motors','A',2),
+(71,'Empire','A',2),
+(72,'Skygo','A',2),
+(73,'Ducati','A',2),
+(74,'Kawasaki','A',2),
+(75,'Honda','A',2),
+(76,'Unico','A',2),
+(77,'Vespa','A',2),
+(78,'KTM','A',2),
+(79,'LML','A',2),
+(80,'Suzuki','A',2),
+(81,'Mercedes Benz','A',2),
+(82,'Aprilia','A',2),
+(83,'Can-Am','A',2),
+(84,'Harley Davidson','A',2),
+(85,'Bajaj','A',2),
+(86,'BMW','A',2),
+(87,'Husqvarna','A',2),
+(88,'Gilera','A',2);
 
 /*Table structure for table `Planes` */
 
@@ -252,6 +273,31 @@ insert  into `PlanesBeneficios`(`idPlan`,`idBeneficio`,`Estatus`) values
 (2,9,'Activo'),
 (2,10,'Activo');
 
+/*Table structure for table `PlanesRecarga` */
+
+DROP TABLE IF EXISTS `PlanesRecarga`;
+
+CREATE TABLE `PlanesRecarga` (
+  `IdPlanRecarga` int(11) NOT NULL AUTO_INCREMENT,
+  `idPlan` int(11) DEFAULT NULL,
+  `Factor` decimal(10,2) DEFAULT NULL,
+  `AnioDesde` int(11) DEFAULT NULL,
+  `AnioHasta` int(11) DEFAULT NULL,
+  `Kilometraje` varchar(100) DEFAULT NULL,
+  `CantidadServicios` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`IdPlanRecarga`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+/*Data for the table `PlanesRecarga` */
+
+insert  into `PlanesRecarga`(`IdPlanRecarga`,`idPlan`,`Factor`,`AnioDesde`,`AnioHasta`,`Kilometraje`,`CantidadServicios`) values 
+(1,1,'1.00',2000,2100,'MAX 50 KM','ILIMITADO'),
+(2,2,'1.00',2000,2100,'MAX 300 KM','ILIMITADO URBANO (*) Y UNO (01) EXTRAURBANO (*)'),
+(3,1,'1.20',1990,1999,'MAX 50 KM','3 SERVICIOS URBANOS (*)'),
+(4,2,'1.20',1990,1999,'MAX 300 KM','3 SERVICIOS URBANOS (*) Y UNO (01) EXTRAURBANO (*)'),
+(5,1,'2.00',1980,1989,'MAX 50 KM','3 SERVICIOS URBANOS (*)'),
+(6,2,'2.00',1980,1989,'MAX 300 KM','3 SERVICIOS URBANOS (*) Y UNO (01) EXTRAURBANO (*)');
+
 /*Table structure for table `PlanesVendedores` */
 
 DROP TABLE IF EXISTS `PlanesVendedores`;
@@ -307,9 +353,21 @@ CREATE TABLE `Polizas` (
   `EstatusPoliza` varchar(40) DEFAULT 'Activo',
   `Respaldo` int(11) DEFAULT '0',
   PRIMARY KEY (`idPoliza`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `Polizas` */
+
+insert  into `Polizas`(`idPoliza`,`Placa`,`Cedula`,`Nombre`,`Apellido`,`Marca`,`Modelo`,`Clase`,`Tipo`,`Color`,`Año`,`Serial`,`Seguro`,`NumPoliza`,`DireccionEDO`,`Domicilio`,`DireccionFiscal`,`Vencimiento`,`date_created`,`date_updated`,`created_by`,`updated_by`,`Nacionalidad`,`Celular`,`Email`,`DesdeVigencia`,`EstatusPoliza`,`Respaldo`) values 
+(1,'ASDASDA','V-18020594','MARCOS','DE ANDRADE','Daewoo','ASDASD','Automóvil','N/A','ASDASD','1991','N/A','TU GRUERO GOLD','TGG-CCCT-0001','Apure','SDFSDFSDFSDF',NULL,'2017-08-26','2017-08-26 12:32:26','2017-08-26 12:32:26',1,1,NULL,NULL,NULL,'2017-08-26 00:00:00','Activo',1),
+(2,'RWERWER','V-18020594','SADASDAS','ASDASDA','Daihatsu','ERWERWE','Automóvil','N/A','WERWE','2005','N/A','TU GRUERO PLUS','TGP-CCCT-0001','Anzoátegui','ASDASDASDAS',NULL,'2017-08-26','2017-08-26 12:36:55','2017-08-26 12:36:55',1,1,NULL,NULL,NULL,'2017-08-26 00:00:00','Activo',1),
+(3,'DASDASD','V-18020594','MARCOS','DE ANDRADE','Aston Martin','ASDASDASD','Automóvil','N/A','ASDASDASDASDAS','1991','N/A','TU GRUERO GOLD','TGG-CCCT-0002','Apure','ASDASDASDASDASDASDASDASDSA',NULL,'2017-08-26','2017-08-26 17:30:58','2017-08-26 17:30:58',1,1,NULL,NULL,NULL,'2017-08-26 00:00:00','Activo',1),
+(4,'SSSSSSS','V-18020594','KJDHASHDA','HKAHSKDHAS','Acura','SSSSSSSSSSS','Automóvil','N/A','SSSSSSSSSS','1990','N/A','TU GRUERO GOLD','TGG-CCCT-0003','Anzoátegui','DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',NULL,'2017-08-26','2017-08-26 17:43:44','2017-08-26 17:43:44',1,1,NULL,NULL,NULL,'2017-08-26 00:00:00','Activo',1),
+(5,'SDFSDFS','V-18020589','SDLSJDLKA','SDFSDFSDFDFSDD','Acura','SDFSDFD','Automóvil','N/A','SDFDFSF','1992','N/A','TU GRUERO GOLD','TGG-CCCT-0004','Apure','ASDASDASD ASDASDASDASDS',NULL,'2017-08-26','2017-08-26 18:04:48','2017-08-26 18:04:48',1,1,NULL,NULL,NULL,'2017-08-26 00:00:00','Activo',1),
+(6,'DASDASD','V-18020594','MARCOS','DE ANDRADE','Aston Martin','ASDASDASD','Automóvil','N/A','ASDASDASDASDAS','1991','N/A','TU GRUERO GOLD','TGG-CCCT-0005','Apure','ASDASDASDASDASDASDASDASDSA',NULL,'2017-08-28','2017-08-28 18:48:50','2017-08-28 18:48:50',1,1,NULL,NULL,NULL,'2017-08-28 00:00:00','Activo',1),
+(7,'AAAAAAA','V-18020594','MARCOS','DE ANDRADE','Daihatsu','A','Automóvil','N/A','AAA','2014','N/A','TU GRUERO PLUS','TGP-CCCT-0002','Nueva Esparta','LASJASHKJDAHSDJAHSKDHA SDJKAHSKJDHAKJSDHKAJSDJA',NULL,'2017-08-28','2017-08-28 18:50:29','2017-08-28 18:50:29',1,1,NULL,NULL,NULL,'2017-08-28 00:00:00','Activo',1),
+(8,'SSSSSSS','V-18020594','MARCOS','DE ANDRADE','Acura','SSSSSSSSSSSSSS','Automóvil','N/A','SSSS','1994','N/A','TU GRUERO GOLD','TGG-CCCT-0006','Anzoátegui','DIRECCION DE DOMICILIO',NULL,'2017-08-28','2017-08-28 18:56:07','2017-08-28 18:56:07',1,1,NULL,NULL,NULL,'2017-08-28 00:00:00','Activo',1),
+(9,'44EESDD','V-18020594','MARCOS','DE ANDRADE','Daewoo','AVEO','Automóvil','N/A','ASDASDASDAS','1980','N/A','TU GRUERO PLUS','TGP-CCCT-0003','Distrito Capital','DIRECCION DE DOCMIICHHUDSHGSDGHJSDGHJSD',NULL,'2017-09-13','2017-09-13 11:25:27','2017-09-13 11:25:27',1,1,NULL,NULL,NULL,'2017-09-13 00:00:00','Activo',0),
+(10,'SSSSS','V-18020594','MARCOS','DE ANDSREADE','Acura','AVEO','Automóvil','N/A','ASSS','1982','N/A','TU GRUERO PLUS','TGP-CCCT-0004','Distrito Capital','ALKSJDLASJD AKLSJDKLASJDLKAJSLDKJASD',NULL,'2017-09-13','2017-09-13 19:25:45','2017-09-13 19:25:45',1,1,NULL,NULL,NULL,'2017-09-13 00:00:00','Activo',0);
 
 /*Table structure for table `PolizasBCK` */
 
@@ -397,9 +455,16 @@ CREATE TABLE `Respaldos` (
   `Nombre` varchar(100) DEFAULT NULL,
   `Fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`IdRespaldo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `Respaldos` */
+
+insert  into `Respaldos`(`IdRespaldo`,`Nombre`,`Fecha`) values 
+(1,'admin_tugruero_20170826053803.zip','2017-08-26 05:38:04'),
+(2,'admin_tugruero_20170828064554.zip','2017-08-28 06:45:54'),
+(3,'admin_tugruero_20170828064900.zip','2017-08-28 06:49:00'),
+(4,'admin_tugruero_20170828065042.zip','2017-08-28 06:50:42'),
+(5,'admin_tugruero_20170828065621.zip','2017-08-28 06:56:22');
 
 /*Table structure for table `Seguros` */
 
@@ -438,6 +503,18 @@ CREATE TABLE `SolicitudAprobada` (
 
 /*Data for the table `SolicitudAprobada` */
 
+insert  into `SolicitudAprobada`(`idSolicitudPlan`,`NumProducto`,`VigenciaDesde`,`VigenciaHasta`,`PolizaAsistir`,`ReciboAsistir`,`FechaAprobacion`) values 
+(1,'TGG-CCCT-0006','2017-08-28','2017-08-28','02-5-CCCT-0007','02-5-CCCT-0007-1','2017-08-28'),
+(2,'TGP-CCCT-0002','2017-08-28','2017-08-28','02-5-CCCT-0006','02-5-CCCT-0006-1','2017-08-28'),
+(3,'TGG-CCCT-0001','2017-08-26','2017-08-26','02-5-CCCT-0001','02-5-CCCT-0001-1','2017-08-26'),
+(4,'TGP-CCCT-0001','2017-08-26','2017-08-26','02-5-CCCT-0002','02-5-CCCT-0002-1','2017-08-26'),
+(5,'TGG-CCCT-0005','2017-08-28','2017-08-28','02-5-CCCT-0005','02-5-CCCT-0005-1','2017-08-28'),
+(6,'TGG-CCCT-0002','2017-08-26','2017-08-26','02-5-CCCT-0003','02-5-CCCT-0003-1','2017-08-26'),
+(7,'TGG-CCCT-0003','2017-08-26','2017-08-26','02-5-CCCT-0004','02-5-CCCT-0004-1','2017-08-26'),
+(8,'TGG-CCCT-0004','2017-08-26','2017-08-26',NULL,NULL,'2017-08-26'),
+(9,'TGP-CCCT-0003','2017-09-13','2017-09-13','02-5-CCCT-0008','02-5-CCCT-0008-1','2017-09-13'),
+(10,'TGP-CCCT-0004','2017-09-13','2017-09-13','02-5-CCCT-0009','02-5-CCCT-0009-1','2017-09-13');
+
 /*Table structure for table `SolicitudAprobadaBCK` */
 
 DROP TABLE IF EXISTS `SolicitudAprobadaBCK`;
@@ -469,9 +546,9 @@ CREATE TABLE `SolicitudCorrelativoProducto` (
 /*Data for the table `SolicitudCorrelativoProducto` */
 
 insert  into `SolicitudCorrelativoProducto`(`idCorrelativo`,`ValorCorrelativo`,`Descripcion`,`AbreviaturaPlan`) values 
-(1,1,'TGP TUGRUERO PLUS Numero producto generado desde la página. El valor de ValorCorrelativo actual es el que se va a guardar','TGP-CCCT'),
-(2,1,'TGG TUGRUERO GOLD Numero producto generado desde la página. El valor de ValorCorrelativo actual es el que se va a guardar','TGG-CCCT'),
-(3,1,'Correlativo asistir','RCV-CCCT');
+(1,5,'TGP TUGRUERO PLUS Numero producto generado desde la página. El valor de ValorCorrelativo actual es el que se va a guardar','TGP-CCCT'),
+(2,7,'TGG TUGRUERO GOLD Numero producto generado desde la página. El valor de ValorCorrelativo actual es el que se va a guardar','TGG-CCCT'),
+(3,10,'Correlativo asistir','RCV-CCCT');
 
 /*Table structure for table `SolicitudDocumentos` */
 
@@ -487,6 +564,18 @@ CREATE TABLE `SolicitudDocumentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `SolicitudDocumentos` */
+
+insert  into `SolicitudDocumentos`(`idSolicitudPlan`,`TipoDocumento`,`NombreDocumento`,`FechaSubida`,`Estatus`) values 
+(1,'Cedula','Cedula_CCCT_1.jpg','2017-08-28 06:55:56','ENV'),
+(2,'Cedula','Cedula_CCCT_2.pdf','2017-08-26 05:05:40','ENV'),
+(3,'Cedula','Cedula_CCCT_3.pdf','2017-08-26 12:30:43','ENV'),
+(4,'Cedula','Cedula_CCCT_4.pdf','2017-08-26 12:36:48','ENV'),
+(5,'Cedula','Cedula_CCCT_5.pdf','2017-08-26 05:30:35','ENV'),
+(6,'Cedula','Cedula_CCCT_6.png','2017-08-26 05:25:30','ENV'),
+(7,'Cedula','Cedula_CCCT_7.pdf','2017-08-26 05:50:47','ENV'),
+(8,'Cedula','Cedula_CCCT_8.png','2017-08-26 06:06:15','ENV'),
+(9,'Cedula','Cedula_CCCT_9.pdf','2017-09-13 11:25:46','ENV'),
+(10,'Cedula','Cedula_CCCT_10.pdf','2017-09-13 07:25:37','ENV');
 
 /*Table structure for table `SolicitudDocumentosBCK` */
 
@@ -535,6 +624,18 @@ CREATE TABLE `SolicitudPagoDetalle` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `SolicitudPagoDetalle` */
+
+insert  into `SolicitudPagoDetalle`(`idSolicitudPlan`,`id`,`description`,`status`,`status_detail`,`currency_id`,`date_created`,`date_approved`,`payment_method_id`,`payment_type_id`,`collector_id`,`payer_type`,`payer_id`,`payer_email`,`payer_identification_type`,`payer_identification_number`,`payer_first_name`,`payer_last_name`,`payer_entity_type`,`transaction_amount`,`net_received_amount`,`carholder_name`,`carholder_identification_type`,`cardholder_identification_number`) values 
+(1,'','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-08-28 06:55:56','débito','credit_card',NULL,NULL,'guest','DEANDRADEMARCOS@GMAIL.COM',NULL,'',NULL,NULL,NULL,'126532.9',NULL,'',NULL,NULL),
+(2,'sfsdfsd','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-08-28 06:50:16','débito','credit_card',NULL,NULL,'guest','AHKSJHDKJAS@G.COM',NULL,'fsdfsdfsdf',NULL,NULL,NULL,'25932.9',NULL,'dfsdfsdfd',NULL,NULL),
+(3,'sdfsdf','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-08-26 12:32:19','débito','credit_card',NULL,NULL,'guest','ADMIN@GMAIL.COM',NULL,'sdfsdfsd',NULL,NULL,NULL,'155932.9',NULL,'fsdfsdfsdfsd',NULL,NULL),
+(4,'','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-08-26 12:36:47','débito','credit_card',NULL,NULL,'guest','ASDAS@H.COM',NULL,'',NULL,NULL,NULL,'90000',NULL,'',NULL,NULL),
+(5,'dfgdfg','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-08-26 05:30:45','débito','credit_card',NULL,NULL,'guest','DEANDRADEMARCOS@GMAIL.COM',NULL,'dfgdfgdfg',NULL,NULL,NULL,'125932.9',NULL,'dfgdfgdfgdfgdfgdfgdf',NULL,NULL),
+(6,'dfgdfg','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-08-26 05:25:29','débito','credit_card',NULL,NULL,'guest','DEANDRADEMARCOS@GMAIL.COM',NULL,'dfgdfgdfg',NULL,NULL,NULL,'126532.9',NULL,'dfgdfgdfgdfgdfgdfgdf',NULL,NULL),
+(7,'','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-08-26 05:42:42','débito','credit_card',NULL,NULL,'guest','ddddd@gmail.com',NULL,'',NULL,NULL,NULL,'125932.9',NULL,'',NULL,NULL),
+(8,'','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-08-26 06:04:34','débito','credit_card',NULL,NULL,'guest','SADAS@GMAIL.COM',NULL,'',NULL,NULL,NULL,'120000',NULL,'',NULL,NULL),
+(9,'','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-09-13 11:25:12','débito','credit_card',NULL,NULL,'guest','DEANDRADEMARCOS@GMAIL.COM',NULL,'',NULL,NULL,NULL,'86532.9',NULL,'',NULL,NULL),
+(10,'','Pago de plan mediante la herramienta administrativa','approved',NULL,NULL,NULL,'2017-09-13 07:25:37','débito','credit_card',NULL,NULL,'guest','DE@G.COM',NULL,'',NULL,NULL,NULL,'85932.9',NULL,'',NULL,NULL);
 
 /*Table structure for table `SolicitudPagoDetalleBCK` */
 
@@ -612,9 +713,21 @@ CREATE TABLE `SolicitudPlan` (
   `Respaldo` int(1) DEFAULT '0',
   `IdRespaldo` int(11) DEFAULT NULL,
   PRIMARY KEY (`idSolicitudPlan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `SolicitudPlan` */
+
+insert  into `SolicitudPlan`(`idSolicitudPlan`,`Nombres`,`Apellidos`,`Correo`,`Cedula`,`EstadoCivil`,`FechaNacimiento`,`Sexo`,`Rif`,`Estado`,`Ciudad`,`Domicilio`,`Telefono`,`Celular`,`FechaSolicitud`,`TipoPago`,`NumeroTransaccion`,`Clase`,`Marca`,`Modelo`,`Anio`,`Color`,`Placa`,`Tipo`,`Puestos`,`SerialMotor`,`SerialCarroceria`,`Estatus`,`TotalSinIva`,`TotalConIva`,`PagoRealizado`,`Observacion`,`IdV`,`Kilometraje`,`CantidadServicios`,`Respaldo`,`IdRespaldo`) values 
+(1,'MARCOS','DE ANDRADE','DEANDRADEMARCOS@GMAIL.COM','V-18020594','Casado(a)','2017-08-26','Masculino','V-18020594','Anzoátegui','CARACAS','DIRECCION DE DOMICILIO','02128601223','04268141850','2017-08-26','TDC','0','Automóvil','Acura','SSSSSSSSSSSSSS','1994','SSSS','SSSSSSS','Pick Up',7,'','','ACT','126232.90','126232.90','S',NULL,3,'MAX 300 KM','ILIMITADO URBANO (*) Y UNO (01) EXTRAURBANO (*)',1,NULL),
+(2,'MARCOS','DE ANDRADE','AHKSJHDKJAS@G.COM','V-18020594','Divorciado(a)','2017-08-26','Masculino','V-18020594','Nueva Esparta','CARACAS','LASJASHKJDAHSDJAHSKDHA SDJKAHSKJDHAKJSDHKAJSDJA','02128601223','04241212121','2017-08-26','TDC','0','Automóvil','Daihatsu','A','2014','AAA','AAAAAAA','Coupé',5,'sdfsdfs','dfsdfsdfsd','ACT','0.00','0.00','S',NULL,3,'MAX 50 KM','50 URBANO (*) y 01 extra',1,NULL),
+(3,'MARCOS','DE ANDRADE','ADMIN@GMAIL.COM','V-18020594','Soltero(a)','2017-08-26','Masculino','V-18020594','Apure','CARACAS','SDFSDFSDFSDF','02128601223','04141234567','2017-08-26','DEP','0','Automóvil','Daewoo','ASDASD','1991','ASDASD','ASDASDA','Coupé',5,'','','ACT','125932.90','125932.90','S',NULL,3,'MAX 300 KM','ILIMITADO URBANO (*) Y UNO (01) EXTRAURBANO (*)',1,NULL),
+(4,'SADASDAS','ASDASDA','ASDAS@H.COM','V-18020594','Divorciado(a)','2017-08-26','Masculino','V-182000000','Anzoátegui','ASDASDAS','ASDASDASDAS','02128601223','04141213132','2017-08-26','DEP','0','Automóvil','Daihatsu','ERWERWE','2005','WERWE','RWERWER','Coupé',7,'sdfsdfsdfsdf','sdfsdfsdfd','ACT','90000.00','90000.00','S',NULL,3,'MAX 50 KM','ILIMITADO',1,NULL),
+(5,'MARCOS','DE ANDRADE','DEANDRADEMARCOS@GMAIL.COM','V-18020594','Casado(a)','2017-08-26','Masculino','V-18020594','Apure','SDASDASDASDAS','ASDASDASDASDASDASDASDASDSA','02128601223','04143232323','2017-08-26','TDC','0','Automóvil','Aston Martin','ASDASDASD','1991','ASDASDASDASDAS','DASDASD','Coupé',5,'asdasdasdasdas','asdasdasdasdasdsa','ACT','126532.90','126532.90','S',NULL,3,'MAX 300 KM','ILIMITADO URBANO (*) Y UNO (01) EXTRAURBANO (*)',1,NULL),
+(6,'MARCOS','DE ANDRADE','DEANDRADEMARCOS@GMAIL.COM','V-18020594','Casado(a)','2017-08-26','Masculino','V-18020594','Apure','SDASDASDASDAS','ASDASDASDASDASDASDASDASDSA','02128601223','04143232323','2017-08-26','TDC','0','Automóvil','Aston Martin','ASDASDASD','1991','ASDASDASDASDAS','DASDASD','Coupé',7,'asdasdasdasdas','asdasdasdasdasdsa','ACT','126532.90','126532.90','S',NULL,3,'MAX 300 KM','ILIMITADO URBANO (*) Y UNO (01) EXTRAURBANO (*)',1,NULL),
+(7,'KJDHASHDA','HKAHSKDHAS','DDDDD@GMAIL.COM','V-18020594','Casado(a)','2017-08-26','Masculino','V-18020594','Anzoátegui','ZSDASDASDAS','DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD','02128602122','04141111111','2017-08-26','TDC','0','Automóvil','Acura','SSSSSSSSSSS','1990','SSSSSSSSSS','SSSSSSS','Coupé',5,'','','ACT','125932.90','125932.90','S',NULL,3,'MAX 300 KM','ILIMITADO URBANO (*) Y UNO (01) EXTRAURBANO (*)',1,NULL),
+(8,'SDLSJDLKA','SDFSDFSDFDFSDD','SADAS@GMAIL.COM','V-18020589','Casado(a)','2017-08-26','Masculino','V-18020594','Apure','CARACAS','ASDASDASD ASDASDASDASDS','02128601223','04241212112','2017-08-26','DEP','0','Automóvil','Acura','SDFSDFD','1992','SDFDFSF','SDFSDFS','Cross Over',5,'','','ACT','120000.00','120000.00','S',NULL,3,'MAX 300 KM','ILIMITADO URBANO (*) Y UNO (01) EXTRAURBANO (*)',1,NULL),
+(9,'MARCOS','DE ANDRADE','DEANDRADEMARCOS@GMAIL.COM','V-18020594','Casado(a)','2017-09-13','Masculino','','Distrito Capital','CARACAS','DIRECCION DE DOCMIICHHUDSHGSDGHJSDGHJSD','','04268141850','2017-09-13','TDC','0','Automóvil','Daewoo','AVEO','1980','ASDASDASDAS','44EESDD','Coupé',7,'','','ACT','246532.90','246532.90','S',NULL,3,'MAX 50 KM','3 SERVICIOS URBANOS (*)',0,NULL),
+(10,'MARCOS','DE ANDSREADE','DE@G.COM','V-18020594','Soltero(a)','2017-09-13','Masculino','V-18020594','Distrito Capital','CSASJDAKLSDJ','ALKSJDLASJD AKLSJDKLASJDLKAJSLDKJASD','','04268141850','2017-09-13','TDC','0','Camioneta','Acura','AVEO','1982','ASSS','SSSSS','Cross Over',5,'asdasd','asdasdasdas','ACT','85932.90','85932.90','S',NULL,3,'MAX 50 KM','3 SERVICIOS URBANOS (*)',0,NULL);
 
 /*Table structure for table `SolicitudPlanBCK` */
 
@@ -679,6 +792,27 @@ CREATE TABLE `SolicitudPlanSeleccion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `SolicitudPlanSeleccion` */
+
+insert  into `SolicitudPlanSeleccion`(`idSolicitudPlan`,`idPlan`,`PrecioConIva`,`PrecioSinIva`,`FechaSolicitud`) values 
+(1,2,'120000.00','120000.00','2017-08-28'),
+(1,5,'6532.90','6532.90','2017-08-28'),
+(2,1,'20000.00','20000.00','2017-08-28'),
+(2,3,'5932.90','5932.90','2017-08-28'),
+(3,2,'150000.00','150000.00','2017-08-26'),
+(3,3,'5932.90','5932.90','2017-08-26'),
+(4,1,'40000.00','40000.00','2017-08-26'),
+(4,5,'50000.00','50000.00','2017-08-26'),
+(5,2,'120000.00','120000.00','2017-08-26'),
+(5,3,'5932.90','5932.90','2017-08-26'),
+(6,2,'120000.00','120000.00','2017-08-26'),
+(6,5,'6532.90','6532.90','2017-08-26'),
+(7,2,'120000.00','120000.00','2017-08-26'),
+(7,3,'5932.90','5932.90','2017-08-26'),
+(8,2,'120000.00','120000.00','2017-08-26'),
+(9,1,'80000.00','80000.00','2017-09-13'),
+(9,5,'6532.90','6532.90','2017-09-13'),
+(10,1,'80000.00','80000.00','2017-09-13'),
+(10,3,'5932.90','5932.90','2017-09-13');
 
 /*Table structure for table `SolicitudPlanSeleccionBCK` */
 
@@ -761,6 +895,150 @@ insert  into `bank`(`id`,`name`) values
 (31,'MIBANCO BANCO DE DESARROLLO, C.A.'),
 (32,'SOFITASA'),
 (33,'BANESCO, BANCO UNIVERSAL');
+
+/*Table structure for table `caroussel` */
+
+DROP TABLE IF EXISTS `caroussel`;
+
+CREATE TABLE `caroussel` (
+  `id_caroussel` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `status` int(1) NOT NULL,
+  PRIMARY KEY (`id_caroussel`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Data for the table `caroussel` */
+
+insert  into `caroussel`(`id_caroussel`,`name`,`status`) values 
+(1,'myCarousel',1);
+
+/*Table structure for table `caroussel_details` */
+
+DROP TABLE IF EXISTS `caroussel_details`;
+
+CREATE TABLE `caroussel_details` (
+  `id_cardet` int(11) NOT NULL AUTO_INCREMENT,
+  `id_caroussel` int(11) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `status` int(1) NOT NULL,
+  `alt` varchar(200) NOT NULL,
+  `data_target` varchar(100) DEFAULT NULL,
+  `orders` int(1) DEFAULT NULL,
+  `data_slide_to` int(11) DEFAULT NULL,
+  `class` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_cardet`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+/*Data for the table `caroussel_details` */
+
+insert  into `caroussel_details`(`id_cardet`,`id_caroussel`,`image`,`status`,`alt`,`data_target`,`orders`,`data_slide_to`,`class`) values 
+(1,1,'caroussel1.png',1,'Uno','#myCarousel',1,0,'active'),
+(2,1,'caroussel2.png',1,'Dos','#myCarousel',2,1,NULL),
+(3,1,'caroussel3.png',1,'Tres','#myCarousel',3,2,NULL);
+
+/*Table structure for table `contents_html` */
+
+DROP TABLE IF EXISTS `contents_html`;
+
+CREATE TABLE `contents_html` (
+  `id_content` int(11) NOT NULL AUTO_INCREMENT,
+  `html` text NOT NULL,
+  `div_id` varchar(100) NOT NULL,
+  `section` varchar(100) NOT NULL,
+  `page` varchar(50) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `language` varchar(5) NOT NULL DEFAULT 'es',
+  `id_app` int(11) NOT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `orders` int(11) DEFAULT NULL,
+  `title` varchar(100) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_content`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+/*Data for the table `contents_html` */
+
+insert  into `contents_html`(`id_content`,`html`,`div_id`,`section`,`page`,`status`,`language`,`id_app`,`name`,`orders`,`title`,`date_created`,`date_updated`) values 
+(1,'Somos Soluciones Tugruero, C.A. una empresa 100% venezolana de base tecnológica dedicada a la prestación de servicios de auxilia vial a través de distintas herramientas innovadoras de comunicación, entre todos los usuarios de nuestra plataforma que requieran de auxilio vial y los proveedores de grúas disponibles y más cercanos a ellos.','about','about','page.php',1,'es',1,'QUIENES_SOMOS',1,'¿Quiénes somos?','2016-04-02 12:21:55','2016-04-02 12:37:44'),
+(2,'Ofrecemos tranquilidad a los accidentados en la vía entregándoles el mejor servicio de auxilio vial por medio de nuestra excelente plataforma de comunicación, teniendo como principal objetivo construir una empresa sustentable donde todos queramos ir a trabajar para ayudar a los demás.\r\n','about','about','page.php',1,'es',1,'NUESTRA_MISION',2,'Nuestra misión','2016-04-02 12:21:57','2016-04-02 12:22:12'),
+(3,'Ser la plataforma tecnológica número uno a nivel mundial en auxilio vial, teniendo la red de grueros más amplia, trabajando con el 100% de las compañías de seguro existentes y la mayor cantidad de personas no aseguradas del mercado','about','about','page.php',1,'es',1,'DONDE_VAMOS',3,'Hacia donde vamos','2016-04-02 12:21:59','2016-04-02 12:22:12'),
+(4,'Somos Soluciones Tugruero, C.A. una empresa 100% venezolana de base tecnológica dedicada a la prestación de servicios de auxilia vial a través de distintas herramientas innovadoras de comunicación, entre todos los usuarios de nuestra plataforma que requieran de auxilio vial y los proveedores de grúas disponibles y más cercanos a ellos. ','objectives','objectives','page.php',1,'es',1,'OBJETIVOS',1,'Nuestros Objetivos','2016-04-02 12:22:01','2016-04-02 12:22:12'),
+(5,'Construir una empresa sustentable donde todos queramos ir a trabajar para ayudar a los demás.','objectives','objectives','page.php',1,'es',1,'OBJETIVOS',1,'','2016-04-02 12:22:03','2016-04-02 12:22:12'),
+(6,'Tener afiliados a nuestra plataforma al 100% de los grueros que operan en Venezuela, para que brinden el mejor servicio de auxilio vial a los usuarios suscritos en la misma.','objectives','objectives','page.php',1,'es',1,'OBJETIVOS',2,'','2016-04-02 12:22:08','2016-04-02 12:22:12'),
+(7,'Contribuir notablemente a la mejora de la industria y el servicio de auxilio vial en Venezuela y el mundo.','objectives','objectives','page.php',1,'es',1,'OBJETIVOS',3,'','2016-04-02 12:22:10','2016-04-02 12:22:12'),
+(8,'Mejorar los tiempos de respuesta de parte de los grueros para con los accidentados en la vía, teniendo un tiempo promedio de respuesta y rescate de 20 - 30 minutos.','objectives','objectives','page.php',1,'es',1,'OBJETIVOS',4,'','2016-04-02 12:22:12','2016-04-02 12:22:12'),
+(9,'Mejorar notablemente el servicio de auxilio vial ofrecido por todas las compañías de seguros en Venezuela a sus clientes asegurados.','objectives','objectives','page.php',1,'es',1,'OBJETIVOS',5,'','2016-04-02 12:22:12','2016-04-02 12:22:12'),
+(10,'Colaborar con la creación de la red/comunidad de grueros más grande de Venezuela y América Latina, con la cual se realizarán constantemente convenciones donde se discutirán los problemas diarios de la profesión y sus posibles soluciones, donde se darán a conocer los últimos avances de la industria y se ajustará regularmente las tarifas de las carreras/remolques/auxilios de acuerdo a la situación económica-política y social de cada país donde nos encontremos operando.','objectives','objectives','page.php',1,'es',1,'OBJETIVOS',6,'','2016-04-02 12:22:12','2016-04-02 12:22:12'),
+(11,'Crear la fundación “Grueros de las Américas” donde constantemente se recaudarán fondos entre todos los pertenecientes a dicha red/comunidad, para así realizar obras benéficas en todos los países donde la empresa se encuentre presente.','objectives','objectives','page.php',1,'es',1,'OBJETIVOS',7,'','2016-04-02 12:22:12','2016-04-02 12:22:12'),
+(12,'<p class=\"text-justify\">Ofrecemos servicios de comunicación para el auxilio vial a través de nuestra aplicación móvil llamada TU/GRUERO®. La cual se puede conseguir y descargar gratuitamente en las tiendas de aplicación móvil más reconocidas a nivel mundial: Play Store y App Store.</p>\r\n<p class=\"text-justify\">Presentamos TU/GRUERO®, la primera aplicación móvil del mundo que ofrece el servicio de E-hailing (solicitud de servicios de transporte con teléfonos inteligentes) para grúas o remolcadoras de vehículos accidentados. TU/GRUERO® es pionera en el ámbito tecnológico para los servicios ofrecidos por las compañías de seguros ya que actualmente el 100% de estas ofrece el servicio de auxilio a través del tradicional Call Center de su operadora de asistencia en viajes, el cual resulta tedioso y poco eficiente debido a la triangulación existente entre: Accidentado - Operadora de asistencia en viaje - Gruero.</p>\r\n<p class=\"text-justify\">TU/GRUERO® garantiza por primera vez un servicio de auxilio vial de verdadera rapidez, seguridad y tranquilidad tanto para los accidentados como para los grueros gracias a su novedoso sistema de geolocalización, el cual permite ubicar a los grueros más cercanos (de manera directa y sin intermediarios) en el mapa y seguirlos en tiempo real vía GPS hasta que éste y el accidentado se encuentren en el sitio de la avería.</p>\r\n','work','work','page.php',1,'es',1,'QUE_HACEMOS',1,'¿Qué hacemos?','2016-04-02 12:22:12','2016-04-02 12:22:12'),
+(13,'<p class=\"text-justify\">Actualmente le ofrecemos nuestros servicios de comunicación para el auxilio vial a las compañías de seguros venezolanas suscritas a TU/GRUERO®, para que sus clientes asegurados puedan comunicarse directamente con los proveedores de grúas afiliados a nuestra plataforma cuando éstos (clientes asegurados) se encuentren en la necesidad de solicitar servicios de auxilio vial.</p>\r\n<p class=\"text-justify\">¡Comuníquese con su corredor de seguros para poder optar por la póliza de asistencia en viajes que incluya disfrutar de los servicios de TU/GRUERO®!</p>\r\n','portfolio','portfolio','page.php',1,'es',1,'COMO_FUNCIONAMOS',1,'¿Cómo funcionamos?','2016-04-02 12:22:12','2016-04-02 12:22:12'),
+(14,'','','','',1,'es',0,NULL,NULL,NULL,'0000-00-00 00:00:00',NULL);
+
+/*Table structure for table `countries` */
+
+DROP TABLE IF EXISTS `countries`;
+
+CREATE TABLE `countries` (
+  `id_country` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `phone_code` varchar(10) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `date_added` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  PRIMARY KEY (`id_country`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `countries` */
+
+/*Table structure for table `countries_states` */
+
+DROP TABLE IF EXISTS `countries_states`;
+
+CREATE TABLE `countries_states` (
+  `id_countrie` int(11) NOT NULL,
+  `id_state` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `date_added` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_countrie`),
+  KEY `id_state` (`id_state`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `countries_states` */
+
+/*Table structure for table `countries_zones` */
+
+DROP TABLE IF EXISTS `countries_zones`;
+
+CREATE TABLE `countries_zones` (
+  `id_zone` int(11) NOT NULL AUTO_INCREMENT,
+  `id_countrie` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `date_added` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  PRIMARY KEY (`id_zone`,`id_countrie`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `countries_zones` */
+
+/*Table structure for table `countries_zones_states` */
+
+DROP TABLE IF EXISTS `countries_zones_states`;
+
+CREATE TABLE `countries_zones_states` (
+  `id_countrie` int(11) NOT NULL,
+  `id_state` int(11) NOT NULL,
+  `id_zone` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `date_added` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  PRIMARY KEY (`id_countrie`,`id_state`,`id_zone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `countries_zones_states` */
 
 /*Table structure for table `inserts` */
 
@@ -982,32 +1260,6 @@ CREATE TABLE `panels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `panels` */
-
-/*Table structure for table `pase` */
-
-DROP TABLE IF EXISTS `pase`;
-
-CREATE TABLE `pase` (
-  `id_user` int(11) NOT NULL DEFAULT '0',
-  `nombres` varchar(100) DEFAULT NULL,
-  `apellidos` varchar(100) DEFAULT NULL,
-  `rif` varchar(50) NOT NULL,
-  `celular` varchar(20) DEFAULT NULL,
-  `Estado` varchar(100) DEFAULT NULL,
-  `Ciudad` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `pase` */
-
-insert  into `pase`(`id_user`,`nombres`,`apellidos`,`rif`,`celular`,`Estado`,`Ciudad`) values 
-(1183,'LEWIS JOSE','HERNANDEZ','J-40498924-6','4147910197','NUESVA ESPARTA','MARGARITA'),
-(1184,'RAFAEL','MEDINA','J-40561788-8','4149776880','TACHIRA','SAN CRISTOBAL'),
-(1185,'MARCOS','TRUJILLO','V-10113755','4241435531','MIRANDA','CARACAS'),
-(1186,'MARCOS','JIMENEZ','V-12112458','04142139232-04163062','MIRANDA','CARACAS'),
-(1187,'ARQUIMIRO','LOPEZ','V-13145210-8','4147104076','TACHIRA','SAN CRISTOBAL'),
-(1188,'GEAN CARLOS','TORREALBA','V-13383381','4140383608','MIRANDA','CARACAS'),
-(1189,'ARGENIS','GONZALES','V-13727487','4143202867','MIRANDA','CARRIZALES'),
-(1190,'ROBERTO','MOYA','V-15928308','4266079571','DISTRITO CAPITAL','CARACAS');
 
 /*Table structure for table `perms` */
 
@@ -1567,7 +1819,7 @@ insert  into `users`(`id_user`,`login`,`password`,`status`,`date_created`,`date_
 (529,'V-7920106','2d33ce078cdffeef9377a57b4e4637932b1be7c26f501f41cc930bd460034018',1,'2016-06-01 23:35:21','2016-06-02 00:00:20','Gruas.hot.rod@gmail.com',NULL),
 (530,'V-10666870','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',1,'2016-06-01 23:39:24','2016-06-01 23:39:24','pedrovicens@hotmail.com',NULL),
 (532,'V-11144314','87077b9dfbfbb9272de1b2bb1d2398cd0c4e0194afbec7433cfc823f73d7d5bc',1,'2016-06-02 00:30:29','2016-06-02 17:28:26','tecpintacarsc.a@gmail.com','tecpintacarsc.a@gmail.com'),
-(535,'MDEANDRADE','18bfddf1020067bbd33fad652bc8f1a59b2427ff8c7ebfd62bbfef6c2dddff49',1,'2016-06-02 06:26:29','2017-08-27 12:01:23','deandrademarcos@gmail.com','deandrademarcos@hotmail.com'),
+(535,'MDEANDRADE','18bfddf1020067bbd33fad652bc8f1a59b2427ff8c7ebfd62bbfef6c2dddff49',1,'2016-06-02 06:26:29','2016-09-11 05:57:19','deandrademarcos@gmail.com','deandrademarcos@hotmail.com'),
 (536,'V-13990540','eca953dc9652effcc009e1699e96392bb77fdcfd01ec5321882a8f97dba11927',1,'2016-06-02 12:07:49','2016-07-20 07:00:49','yhitzandersequera@gmail.com','yhitzandersequera@gmail.com'),
 (539,'V-11447003','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',1,'2016-06-02 14:25:20','2016-06-02 14:26:00','GRUASLUIS2@GMAIL.COM',NULL),
 (545,'V-15942602','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',1,'2016-06-02 18:58:29','2016-06-02 18:59:08','bybmotors@hotmail.com',NULL),
@@ -2059,7 +2311,7 @@ insert  into `users`(`id_user`,`login`,`password`,`status`,`date_created`,`date_
 (1190,'V-15928308','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',1,'2017-02-01 16:34:53','2017-02-01 16:34:53','mail@mail.com','mail@mail.com'),
 (1191,'E-81524901','195790763d258edffdd745b4eb9fe958eafb18a29ff91241f067ac41b5497bb6',1,'2017-03-28 02:01:11','2017-03-28 02:01:11','Elportu_2021@hotmail.com','Elportu_2021@hotmail.com'),
 (1192,'CCCT','ac1845f44a6e64bd6abebc92bb70d64b54bc5dd8a0e118c9aff9fb9f50a33f41',1,'2017-08-20 10:58:45','2017-08-20 11:02:35','tugruero@gmail.com','tugruero@gmail.com'),
-(1193,'EVERDE','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',1,'2017-08-20 10:58:45','2017-08-27 11:03:55','tugruero@gmail.com','tugruero@gmail.com');
+(1193,'EVERDE','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',1,'2017-08-26 17:33:44','2017-08-26 17:36:38','tugruero@gmail.com','tugruero@gmail.com');
 
 /*Table structure for table `users_company` */
 
@@ -4093,7 +4345,7 @@ insert  into `users_data`(`id`,`id_users`,`first_name`,`second_name`,`first_last
 (1338,1190,'ROBERTO',NULL,'MOYA',NULL,'V','V-15928308',NULL,'M','4266079571','4266079571','','','','2017-02-01 16:35:13','2017-02-01 16:35:13',NULL,NULL),
 (1339,1191,'Adelino','','Fernandes','Da Silva','V','81524901',NULL,'M','04126811214',NULL,'','','','2017-03-28 02:01:11','2017-03-28 02:01:11',NULL,NULL),
 (1340,1192,'ccct',NULL,'ccct',NULL,'v','1234567',NULL,'M','0414141',NULL,'1111','1111','1111','2017-08-20 11:01:19','2017-08-20 11:01:29',NULL,NULL),
-(1341,1193,'ENELY',NULL,'VERDE',NULL,'V','987654321',NULL,'F','04545454',NULL,'ddd','d','d','2017-08-27 11:02:29','2017-08-27 11:02:32',NULL,NULL);
+(1341,1193,'Enely','','Verde',NULL,'V','98765431',NULL,'F','',NULL,'','','','0000-00-00 00:00:00','0000-00-00 00:00:00',NULL,NULL);
 
 /*Table structure for table `users_hoist_company` */
 
@@ -5823,7 +6075,283 @@ insert  into `users_perms`(`id_user`,`id_perms`,`status`,`date_created`,`date_up
 (1189,3,1,'2017-02-01 16:35:25','2017-02-01 16:35:25'),
 (1190,3,1,'2017-02-01 16:35:25','2017-02-01 16:35:25'),
 (1192,2,1,'2017-08-20 10:58:45','2017-08-20 10:58:45'),
-(1193,2,1,'2016-06-01 09:31:56','2016-06-01 09:31:56');
+(1193,2,1,'2017-08-20 10:58:45','2017-08-20 10:58:45');
+
+/*Table structure for table `users_token` */
+
+DROP TABLE IF EXISTS `users_token`;
+
+CREATE TABLE `users_token` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_company_validation` int(11) NOT NULL,
+  `token` varchar(200) NOT NULL,
+  `time_expire` datetime NOT NULL,
+  `validate` bigint(20) NOT NULL,
+  `mail` varchar(200) NOT NULL,
+  `mail_alternative` varchar(200) NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=257 DEFAULT CHARSET=utf8;
+
+/*Data for the table `users_token` */
+
+insert  into `users_token`(`id`,`id_company_validation`,`token`,`time_expire`,`validate`,`mail`,`mail_alternative`,`date_created`,`date_updated`) values 
+(1,1,'c2VydmlncnVhc2xnVi0xODM5MzU4My0yc2VydmlncnVhc2xnQGhvdG1haWwuY29tMDEtMDYtMTYgMDY6NDM6MzM=','2016-06-01 19:43:32',0,'servigruaslg@hotmail.com','servigruaslg@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(2,2,'RXZlcmVzdCBDb2xtZW5hcmVzVi0xMjY4NDQ2NS0wZ3J1YXNldmVyZXN0QGhvdG1haWwuY29tMDEtMDYtMTYgMDY6NTE6NDA=','2016-06-01 19:51:40',0,'gruaseverest@hotmail.com','gruaseverest@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(3,3,'R3J1YXMgdG93aW5nIG1lcmlkYVYtMTE0NjM0MTQtNkdydWFzdG93aW5nQGhvdG1haWwuY29tMDEtMDYtMTYgMDY6NTI6MDI=','2016-06-01 19:52:02',0,'Gruastowing@hotmail.com','Gruastowing@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(4,3,'R3J1YXMgdG93aW5nIG1lcmlkYVYtMTE0NjM0MTQtNkdydWFzdG93aW5nQGhvdG1haWwuY29tMDEtMDYtMTYgMDY6NTM6NTA=','2016-06-01 19:53:50',0,'Gruastowing@hotmail.com','Gruastowing@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(5,4,'R3J1YXMgdG93aW5nIG1lcmlkYVYtMTE0NjM0MTRHcnVhc3Rvd2luZ0Bob3RtYWlsLmNvbTAxLTA2LTE2IDA2OjU5OjA0','2016-06-01 19:59:04',0,'Gruastowing@hotmail.com','Gruastowing@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(6,4,'R3J1YXMgdG93aW5nIG1lcmlkYVYtMTE0NjM0MTRHcnVhc3Rvd2luZ0Bob3RtYWlsLmNvbTAxLTA2LTE2IDA3OjAwOjE0','2016-06-01 20:00:14',0,'Gruastowing@hotmail.com','Gruastowing@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(7,3,'R3J1YXMgdG93aW5nIG1lcmlkYVYtMTE0NjM0MTQtNkdydWFzdG93aW5nQGhvdG1haWwuY29tMDEtMDYtMTYgMDc6MDI6MDA=','2016-06-01 20:02:00',0,'Gruastowing@hotmail.com','Gruastowing@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(8,3,'R3J1YXMgdG93aW5nIG1lcmlkYVYtMTE0NjM0MTQtNkdydWFzdG93aW5nQGhvdG1haWwuY29tMDEtMDYtMTYgMDc6MDQ6MDU=','2016-06-01 20:04:05',0,'Gruastowing@hotmail.com','Gruastowing@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(9,5,'UGFuZmlsbyBqb3NlIHNhbmFicmlhVi0xOTkwMTA2OEdvY2hvc2FuYWJyaWFAZ21haWwuY29tMDEtMDYtMTYgMDc6MDc6MjQ=','2016-06-01 20:07:24',0,'Gochosanabria@gmail.com','Gochosanabria@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(10,6,'T3JsYW5kbyB0b3JyZXNWLVYtMTc3NTU0MDAtb3JsYW5kb25ycHRhbGk2OUBnbWFpbC5jb20wMS0wNi0xNiAwNzo0NjowNg==','2016-06-01 20:46:06',0,'orlandonrptali69@gmail.com','orlandonrptali69@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(11,3,'R3J1YXMgdG93aW5nIG1lcmlkYVYtMTE0NjM0MTQtNkdydWFzdG93aW5nQGhvdG1haWwuY29tMDEtMDYtMTYgMDc6NTc6NDU=','2016-06-01 20:57:45',0,'Gruastowing@hotmail.com','Gruastowing@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(13,8,'R3J1YXMgQURHIGRlIERhdmlkIEd1aWxsZW5WLTE1MDMyMzM0LTNkZ3VpbGxlbnJAZ21haWwuY29tMDEtMDYtMTYgMDk6MTE6MDU=','2016-06-01 22:11:05',1,'dguillenr@gmail.com','dguillenr@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(14,9,'V2lkZXJtaXNWLTIyMDAzNDQxV2lkZXJtaXNAaG90bWFpbC5lczAxLTA2LTE2IDEwOjM2OjUx','2016-06-01 23:36:51',0,'Widermis@hotmail.es','Widermis@hotmail.es','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(15,10,'Z3J1YXMgbWVyaWRhIC4gYy5hSi0zMTY1MjEzMy04Z3J1YXNtZXJASG90bWFpbC5jb20wMS0wNi0xNiAxMDozNzoyMA==','2016-06-01 23:37:20',0,'gruasmer@Hotmail.com','gruasmer@Hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(16,11,'anVhbiBqb3NlIGZlcm5hbmRlelYtNjUxOTA3OWZlcm5hbmRlemp1YW5qb3NlMTdAZ21haWwuY29tMDEtMDYtMTYgMTA6NDI6Mjk=','2016-06-01 23:42:29',0,'fernandezjuanjose17@gmail.com','fernandezjuanjose17@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(17,12,'anVhbiBjYXNhbm92YVYtdi0xNDIzNjYzMGp1YW5jaG9tY2FzYW5vdmFAaG90bWFpbC5jb20wMS0wNi0xNiAxMDo0MjozMw==','2016-06-01 23:42:33',0,'juanchomcasanova@hotmail.com','juanchomcasanova@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(18,13,'cmV0cmFtYXIsYy5hSi0zMTYzNTgxNTFyaWNhcmRvX3JldHJhbWFyQGhvdG1haWwuY29tMDEtMDYtMTYgMTA6NDM6MDY=','2016-06-01 23:43:06',0,'ricardo_retramar@hotmail.com','ricardo_retramar@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(19,14,'Q2FybG9zIFF1aWphZGFWLTE3NTkwMTI3Y2FybG9zZ3J1YTFAaG90bWFpbC5jb20wMS0wNi0xNiAxMTowMDoxMw==','2016-06-02 00:00:13',0,'carlosgrua1@hotmail.com','carlosgrua1@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(20,14,'Q2FybG9zIFF1aWphZGFWLTE3NTkwMTI3Y2FybG9zZ3J1YTFAaG90bWFpbC5jb20wMS0wNi0xNiAxMTowNDo0Mg==','2016-06-02 00:04:42',0,'carlosgrua1@hotmail.com','carlosgrua1@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(21,15,'TWFpY2tvbCBIZXJyZXJhVi0yMDYwNTY3NWhtYWlja29sQGdtYWlsLmNvbjAxLTA2LTE2IDExOjA5OjUy','2016-06-02 00:09:52',0,'hmaickol@gmail.con','hmaickol@gmail.con','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(22,15,'TWFpY2tvbCBIZXJyZXJhVi0yMDYwNTY3NWhtYWlja29sQGdtYWlsLmNvbTAxLTA2LTE2IDExOjEyOjMy','2016-06-02 00:12:32',0,'hmaickol@gmail.com','hmaickol@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(23,16,'SmhvbiBtYWlrZXIgY29ydGVzVi0xNTkyODMyNy0xSmhvbmNvcnRlejMwQGhvdG1haWwuY29tMDEtMDYtMTYgMTE6MTI6MzI=','2016-06-02 00:12:32',0,'Jhoncortez30@hotmail.com','Jhoncortez30@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(24,17,'b3N3YWxkbyBKb3PDqSBNYXJ0aW5leiBQZXJlelYtMTg5MjIzNDRvbWFydGluZXpwZXJlei4xOTg3QGdtYWkuY29tMDEtMDYtMTYgMTE6MTY6NDA=','2016-06-02 00:16:40',0,'omartinezperez.1987@gmai.com','omartinezperez.1987@gmai.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(25,18,'YWxleGlzIGdvbnphbGV6Vi00MDY0NjIwbHVpc2dvbnphbGV6c3VhcmV6MDAxODFAZ21haWwuY29tMDEtMDYtMTYgMTE6MTk6NTk=','2016-06-02 00:19:59',0,'luisgonzalezsuarez00181@gmail.com','luisgonzalezsuarez00181@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(26,19,'SkVTVVMgQUxCRVJUTyBTSUxWQSBTQU5DSEVaVi0xNjUzMjMwODBKRUFMU0lTQTExQEhPVE1BSUwuQ09NMDEtMDYtMTYgMTE6MjM6NTQ=','2016-06-02 00:23:54',0,'JEALSISA11@HOTMAIL.COM','JEALSISA11@HOTMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(27,20,'SkVTVVMgQUxCRVJUTyBTSUxWQSBTQU5DSEVaVi0xNjUzMjMwOC0wSkVBTFNJU0ExMUBIT1RNQUlMLkNPTTAxLTA2LTE2IDExOjI4OjI5','2016-06-02 00:28:29',0,'JEALSISA11@HOTMAIL.COM','JEALSISA11@HOTMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(28,21,'Z3J1YXMgYWRyaWFuVi04MDA3ODc2OWVkaW5zb24tam9zZUBob3RtYWlsLmVzMDEtMDYtMTYgMTE6MzA6Mjg=','2016-06-02 00:30:28',0,'edinson-jose@hotmail.es','edinson-jose@hotmail.es','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(29,22,'Um9iZXJ0IEdvbnphbGV6Vi12LSAxNzcyMjAwNWNoaWtpcmF5MUBob3RtYWlsLmNvbTAxLTA2LTE2IDExOjMyOjIz','2016-06-02 00:32:23',0,'chikiray1@hotmail.com','chikiray1@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(30,23,'Z3JlZ29yeSB0YXJhem9uYVYtMTgzNDcyNDQtMWdyZWdvXzIwMjFAaG90bWFpbC5jb20wMS0wNi0xNiAxMTo0MDoyMw==','2016-06-02 00:40:23',0,'grego_2021@hotmail.com','grego_2021@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(31,23,'Z3JlZ29yeSB0YXJhem9uYVYtMTgzNDcyNDQtMWdyZWdvXzIwMjFAaG90bWFpbC5jb20wMS0wNi0xNiAxMTo0NzozNQ==','2016-06-02 00:47:35',0,'grego_2021@hotmail.com','grego_2021@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(32,24,'WWhpdHpyYW5kZXIgU2VxdWVyYVYtMTM5OTA1NDAzeWhpdHphbmRlcnNlcXVlcmFAZ21haWwuY29tMDEtMDYtMTYgMTE6NTM6NDE=','2016-06-02 00:53:41',0,'yhitzandersequera@gmail.com','yhitzandersequera@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(33,26,'dGVjbm9tb3RvcmVzIHBpbnRhIGNhcnMgYy5hVi0yOTg4NTQxNC02dGVjcGludGFjYXJzYy5hQGdtYWlsLmNvbTAyLTA2LTE2IDEyOjA0OjIw','2016-06-02 01:04:20',1,'tecpintacarsc.a@gmail.com','tecpintacarsc.a@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(34,27,'TWlndWVsIEJyYXZvVi0wOTUxOTk4Ny01ZWxfdmFxdWVyb18yMDAzQGhvdG1haWwuY29tMDItMDYtMTYgMTI6MDc6MjU=','2016-06-02 01:07:25',0,'el_vaquero_2003@hotmail.com','el_vaquero_2003@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(35,28,'TWlndWVsIEJyYXZvVi05NTE5OTg3LTVlbF92YXF1ZXJvXzIwMDNAaG90bWFpbC5jb20wMi0wNi0xNiAxMjoxMDo1Nw==','2016-06-02 01:10:57',0,'el_vaquero_2003@hotmail.com','el_vaquero_2003@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(36,29,'am9zZSBoZXJuYW5kZXpWLTE0MDYwNTY2LTlxY2hlb0Bob3RtYWlsLmNvbTAyLTA2LTE2IDEyOjI5OjUy','2016-06-02 01:29:52',0,'qcheo@hotmail.com','qcheo@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(37,30,'R1JVQVMgTUlHVUVMT04uVi0xODU1NjI0N01JR1VFTF9ST05ET045MEBIT1RNQUlMLkNPTTAyLTA2LTE2IDEyOjM1OjMz','2016-06-02 01:35:33',0,'MIGUEL_RONDON90@HOTMAIL.COM','MIGUEL_RONDON90@HOTMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(38,31,'Tml4b24gb3N1bmFWLTE2NzQxNjgxU2VydmlncnVhc2VsbW9jaG9AeWFob28uY29tMDItMDYtMTYgMTI6NTA6MTE=','2016-06-02 01:50:11',0,'Servigruaselmocho@yahoo.com','Servigruaselmocho@yahoo.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(39,32,'Tml4b24gb3N1bmFWLTE2NzQxNzgxU2VydmlncnVhZWxtb2Nob0B5YWhvby5jb20wMi0wNi0xNiAxMjo1MjowMQ==','2016-06-02 01:52:01',0,'Servigruaelmocho@yahoo.com','Servigruaelmocho@yahoo.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(40,24,'WWhpdHpyYW5kZXIgU2VxdWVyYVYtMTM5OTA1NDAzeWhpdHphbmRlcnNlcXVlcmFAZ21haWwuY29tMDItMDYtMTYgMDE6MDI6NDA=','2016-06-02 02:02:40',0,'yhitzandersequera@gmail.com','yhitzandersequera@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(41,33,'Sm9zZSBnYXJjaWFWLTE4NjcxODY3Sm9zZWdhcmNpYTczNzdAaG90bWFpbC5jb20wMi0wNi0xNiAwMToxODoxMQ==','2016-06-02 02:18:11',0,'Josegarcia7377@hotmail.com','Josegarcia7377@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(42,34,'U2VydmljaW9zIGRlIGdydWFzIGl2YW4gZiBzcG9ydCBjYUotMjk3NTI3ODY5aXZhbnNwb3J0NzlAaG90bWFpbC5jb20wMi0wNi0xNiAwMToxOTowNw==','2016-06-02 02:19:07',0,'ivansport79@hotmail.com','ivansport79@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(43,33,'Sm9zZSBnYXJjaWFWLTE4NjcxODY3Sm9zZWdhcmNpYTczNzdAaG90bWFpbC5jb20wMi0wNi0xNiAwMToyMDoyNw==','2016-06-02 02:20:27',0,'Josegarcia7377@hotmail.com','Josegarcia7377@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(44,35,'U2VydmljaW9zIGRlIEdydWFzIEl2YW4gRiBTcG9ydCBDQUotMjk3NTI3ODY4OWl2YW5zcG9ydDc5QGhvdG1haWwuY29tMDItMDYtMTYgMDE6Mjg6NTU=','2016-06-02 02:28:55',0,'ivansport79@hotmail.com','ivansport79@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(45,36,'R3J1YXMgZG9uIElzaWRyb1YtMTQ0MzgzODQ5bGFuZGVyX3NhbGNlZG9AaG90bWFpbC5jb20wMi0wNi0xNiAwMTozMToyOA==','2016-06-02 02:31:28',0,'lander_salcedo@hotmail.com','lander_salcedo@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(46,36,'R3J1YXMgRG9uIElzaWRyb1YtMTQ0MzgzODQ5bGFuZGVyX3NhbGNlZG9AaG90bWFpbC5jb20wMi0wNi0xNiAwMTozNzo0Mw==','2016-06-02 02:37:43',0,'lander_salcedo@hotmail.com','lander_salcedo@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(47,37,'c2VydmljaW8gZGUgZ3J1YSBqYWlybywgYy5hSi00MDQzMjk0NTVqYWlyb3JleWVzXzc5QGhvdG1haWwuY29tMDItMDYtMTYgMDI6MzA6NTk=','2016-06-02 03:30:59',0,'jairoreyes_79@hotmail.com','jairoreyes_79@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(48,38,'U2VydmljaW8gZGUgR3J1YSBKYWlybywgQy5BSi00MDQzMjk0NS01amFpcm9yZXllc183OUBob3RtYWlsLmNvbTAyLTA2LTE2IDAyOjM2OjQ5','2016-06-02 03:36:49',0,'jairoreyes_79@hotmail.com','jairoreyes_79@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(49,39,'c2VydmljaW9kZWdydWFoZXJtYW5vc25hdmVkYWMuYUotNDA1NzgwMTEwc2VydmljaW9oZXJtYW5vc25hdmVkYUBnbWFpbC5jb20wMi0wNi0xNiAwMzowMjoxNQ==','2016-06-02 04:02:15',0,'serviciohermanosnaveda@gmail.com','serviciohermanosnaveda@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(50,40,'U2VydmlncnVhcyB2ZWxhemNvVi0yMTE3OTg4MzJKZXN1c3ZlbGF6Y29fN0Bob3RtYWlsLmNvbTAyLTA2LTE2IDAzOjMzOjU5','2016-06-02 04:33:59',0,'Jesusvelazco_7@hotmail.com','Jesusvelazco_7@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(51,41,'V2lsaWFtIE1hcnRpbmV6Vi0xNTU4OTM2Nzl3aWxsaWFtc29tYTA1QGdtYWlsLmNvbTAyLTA2LTE2IDAzOjM1OjI5','2016-06-02 04:35:29',0,'williamsoma05@gmail.com','williamsoma05@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(52,42,'SmVzw7pzIHZlbGF6Y29WLTIxMTc5ODgzLTJKZXN1c3ZlbGF6Y29fN0Bob3RtYWlsLmNvbTAyLTA2LTE2IDAzOjM1OjQz','2016-06-02 04:35:43',0,'Jesusvelazco_7@hotmail.com','Jesusvelazco_7@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(53,43,'RWR3aW4gYmF1dGVWLTE1NTQ1OTgzOWNvbnZpdmUtMTlAaG90bWFpbC5jb20wMi0wNi0xNiAwMzo0MTozNQ==','2016-06-02 04:41:35',0,'convive-19@hotmail.com','convive-19@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(54,44,'SmVzw7pzIHZlbGF6Y29WLTIxNzk4ODMtMkplc3VhdmVsYXpjb183QGhvdG1haWwuY29tMDItMDYtMTYgMDM6NDQ6MzI=','2016-06-02 04:44:32',0,'Jesuavelazco_7@hotmail.com','Jesuavelazco_7@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(55,45,'b3JsYW5kbyBwZXJlelYtMTE1Nzc2NTcxb3JsYW5kb2pvc2VwZXJlejQxQGdtYWlsLmNvbTAyLTA2LTE2IDA0OjMxOjM0','2016-06-02 05:31:34',0,'orlandojoseperez41@gmail.com','orlandojoseperez41@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(56,45,'b3JsYW5kbyBwZXJlelYtMTE1Nzc2NTcxb3JsYW5kb2pvc2VwZXJlejQxQGdtYWlsLmNvbTAyLTA2LTE2IDA0OjM1OjEw','2016-06-02 05:35:10',0,'orlandojoseperez41@gmail.com','orlandojoseperez41@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(57,46,'R2VyYXJkbyBqb3NlIGFsbWVpZGEgT3ZhbGxlc1YtMTY2ODA5NDRHZXJhcmRvamFsbWVpZGFAaG90bWFpbC5jb24wMi0wNi0xNiAwNTowNDo0Ng==','2016-06-02 06:04:46',0,'Gerardojalmeida@hotmail.con','Gerardojalmeida@hotmail.con','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(58,46,'R2VyYXJkbyBqb3NlIGFsbWVpZGEgT3ZhbGxlc1YtMTY2ODA5NDRHZXJhcmRvamFsbWVpZGFAaG90bWFpbC5jb20wMi0wNi0xNiAwNTowOToyNQ==','2016-06-02 06:09:25',0,'Gerardojalmeida@hotmail.com','Gerardojalmeida@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(59,46,'R2VyYXJkbyBqb3NlIGFsbWVpZGEgT3ZhbGxlc1YtMTY2ODA5NDRHZXJhcmRvamFsbWVpZGFAaG90bWFpbC5jb20wMi0wNi0xNiAwNToxMTo1MQ==','2016-06-02 06:11:51',0,'Gerardojalmeida@hotmail.com','Gerardojalmeida@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(60,46,'R2VyYXJkbyBqb3NlIGFsbWVpZGEgT3ZhbGxlc1YtMTY2ODA5NDRHZXJhcmRvamFsbWVpZGFAaG90bWFpbC5jb20wMi0wNi0xNiAwNToxODoyMQ==','2016-06-02 06:18:21',0,'Gerardojalmeida@hotmail.com','Gerardojalmeida@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(61,24,'WWhpdHpyYW5kZXIgc2VxdWVyYVYtMTM5OTA1NDAzeWhpdHphbmRlcnNlcXVlcmFAZ21haWwuY29tMDItMDYtMTYgMTE6Mjk6MDI=','2016-06-02 12:29:02',1,'yhitzandersequera@gmail.com','yhitzandersequera@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(62,47,'T1BFTUFMSSBHQVJBSkVWLTEyNjMwOTc1NW9wZW1hbGlfZ3J1YXNAaG90bWFpbC5jb20wMi0wNi0xNiAxMjoyMTowMg==','2016-06-02 13:21:02',0,'opemali_gruas@hotmail.com','opemali_gruas@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(63,48,'T1BFTUFMSSBHQVJBSkVWLTEyNjMwOTc1LTVvcGVtYWxpX2dydWFzQGhvdG1haWwuY29tMDItMDYtMTYgMTI6MjQ6NTk=','2016-06-02 13:24:59',0,'opemali_gruas@hotmail.com','opemali_gruas@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(64,33,'Sm9zZSBnYXJjaWFWLTE4NjcxODY3Sm9zZWdhcmNpYTczNzdAaG90bWFpbC5jb20wMi0wNi0xNiAxMjoyNToyNA==','2016-06-02 13:25:24',0,'Josegarcia7377@hotmail.com','Josegarcia7377@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(65,49,'TklMQ0FSMjAxNSxDLkEuSi00MDU4NjUyMDJwYXJhZGFzMjUxMEBob3RtYWlsLmNvbTAyLTA2LTE2IDEyOjI3OjU5','2016-06-02 13:27:59',0,'paradas2510@hotmail.com','paradas2510@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(66,49,'TklMQ0FSMjAxNSxDLkEuSi00MDU4NjUyMDJwYXJhZGFzMjUxMEBob3RtYWlsLmNvbTAyLTA2LTE2IDEyOjMxOjI5','2016-06-02 13:31:29',0,'paradas2510@hotmail.com','paradas2510@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(67,50,'QWxiZXJ0byBsb3BlelYtMTk1OTA1NjAtMkFsYmVydG9sb3BlejE4OUBob3RtYWlsLmNvbTAyLTA2LTE2IDEyOjQyOjI3','2016-06-02 13:42:27',0,'Albertolopez189@hotmail.com','Albertolopez189@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(68,51,'TklMQ0FSMjAxNSxDLkEuVi0xNTU4MDYzMHBhcmFkYXMyNTEwQGhvdG1haWwuY28wMi0wNi0xNiAxMjo0NDoxMw==','2016-06-02 13:44:13',0,'paradas2510@hotmail.co','paradas2510@hotmail.co','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(69,52,'TGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3Q2FsZTI5NzVAZ21haWwuY29tMDItMDYtMTYgMTI6NTE6MzE=','2016-06-02 13:51:31',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(70,53,'TGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVDYWxlMjk3NUBnbWFpbC5jb20wMi0wNi0xNiAxMjo1NTozMw==','2016-06-02 13:55:33',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(71,54,'SGVjdG9yIElydW1iYVYtMTM5NjIxODktOGFyaXNpcnVtYmFAZ21haWwuY29tMDItMDYtMTYgMTI6NTU6NDM=','2016-06-02 13:55:43',0,'arisirumba@gmail.com','arisirumba@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(72,52,'TGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3Q2FsZTI5NzVAR21haWwuY29tMDItMDYtMTYgMTI6NTk6MTg=','2016-06-02 13:59:18',0,'Cale2975@Gmail.com','Cale2975@Gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(73,55,'SmhvbmF0aGFuIGRpYXpWLTE0NDE3ODg5SmhvbmF0aGFuXzE0MTdAaG90bWFpbC5jb20wMi0wNi0xNiAwMTowMDozOA==','2016-06-02 14:00:38',0,'Jhonathan_1417@hotmail.com','Jhonathan_1417@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(74,56,'dHJhbnNwb3J0ZSB5IG1hbnRlbmltaWVudG9zIGdsb2JhbCBDLkFKLTQwNDIzNzg3OXRyYW5zcG9ydGV5bXR0b2dsb2JhbEBnbWFpbC5jb20wMi0wNi0xNiAwMTowNjoxNg==','2016-06-02 14:06:16',0,'transporteymttoglobal@gmail.com','transporteymttoglobal@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(75,18,'YWxleGlzIGdvbnphbGV6Vi00MDY0NjIwbHVpc2dvbnphbGV6c3VhcmV6MDAxODFAZ21haWwuY29tMDItMDYtMTYgMDE6MDc6Mjk=','2016-06-02 14:07:29',0,'luisgonzalezsuarez00181@gmail.com','luisgonzalezsuarez00181@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(76,53,'TGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVDYWxlMjk3NUBnbWFpbC5jb20wMi0wNi0xNiAwMToxMDoyNA==','2016-06-02 14:10:24',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(77,57,'c2VydmlncnVhcyBBbcOpcmljYW4gdHJ1Y2tWLTEzNzkwNTAxNWJldG84NTU0QGdtYWlsLmNvbTAyLTA2LTE2IDAxOjEyOjMx','2016-06-02 14:12:31',0,'beto8554@gmail.com','beto8554@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(78,58,'R1JVQVMgViZCVi12LTAzNDQyNzY1LXNhbHZhZG9ydmVnYXNfMDlAaG90bWFpbC5jb20wMi0wNi0xNiAwMToxMzo0Mg==','2016-06-02 14:13:42',0,'salvadorvegas_09@hotmail.com','salvadorvegas_09@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(79,59,'RW1pbGlpIGVzY2FsYW50ZVYtMTk1MjQ3MzMtOEVsZ29yZG9jYXJzQGhvdG1haWwuY29tMDItMDYtMTYgMDE6MTQ6MzI=','2016-06-02 14:14:32',0,'Elgordocars@hotmail.com','Elgordocars@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(80,60,'R1JVQVMgViZCVi0wMzQ0Mjc2NS00c2FsdmFkb3J2ZWdhc18wOUBob3RtYWlsLmNvbTAyLTA2LTE2IDAxOjIwOjU2','2016-06-02 14:20:56',0,'salvadorvegas_09@hotmail.com','salvadorvegas_09@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(81,60,'R1JVQVMgViZCVi0wMzQ0Mjc2NS00c2FsdmFkb3J2ZWdhc18wOUBob3RtYWlsLmNvbTAyLTA2LTE2IDAxOjIzOjIz','2016-06-02 14:23:23',0,'salvadorvegas_09@hotmail.com','salvadorvegas_09@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(82,61,'VFJBTlNQT1JURSBHVVZFSVJBVi1KLTI5NTYyNjY5LUpKSEVSTkFOREVaVE9SUkVBTEJBQGdtYWlsLmNvbTAyLTA2LTE2IDAxOjI1OjE0','2016-06-02 14:25:14',0,'JJHERNANDEZTORREALBA@gmail.com','JJHERNANDEZTORREALBA@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(83,28,'TWlndWVsIEJyYXZvVi05NTE5OTg3LTVlbF92YXF1ZXJvXzIwMDNAaG90bWFpbC5jb20wMi0wNi0xNiAwMToyNzo1NA==','2016-06-02 14:27:54',0,'el_vaquero_2003@hotmail.com','el_vaquero_2003@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(84,28,'TWlndWVsIEJyYXZvVi05NTE5OTg3LTVlbF92YXF1ZXJvXzIwMDNAaG90bWFpbC5jb20wMi0wNi0xNiAwMTozMTo0MA==','2016-06-02 14:31:40',0,'el_vaquero_2003@hotmail.com','el_vaquero_2003@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(85,62,'R3J1YXMgTG9zIEFuZ2VsZXMgUy5SLkwuSi0zMDk1MDM3MC03Z3J1YXNfbG9zX2FuZ2VsZXNAaG90bWFpbC5jb20wMi0wNi0xNiAwMTozNDozNA==','2016-06-02 14:34:34',0,'gruas_los_angeles@hotmail.com','gruas_los_angeles@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(86,27,'TWlndWVsIEJyYXZvVi0wOTUxOTk4Ny01ZWxfdmFxdWVyb18yMDAzQGhvdG1haWwuY29tMDItMDYtMTYgMDE6MzU6NDg=','2016-06-02 14:35:48',0,'el_vaquero_2003@hotmail.com','el_vaquero_2003@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(87,63,'bXVsdGlzZXJ2aWNpb3MgNG0gYy5hSi00MDcyNDQzNjFtdWx0aXNlcnZpY2lvczRtQGdtYWlsLmNvbTAyLTA2LTE2IDAxOjM3OjI2','2016-06-02 14:37:26',0,'multiservicios4m@gmail.com','multiservicios4m@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(88,48,'T1BFTUFMSSBHQVJBSkVWLTEyNjMwOTc1LTVvcGVtYWxpX2dydWFzQGhvdG1haWwuY29tMDItMDYtMTYgMDE6NDA6NTk=','2016-06-02 14:40:59',0,'opemali_gruas@hotmail.com','opemali_gruas@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(89,60,'R1JVQVMgViZCVi0wMzQ0Mjc2NS00c2FsdmFkb3J2ZWdhc18wOUBob3RtYWlsLmNvbTAyLTA2LTE2IDAxOjQxOjIz','2016-06-02 14:41:23',0,'salvadorvegas_09@hotmail.com','salvadorvegas_09@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(90,63,'bXVsdGlzZXJ2aWNpb3MgNG0gYy5hSi00MDcyNDQzNjFtdWx0aXNlcnZpY2lvczRtLmNhQGdtYWlsLmNvbTAyLTA2LTE2IDAxOjQyOjQz','2016-06-02 14:42:43',1,'multiservicios4m.ca@gmail.com','multiservicios4m.ca@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(91,18,'QWxleGlzIEdvbnphbGV6Vi00MDY0NjIwc2VydmlncnVhc251ZXZvc2lnbG94eGlAaG90bWFpbC5jb20wMi0wNi0xNiAwMTo0NDowMA==','2016-06-02 14:44:00',0,'servigruasnuevosigloxxi@hotmail.com','servigruasnuevosigloxxi@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(92,18,'QWxleGlzIEdvbnphbGV6Vi00MDY0NjIwc2VydmlncnVhc251ZXZvc2lnbG94eGlAaG90bWFpbC5jb20wMi0wNi0xNiAwMTo0ODowOA==','2016-06-02 14:48:08',0,'servigruasnuevosigloxxi@hotmail.com','servigruasnuevosigloxxi@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(93,18,'QWxleGlzIEdvbnphbGV6Vi00MDY0NjIwc2VydmlncnVhc251ZXZvc2lnbG94eGlAaG90bWFpbC5jb20wMi0wNi0xNiAwMTo1MzoyOQ==','2016-06-02 14:53:29',0,'servigruasnuevosigloxxi@hotmail.com','servigruasnuevosigloxxi@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(94,18,'QWxleGlzIEdvbnphbGV6Vi00MDY0NjIwc2VydmlncnVhc251ZXZvc2lnbG94eGlAaG90bWFpbC5jb20wMi0wNi0xNiAwMTo1NDoxNw==','2016-06-02 14:54:17',0,'servigruasnuevosigloxxi@hotmail.com','servigruasnuevosigloxxi@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(95,64,'amVzdXMgaGVybmFuZGV6Vi0xNTc5MDIyOWplc3Vzcmhlcm5hbmRlem1AaG90bWFpbC5jb20wMi0wNi0xNiAwMTo1OTo1Mw==','2016-06-02 14:59:53',0,'jesusrhernandezm@hotmail.com','jesusrhernandezm@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(96,18,'QWxleGlzIEdvbnphbGV6Vi00MDY0NjIwZmFubnlfMzk4QGhvdG1haWwuY29tMDItMDYtMTYgMDI6MDA6MDE=','2016-06-02 15:00:01',0,'fanny_398@hotmail.com','fanny_398@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(97,65,'b3N3YWxkbyBqb3PDqSBtYXJ0aW5lelYtMTg5MjIzNDQtM29tYXJ0aW5lenBlcmV6LjE5ODdAZ21haWwuY29tMDItMDYtMTYgMDI6MDY6NDE=','2016-06-02 15:06:41',0,'omartinezperez.1987@gmail.com','omartinezperez.1987@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(98,18,'QWxleGlzIEdvbnphbGV6Vi00MDY0NjIwbHVpc2dvbnphbGV6c3VhcmV6MDAxODFAZ21haWwuY29tMDItMDYtMTYgMDI6MDc6MzI=','2016-06-02 15:07:32',0,'luisgonzalezsuarez00181@gmail.com','luisgonzalezsuarez00181@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(99,53,'TGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVDYWxlMjk3NUBnbWFpbC5jb20wMi0wNi0xNiAwMjoxMDo0OQ==','2016-06-02 15:10:49',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(100,66,'c2F1bFYtMTQwNDY1NzBzYXVsc2NfQEhvdG1haWwuY29tMDItMDYtMTYgMDI6MTM6NDk=','2016-06-02 15:13:49',0,'saulsc_@Hotmail.com','saulsc_@Hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(101,49,'TklMQ0FSMjAxNSxDLkEuSi00MDU4NjUyMDJwYXJhZGFzMjUxMEBob3RtYWlsLmNvbTAyLTA2LTE2IDAyOjE0OjA3','2016-06-02 15:14:07',0,'paradas2510@hotmail.com','paradas2510@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(102,53,'TGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVDYWxlMjk3NUBnbWFpbC5jb20wMi0wNi0xNiAwMjoxOTo1MQ==','2016-06-02 15:19:51',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(103,49,'TklMQ0FSMjAxNSxDLkEuSi00MDU4NjUyMDJwYXJhZGFzMjUxMEBob3RtYWlsLmNvbTAyLTA2LTE2IDAyOjI1OjE3','2016-06-02 15:25:17',0,'paradas2510@hotmail.com','paradas2510@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(104,67,'UG9saWdydWEjNzE0Y2FyYWJvYm9WLTE5NDExMzk1RWxndWF2aV8xNkBob3RtYWlsLmNvbTAyLTA2LTE2IDAyOjMyOjQ4','2016-06-02 15:32:48',0,'Elguavi_16@hotmail.com','Elguavi_16@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(105,60,'R1JVQVMgViZCVi0wMzQ0Mjc2NS00c2FsdmFkb3J2ZWdhc18wOUBob3RtYWlsLmNvbTAyLTA2LTE2IDAyOjQ4OjUx','2016-06-02 15:48:51',0,'salvadorvegas_09@hotmail.com','salvadorvegas_09@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(106,68,'T3NtYXJsaW4gSm9zZSBHdXRpZXJyZXogR2FyY2lhVi05OTY5MjQ1bWFnZ3k4NDU4MDQ3QGhvdG1haWwuY29tMDItMDYtMTYgMDI6NTI6NTc=','2016-06-02 15:52:57',0,'maggy8458047@hotmail.com','maggy8458047@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(107,68,'T3NtYXJsaW4gSm9zZSBHdXRpZXJyZXogR2FyY2lhVi05OTY5MjQ1bWFnZ3k4NDU4MDQ3QGhvdG1haWwuY29tMDItMDYtMTYgMDI6NTk6MTc=','2016-06-02 15:59:17',0,'maggy8458047@hotmail.com','maggy8458047@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(108,69,'TXVsdGlzZXJ2aWNpb3MgZWwgQnVxdWUsIEMuQS5WLWotNDA2MTgzOTQ2c2FuY2hlczc3NzdAaG90bWFpbC5jb20wMi0wNi0xNiAwMzowMDoyMw==','2016-06-02 16:00:23',0,'sanches7777@hotmail.com','sanches7777@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(109,70,'ZWRpY3NvbiBmbG9yZXNWLTcxNDQ5ODRlZGljc29uMjAwMEBnbWFpbC5jb20wMi0wNi0xNiAwMzowMzo0NA==','2016-06-02 16:03:44',0,'edicson2000@gmail.com','edicson2000@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(110,54,'SGVjdG9yIElydW1iYVYtMTM5NjIxODktOGFyaXNpcnVtYmFAZ21haWwuY29tMDItMDYtMTYgMDM6MTA6MzQ=','2016-06-02 16:10:34',0,'arisirumba@gmail.com','arisirumba@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(111,69,'TXVsdGlzZXJ2aWNpb3MgRWwgQnVxdWUsIEMuQS5WLWotNDA2MTgzOTQ2c2FuY2hlczc3NzdAaG90bWFpbC5jb20wMi0wNi0xNiAwMzoxODozNw==','2016-06-02 16:18:37',0,'sanches7777@hotmail.com','sanches7777@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(112,71,'QW5kcmVzIGNhbWVyb25WLTIwODU5Nzk5QW5kcmVzX2NhbWVyb24xMTFAaG90bWFpbC5jb20wMi0wNi0xNiAwMzoyNDowMg==','2016-06-02 16:24:02',0,'Andres_cameron111@hotmail.com','Andres_cameron111@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(113,49,'TklMQ0FSMjAxNSxDLkEuSi00MDU4NjUyMDJwYXJhZGFzMjUxMEBob3RtYWlsLmNvbTAyLTA2LTE2IDAzOjI0OjEx','2016-06-02 16:24:11',0,'paradas2510@hotmail.com','paradas2510@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(114,31,'Tml4b24gb3N1bmFWLTE2NzQxNjgxU2VydmlncnVhc2VsbW9jaG9AeWFob28uY29tMDItMDYtMTYgMDM6MjQ6Mjc=','2016-06-02 16:24:27',0,'Servigruaselmocho@yahoo.com','Servigruaselmocho@yahoo.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(115,72,'UmV5a2FyIFJvZHJpcXVlelYtMTY1MjE0NjBzYW5jaGVzNzc3N0Bob3RtYWlsLmNvbTAyLTA2LTE2IDAzOjI1OjI2','2016-06-02 16:25:26',0,'sanches7777@hotmail.com','sanches7777@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(116,31,'Tml4b24gb3N1bmFWLTE2NzQxNjgxU2VydmlncnVhc2VsbW9jaG9AeWFob28uY29tMDItMDYtMTYgMDM6Mjc6NDQ=','2016-06-02 16:27:44',0,'Servigruaselmocho@yahoo.com','Servigruaselmocho@yahoo.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(117,49,'TmlsY2FyMjAxNSxDLkEuSi00MDU4NjUyMDJwYXJhZGFzMjUxMEBob3RtYWlsLmNvbTAyLTA2LTE2IDAzOjMxOjUw','2016-06-02 16:31:50',0,'paradas2510@hotmail.com','paradas2510@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(118,28,'TWlndWVsIGJyYXZvVi05NTE5OTg3LTVlbF92YXF1ZXJvXzIwMDNAaG90bWFpbC5jb20wMi0wNi0xNiAwMzo0MToyOA==','2016-06-02 16:41:28',0,'el_vaquero_2003@hotmail.com','el_vaquero_2003@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(119,71,'QW5kcmVzIGNhbWVyb25WLTIwODU5Nzk5QW5kcmVhY2FtZXJvbjExMTFAZ21haWwuY29tMDItMDYtMTYgMDM6NDk6MDQ=','2016-06-02 16:49:04',0,'Andreacameron1111@gmail.com','Andreacameron1111@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(120,28,'TWlndWVsIGJyYXZvVi05NTE5OTg3LTVtYjQyMjY1NUBnbWFpbC5jb20wMi0wNi0xNiAwMzo1NDozNQ==','2016-06-02 16:54:35',0,'mb422655@gmail.com','mb422655@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(121,73,'amVhbiBDYXJsb3MgZ3V0aWVycmV6Vi0yMDUzOTMxMmdqZWFuMDVjYXJsb3MwN0BnbWFpbC5jb20wMi0wNi0xNiAwMzo1NjoyNg==','2016-06-02 16:56:26',0,'gjean05carlos07@gmail.com','gjean05carlos07@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(122,28,'TWlndWVsIGJyYXZvVi05NTE5OTg3LTVtYjQyMjY1NUBnbWFpbC5jb20wMi0wNi0xNiAwMzo1NzowOA==','2016-06-02 16:57:08',0,'mb422655@gmail.com','mb422655@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(123,74,'c2VydmlncnVhcyBqb2FsdmVyVi0xNDQ4MDg0MTZlbHJyYWthdGFAZ21haWwuY29tMDItMDYtMTYgMDM6NTk6MDg=','2016-06-02 16:59:08',0,'elrrakata@gmail.com','elrrakata@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(124,74,'am9hbHZlclYtMTQ0ODA4NDE2ZWxycmFrYXRhQGdtYWlsLmNvbTAyLTA2LTE2IDA0OjIxOjE5','2016-06-02 17:21:19',0,'elrrakata@gmail.com','elrrakata@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(125,71,'QW5kcmVzIGNhbWVyb25WLTIwODU5Nzk5QW5kcmVhY2FtZXJvbjExMTFAZ21haWwuY29tMDItMDYtMTYgMDU6MDk6MDk=','2016-06-02 18:09:09',0,'Andreacameron1111@gmail.com','Andreacameron1111@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(126,28,'TWlndWVsIGJyYXZvVi05NTE5OTg3LTVtYjQyMjY1NUBnbWFpbC5jb20wMi0wNi0xNiAwNToyMjo1Nw==','2016-06-02 18:22:57',0,'mb422655@gmail.com','mb422655@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(127,75,'TGVvbmFyZG8gY2FycmFzY29WLVYxMjQzMjI5N0NhbGUyOTc1QGdtYWlsLmNvbTAzLTA2LTE2IDEyOjIxOjE0','2016-06-03 13:21:14',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(128,53,'TGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVDYWxlMjk3NUBnbWFpbC5jb20wMy0wNi0xNiAwMjowMzoyMg==','2016-06-03 15:03:22',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(129,76,'am9zZSBoZXJuYW5kZXogcm9qbyBxVi0xNDA2MDU2NiA5cWNoZW9AaG90bWFpbC5jb20wMy0wNi0xNiAwNToyMToxMg==','2016-06-03 18:21:12',0,'qcheo@hotmail.com','qcheo@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(130,77,'am9zZSBoZXJuYW5kZXogcm9qbyBxVi0xNDA2MDU2NjlxY2hlb0Bob3RtYWlsLmNvbTAzLTA2LTE2IDA1OjI0OjU0','2016-06-03 18:24:54',0,'qcheo@hotmail.com','qcheo@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(131,28,'TWlndWVsIGJyYXZvVi05NTE5OTg3LTVtYjQyMjY1NUBnbWFpbC5jb20wMy0wNi0xNiAwOTo1ODo0MQ==','2016-06-03 22:58:41',0,'mb422655@gmail.com','mb422655@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(132,78,'UmF1bCBzZWdvdmlhVi1WLTE0NDM4MDUyMVJhdWxpdG9zZWdvdmlhQGhvdG1haWwuY29tMDQtMDYtMTYgMDI6MTI6MjM=','2016-06-04 03:12:23',0,'Raulitosegovia@hotmail.com','Raulitosegovia@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(133,79,'TGVvbmFyZG8gY2FycmFzY29WLVYtMTI0MzIyOTc1Q2FsZTI5NzVAZ21haWwuY29tMDYtMDYtMTYgMTE6NTE6MTQ=','2016-06-06 12:51:14',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(134,53,'bGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVjYWxlMjk3NUBnbWFpbC5jb20wOC0wNi0xNiAwNzo0MTozOA==','2016-06-08 20:41:31',0,'cale2975@gmail.com','cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(135,53,'bGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVjYWxlMjk3NUBnbWFpbC5jb20wOS0wNi0xNiAwMjo0MzoyOA==','2016-06-09 03:43:26',0,'cale2975@gmail.com','cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(136,53,'bGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVsZW9fYW50b25pbzI5N0Bob3RtYWlsLmNvbTA5LTA2LTE2IDAzOjI4OjU5','2016-06-09 04:28:59',0,'leo_antonio297@hotmail.com','leo_antonio297@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(137,53,'bGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVjYWxlMjk3NUBnbWFpbC5jb20wOS0wNi0xNiAwMzo1MTo1MA==','2016-06-09 04:51:50',0,'cale2975@gmail.com','cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(138,53,'TGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVDYWxlMjk3NUBnbWFpbC5jb20wOS0wNi0xNiAwNDowMDozNQ==','2016-06-09 05:00:35',0,'Cale2975@gmail.com','Cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(139,53,'bGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVjYWxlMjk3NUBnbWFpbC5jb20wOS0wNi0xNiAwMjo1NjoyNg==','2016-06-09 15:56:26',0,'cale2975@gmail.com','cale2975@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(140,80,'c2F1bFYtMTQwNDY1NzAtMHNhdWxzY19AaG90bWFpbC5jb20xMC0wNi0xNiAxMjoxODoxMA==','2016-06-10 01:18:10',0,'saulsc_@hotmail.com','saulsc_@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(141,53,'bGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVjYWxlQGdtYWlsLmNvbTEwLTA2LTE2IDA4OjA2OjM0','2016-06-10 21:06:33',0,'cale@gmail.com','cale@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(142,53,'bGVvbmFyZG8gY2FycmFzY29WLTEyNDMyMjk3LTVjYWxlQGdtYWlsLmNvbTEwLTA2LTE2IDA4OjE3OjM3','2016-06-10 21:17:37',0,'cale@gmail.com','cale@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(143,5,'UGFuZmlsb1YtMTk5MDEwNjhHb2Nob3NhbmFicmlhQGdtYWlsLmNvbTEzLTA2LTE2IDA4OjE4OjEw','2016-06-13 21:18:05',0,'Gochosanabria@gmail.com','Gochosanabria@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(144,5,'UGFuZmlsb1YtMTk5MDEwNjhHb2Nob3NhbmFicmlhQGdtYWlsLmNvbTEzLTA2LTE2IDA4OjMzOjQ4','2016-06-13 21:33:48',0,'Gochosanabria@gmail.com','Gochosanabria@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(145,81,'b3JsYW5kbyBwZXJlelYtMTU3NzY1NzFvcmxhbmRvam9zZXBlcmV6QEdtYWlsLmNvbTE1LTA2LTE2IDEyOjE4OjI3','2016-06-15 13:18:26',0,'orlandojoseperez@Gmail.com','orlandojoseperez@Gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(146,82,'dHJhbnNwb3J0ZSB3aWxzb24gMjU4NCBjLmEuVi1qLTQwNjY5MTM0OHRyYW5zcG9ydGV3aWxzb24yNTg0QGdtYWlsLmNvbTE1LTA2LTE2IDEwOjQ5OjQ3','2016-06-15 23:49:47',0,'transportewilson2584@gmail.com','transportewilson2584@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(147,83,'U0VSVklHUlVBUyBQScORQU5HT1YtMTMyMjg1MzJkanBpbmFuZ29AZ21haWwuY29tMTgtMDYtMTYgMTE6MDA6MzA=','2016-06-19 00:00:29',0,'djpinango@gmail.com','djpinango@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(148,84,'TWFyY29zVi0xODAyMDU5NGRlYW5kcmFkZW1hcmNvc0BnbWFpbC5jb20yNi0wNi0xNiAwMjo0ODozNQ==','2016-06-26 15:48:35',0,'deandrademarcos@gmail.com','deandrademarcos@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(149,85,'bWFyY29zVi0xODAyMDU5MGRlYW5kcmFkZW1hcmNvc0BnbWFpbC5jb20yNi0wNi0xNiAwNDoxMzowOA==','2016-06-26 17:13:08',0,'deandrademarcos@gmail.com','deandrademarcos@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(150,85,'TUFSQ09TVi0xODAyMDU5MGRlYW5kcmFkZW1hcmNvc0BnbWFpbC5jb20yNi0wNi0xNiAwNDo1MToyMQ==','2016-06-26 17:51:21',1,'deandrademarcos@gmail.com','deandrademarcos@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(151,86,'VHJhbnNwb3J0ZXMgeSBzZXJ2aWNpbyBlbCBhcmNhIGRlIG5vZSBjLmFKLTQwNTMyMzA0M0ludHJhX2FyY2Ffbm9lQG91dGxvb2suY29tMTItMDctMTYgMDE6MTU6MTE=','2016-07-12 14:15:11',0,'Intra_arca_noe@outlook.com','Intra_arca_noe@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(152,87,'UGVkcm8gY29sbWVuYXJlelYtMjEwNTQ4NjA5cGVkcm9jb2wxOTkwQGhvbWFpbC5jb20xNi0wNy0xNiAxMDoxMDowNA==','2016-07-16 23:10:04',0,'pedrocol1990@homail.com','pedrocol1990@homail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(153,88,'Qm9yaXMgQmF1dGlzdGFWLTA5NDYyNjczYm9yaXM2OEBob3RtYWlsLmNvbTIxLTA3LTE2IDEyOjQwOjU5','2016-07-21 01:40:59',0,'boris68@hotmail.com','boris68@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(154,88,'Qm9yaXMgQmF1dGlzdGFWLTA5NDYyNjczYm9yaXM2OEBob3RtYWlsLmNvbTIxLTA3LTE2IDAyOjAwOjE5','2016-07-21 03:00:19',1,'boris68@hotmail.com','boris68@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(155,89,'SGVjdG9yIFJvc2FzVi0xODg4NTczMmhlY3Rvcl9yb3NhczY2QGhvdG1haWwuY29tMjItMDctMTYgMDI6NDY6MTY=','2016-07-22 15:46:16',0,'hector_rosas66@hotmail.com','hector_rosas66@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(156,90,'RmVybmFuZG8gYmxhbmNvVi0xNjg2OTcwNWZlcmplbTk5QGhvdG1haWwuY29tMjUtMDctMTYgMDc6MTc6NDU=','2016-07-25 20:17:45',0,'ferjem99@hotmail.com','ferjem99@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(157,91,'UmljaGFyZCBVcmliZVYtMTUxNTYwMTRyaWNoYXJkX29ybGFuZG91cmliZUBob3RtYWlsLmNvbTMwLTA3LTE2IDA5OjQ5OjA4','2016-07-30 22:49:08',0,'richard_orlandouribe@hotmail.com','richard_orlandouribe@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(158,92,'TXVsdGlzZXZpY2lvIGF1dG9tb3RyaXogcml2aSBjLmFKLTQwMTA1ODg2LThSaWNoYXJkX29ybGFuZG91cmliZUBob3RtYWlsLmNvbTMxLTA3LTE2IDAzOjU4OjE3','2016-07-31 16:58:17',1,'Richard_orlandouribe@hotmail.com','Richard_orlandouribe@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(159,93,'Um9zYWxlc0dydWFzIHkgTXVsdGlzZXJ2aWNpb3MgZi5wVi0xNzI2NzkxNi04Z2VyYXJzbGFAaG90bWFpbC5jb20wMi0wOC0xNiAwMzo0OToyOQ==','2016-08-02 16:49:29',0,'gerarsla@hotmail.com','gerarsla@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(160,94,'Sm9zw6kgUMOpcmV6Vi05MDI4NTA2am9zZXBlcmV6cmF1bEBnbWFpbC5jb20wNi0wOC0xNiAxMDozOTo0Mg==','2016-08-06 23:39:42',0,'joseperezraul@gmail.com','joseperezraul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(161,94,'Sm9zw6kgUMOpcmV6Vi05MDI4NTA2am9zZXBlcmV6cmF1bEBnbWFpbC5jb20wNi0wOC0xNiAxMDo0MjowMw==','2016-08-06 23:42:03',0,'joseperezraul@gmail.com','joseperezraul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(162,95,'Sm9zw6kgUMOpcmV6Vi1WLSA5MDI4NTA2am9zZXBlcmV6cmF1bEBnbWFpbC5jb20wNi0wOC0xNiAxMDo0NDowNw==','2016-08-06 23:44:07',0,'joseperezraul@gmail.com','joseperezraul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(163,94,'Sm9zw6kgUMOpcmV6Vi05MDI4NTA2am9zZXBlcmV6cmF1bEBnbWFpbC5jb20wNi0wOC0xNiAxMDo0ODo0Mw==','2016-08-06 23:48:43',0,'joseperezraul@gmail.com','joseperezraul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(164,94,'Sm9zw6kgUMOpcmV6Vi05MDI4NTA2am9zZXBlcmV6cmF1bEBnbWFpbC5jb20wNi0wOC0xNiAxMDo1MDoyMw==','2016-08-06 23:50:23',0,'joseperezraul@gmail.com','joseperezraul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(165,96,'YWxmcmVkeXMgc2FuY2hlelYtMTg2Mjk3NzFhbGZyZWQ3ODdAaG90bWFpbC5jb20xMS0wOC0xNiAwMjo0ODoyNA==','2016-08-11 03:48:24',0,'alfred787@hotmail.com','alfred787@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(166,53,'TGVvbmFyZG8gQ2FycmFzY29WLTEyNDMyMjk3LTVMZW9fYW50b25pbzI5N0Bob3RtYWlsLmNvbTEzLTA4LTE2IDEyOjI5OjU1','2016-08-13 01:29:55',0,'Leo_antonio297@hotmail.com','Leo_antonio297@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(167,97,'amVzdXMgaGVybmFuZGV6Vi0xNTc5MDIyOS0yamVzdXNyaGVybmFuZGV6bUBob3RtYWlsLmNvbTEzLTA4LTE2IDA5OjA3OjU1','2016-08-13 22:07:55',0,'jesusrhernandezm@hotmail.com','jesusrhernandezm@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(168,98,'RnJhbmNpc2NvIEphdmllciBBcmFxdWUgRXNjYWxvbmFWLTE3MjM5ODE1amF2aWVyMjk2N0Bob3RtYWlsLmNvbTEzLTA4LTE2IDExOjMzOjM0','2016-08-14 00:33:34',0,'javier2967@hotmail.com','javier2967@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(169,99,'YW50aG9ueSBwZXJlelYtMTg5MjE5OTY5YW50aG9ueTE4OTIxOTk2QEdtYWlsLmNvbTE2LTA4LTE2IDAyOjI0OjQy','2016-08-16 15:24:42',0,'anthony18921996@Gmail.com','anthony18921996@Gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(170,100,'ZWRnYXIgc2lsdmFWLTE3NTg4Njg5ZWFsZWphbmRybzhAaG90bWFpbC5jb20xNy0wOC0xNiAwNDo1OTo1Nw==','2016-08-17 17:59:57',0,'ealejandro8@hotmail.com','ealejandro8@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(171,101,'T1JJRU5UQUwgSU5WRVJTSU9ORVMsIEMuQUotNDAzNDkxMjgtM29yaWVudGFsaW52ZXJzaW9uZXNAb3V0bG9vay5jb20yNi0wOC0xNiAxMTo1MDoyMA==','2016-08-27 00:50:20',0,'orientalinversiones@outlook.com','orientalinversiones@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(172,102,'bXVsdGlzZXJ2aWNpb3Mgcm9zbWVyVi0xMzk3MTI0N184cm9zbWVyX3Jvc2VuZG8yMUBob3RtYWlsLmNvbTI3LTA4LTE2IDEyOjM2OjEw','2016-08-27 01:36:10',1,'rosmer_rosendo21@hotmail.com','rosmer_rosendo21@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(173,103,'aXZhbiBjYW1wb3NWLTExMDEyODAwaXZhbmNhbXBvc0BnbWFpbC5jb20wMi0wOS0xNiAwNToxNzo1Mw==','2016-09-02 18:17:53',0,'ivancampos@gmail.com','ivancampos@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(174,104,'Y2lybyBzYWxhemFyVi0yMDI3NTI1OXNlcnZpZ3J1YXNsYXp1bGlhbml0YUBob3RtYWlsLmNvbTAyLTA5LTE2IDA2OjUxOjMz','2016-09-02 19:51:33',0,'servigruaslazulianita@hotmail.com','servigruaslazulianita@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(175,105,'U0VSVklHUlVBUyBMQSBaVUxJQU5JVEEsIEMuQUotNDAzODM3NDY1c2VydmlncnVhc2xhenVsaWFuaXRhQGhvdG1haWwuY29tMDMtMDktMTYgMDE6Mjc6NDQ=','2016-09-03 02:27:44',0,'servigruaslazulianita@hotmail.com','servigruaslazulianita@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(176,106,'Sm9zZSBRdWludGVyb1YtODY4OTQ2N2phcWFxdWludGVyb0BnbWFpbC5jb20wMy0wOS0xNiAxMDo0ODo1NQ==','2016-09-03 23:48:55',0,'jaqaquintero@gmail.com','jaqaquintero@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(177,107,'Uk9HRVIgQyBNT1JFTk9WLTA0OTE0ODg1LTlST0dFUkNFRkVSSU5PMTk1NUBHTUFJTC5DT00wNy0wOS0xNiAwMjowODoyNQ==','2016-09-07 03:08:25',0,'ROGERCEFERINO1955@GMAIL.COM','ROGERCEFERINO1955@GMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(178,108,'Uk9HRVIgQ0VGRVJJTk9WLTQ5MTQ4ODVST0dFUkNFRkVSSU5PMTk1NUBHTUFJTC5DT00wOC0wOS0xNiAwNzo0NTo0NQ==','2016-09-08 20:45:45',0,'ROGERCEFERINO1955@GMAIL.COM','ROGERCEFERINO1955@GMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(179,109,'THVpcyBBbGJlcnRvIEZlcnJlclYtOTk1NTU0MEFsYmVydG9sdWlzZmVycmVyQGhvdG1haWwuY29tMTAtMDktMTYgMDg6MTQ6Mzg=','2016-09-10 21:14:38',0,'Albertoluisferrer@hotmail.com','Albertoluisferrer@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(180,109,'THVpcyBBbGJlcnRvIEZlcnJlclYtOTk1NTU0MEFsYmVydG9sdWlzZmVycmVyQGhvdG1haWwuY29tMTAtMDktMTYgMDg6MTg6MTU=','2016-09-10 21:18:15',0,'Albertoluisferrer@hotmail.com','Albertoluisferrer@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(181,109,'THVpcyBBbGJlcnRvIEZlcnJlclYtOTk1NTU0MEFsYmVydG9sdWlzZmVycmVyQGhvdG1haWwuY29tMTAtMDktMTYgMDk6MjQ6MDA=','2016-09-10 22:24:00',0,'Albertoluisferrer@hotmail.com','Albertoluisferrer@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(182,109,'THVpcyBBbGJlcnRvIEZlcnJlclYtOTk1NTU0MEFsYmVydG9sdWlzZmVycmVyQGhvdG1haWwuY29tMTEtMDktMTYgMDE6NDA6MDc=','2016-09-11 14:40:07',0,'Albertoluisferrer@hotmail.com','Albertoluisferrer@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(183,109,'THVpcyBBbGJlcnRvIEZlcnJlclYtOTk1NTU0MEFsYmVydG9sdWlzZmVycmVyQGhvdG1haWwuY29tMTItMDktMTYgMTI6MDU6MjE=','2016-09-12 01:05:21',0,'Albertoluisferrer@hotmail.com','Albertoluisferrer@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(184,110,'Sm9zw6kgUmHDumwgUMOpcmV6Vi0wOTAyODUwNi00Sm9zZXBlcmV6cmF1bEBnbWFpbC5jb20xMy0wOS0xNiAxMjowODo0OA==','2016-09-13 01:08:48',0,'Joseperezraul@gmail.com','Joseperezraul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(185,111,'cmFtb24gbm9ndWVyYVYtODA4ODU4NGVuZGVyX25vZ3VlcmFfMjAxM0Bob3RtYWlsLmNvbTE4LTA5LTE2IDExOjQ2OjQ1','2016-09-19 00:46:45',0,'ender_noguera_2013@hotmail.com','ender_noguera_2013@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(186,112,'YXJnZW5pcyBhdmVuZGHDsW9WLTIzNTQyMzAxQXJnZW5pc2NvbnRyZXJhczIxMDNAaG90bWFpbC5jb20xOS0wOS0xNiAwMTowODo1MA==','2016-09-19 02:08:50',0,'Argeniscontreras2103@hotmail.com','Argeniscontreras2103@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(187,113,'YWxiZXJ0byByb3NlbmRvVi0xODQyMTczNGFsYmVydG8tcm9zZW5kbzIzQGhvdG1haWwuY29tMTktMDktMTYgMDg6NDA6Mzg=','2016-09-19 21:40:38',0,'alberto-rosendo23@hotmail.com','alberto-rosendo23@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(188,114,'U2VydmljaW9zIHkgVHJhbnNwb3J0ZSBTZXRyYWNhciBDQVYtajI5MzY2NjY1LTFzZXRyYWNhci4xQGdtYWlsLmNvbTIxLTA5LTE2IDAxOjEzOjQ4','2016-09-21 02:13:47',0,'setracar.1@gmail.com','setracar.1@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(189,115,'U2VydmljaW9zIHkgVHJhbnNwb3J0ZSBTZXRyYWNhciBDQUotMjkzNjY2NjUtMXNldHJhY2FyLjFAZ21haWwuY29tMjEtMDktMTYgMDE6MTc6MDM=','2016-09-21 02:17:03',0,'setracar.1@gmail.com','setracar.1@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(190,116,'c2VydmljaW9zIHkgdHJhbnNwb3J0ZSBzZXRyYWNhciBDLkFWLWoyOTM2NjY2NTFzZXRyYWNhci4xQGdtYWlsLmNvbTIxLTA5LTE2IDAzOjE0OjEx','2016-09-21 04:14:11',0,'setracar.1@gmail.com','setracar.1@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(191,116,'c2VydmljaW9zIHkgdHJhbnNwb3J0ZSBzZXRyYWNhciBDLkFWLWoyOTM2NjY2NTFzZXRyYWNhci4xQGdtYWlsLmNvbTIxLTA5LTE2IDExOjAzOjQ3','2016-09-22 00:03:47',0,'setracar.1@gmail.com','setracar.1@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(192,116,'U0VSVklDSU9TIFkgVFJBTlNQT1JURSBTRVRSQUNBUiBDLkFWLUoyOTM2NjY2NTFzZXRyYWNhci4xQGdtYWlsLmNvbTIzLTA5LTE2IDAxOjIyOjQw','2016-09-23 02:22:40',0,'setracar.1@gmail.com','setracar.1@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(193,117,'SGVucnJ5IG9tYXIgZ3VlcnJlcm8gbWVkaW5hIG11bHRpc2VydmljaW9zIGhnVi0xMTk3NTA3NDhtdWx0aXNlcnZpY2lvc19oZ0Bob3RtYWlsLmNvbTI3LTA5LTE2IDExOjI2OjIz','2016-09-27 12:26:23',0,'multiservicios_hg@hotmail.com','multiservicios_hg@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(194,118,'RG9taW5nbyBKb3PDqSBUaW5lb1YtMTM4NDgwMzRkb21pbmdvam9zZXRpbmVvQEdtYWlsLmNvbTI3LTA5LTE2IDEwOjU2OjQx','2016-09-27 23:56:41',0,'domingojosetineo@Gmail.com','domingojosetineo@Gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(195,119,'SkFSUlkgTU9SRU5PVi1WLTEzNjg2Njc1MEpBUlJZTU9SRU5PVkVSR0FSQUBHTUFJTC5DT00wMy0xMC0xNiAwNDozNDoyMw==','2016-10-03 17:34:23',0,'JARRYMORENOVERGARA@GMAIL.COM','JARRYMORENOVERGARA@GMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(196,120,'bHVpcyBhbGJlcnRvSi00MDUwNDMzNzdTRVJWSVNHUlVBU0pIT05PU09SSU9DQUBHTUFJTC5DT00xMS0xMC0xNiAwNDozNzowMw==','2016-10-11 17:37:03',0,'SERVISGRUASJHONOSORIOCA@GMAIL.COM','SERVISGRUASJHONOSORIOCA@GMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(197,121,'RXJ3aW4gY29saW5hVi0xNTU1ODk1MS0xRXNjdWRlcmlhXzE5ODNAaG90bWFpbC5jb20xOC0xMC0xNiAwNjoxMzoyOA==','2016-10-18 07:13:28',0,'Escuderia_1983@hotmail.com','Escuderia_1983@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(198,121,'RXJ3aW5WLTE1NTU4OTUxLTFFc2N1ZGVyaWFfMTk4M0Bob3RtYWlsLmNvbjE4LTEwLTE2IDA2OjE2OjM4','2016-10-18 07:16:38',0,'Escuderia_1983@hotmail.con','Escuderia_1983@hotmail.con','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(199,121,'RXJ3aW5WLTE1NTU4OTUxLTFFc2N1ZGVyaWFfMTk4M0Bob3RtYWlsLmNvbTE4LTEwLTE2IDA2OjE4OjQ3','2016-10-18 07:18:47',0,'Escuderia_1983@hotmail.com','Escuderia_1983@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(200,122,'R2VpZGVtYW4gTG9wZXpWLTExMjEzMDU0Z2VpZGVtYW5sQGhvdG1haWwuY29tMTgtMTAtMTYgMDk6MzI6NTU=','2016-10-18 22:32:55',0,'geidemanl@hotmail.com','geidemanl@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(201,123,'VHJhbnNwb3J0ZSBwaXZpamF5IEMuQVYtSjQwMDU2MjEyLTBUcmFuc3BpdmlqYXlAZ2VtYWlsLmNvbTIyLTEwLTE2IDA5OjMwOjU0','2016-10-22 22:30:54',0,'Transpivijay@gemail.com','Transpivijay@gemail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(202,124,'VHJhbnBvcnRlIHBpdmlqYXkgQy5BVi1KNDAwNTYyMTIwVHJhbnNwaXZpamF5QGdlbWFpbC5jb20yMi0xMC0xNiAwOTozNTozOA==','2016-10-22 22:35:38',0,'Transpivijay@gemail.com','Transpivijay@gemail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(203,125,'R3VzdGF2byBHdWFuaXBhVi0xNjk0OTAyOC0zZ3J1YXNndWFuaXBhQGhvdG1haWwuY29tMjMtMTAtMTYgMDk6MTI6MjI=','2016-10-23 10:12:22',0,'gruasguanipa@hotmail.com','gruasguanipa@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(204,125,'Z3VzdGF2byBndWFuaXBhVi0xNjk0OTAyOC0zZ3J1YXNndWFudXBhQGhvdG1haWwuY29tMjMtMTAtMTYgMDk6MTU6NDY=','2016-10-23 10:15:46',0,'gruasguanupa@hotmail.com','gruasguanupa@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(205,125,'R1VTVEFWTyBHVUFOSVBBVi0xNjk0OTAyOC0zZ3J1YXNndWFuaXBhQGhvdG1haWwuY29tMjMtMTAtMTYgMDk6MTc6MTk=','2016-10-23 10:17:19',0,'gruasguanipa@hotmail.com','gruasguanipa@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(206,126,'Z3J1YXMgZG9uIGlzaWRyb1YtdjE0NDM4Mzg0OWxhbmRlcl9zYWxjZWRvQGhvdG1haWwuY29tMjYtMTAtMTYgMTI6NTI6NTk=','2016-10-26 13:52:59',0,'lander_salcedo@hotmail.com','lander_salcedo@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(207,127,'R3VzdGF2byBHdWFuaXBhVi0xNjk0OTAyOEdSVUFTR1VBTklQQUBIT1RNQUlMLkNPTTI2LTEwLTE2IDA1OjU2OjA3','2016-10-26 18:56:07',1,'GRUASGUANIPA@HOTMAIL.COM','GRUASGUANIPA@HOTMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(208,127,'R1VTVEFWTyBHVUFOSVBBVi0xNjk0OTAyOGdydWFzZ3VhbmlwYUBob3RtYWlsLmNvbTI2LTEwLTE2IDA2OjAyOjEw','2016-10-26 19:02:10',0,'gruasguanipa@hotmail.com','gruasguanipa@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(209,128,'RW5ncmlkIHBpbmVkYVYtMTQ3NTk0MzItOGVuZ3JpZGdAaG90bWFpbC5jb20yNy0xMC0xNiAwMzoxNzo1Mg==','2016-10-27 16:17:52',0,'engridg@hotmail.com','engridg@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(210,128,'RW5ncmlkIFBpbmVkYVYtMTQ3NTk0MzItOEVuZ3JpZGdAaG90bWFpbC5jb20yNy0xMC0xNiAwMzozNDoxMA==','2016-10-27 16:34:10',0,'Engridg@hotmail.com','Engridg@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(211,128,'RW5ncmlkIFBpbmVkYVYtMTQ3NTk0MzItOGVuZ3JpZGdAaG90bWFpbC5jb20yNy0xMC0xNiAwOTo0MTo1Mg==','2016-10-27 22:41:52',0,'engridg@hotmail.com','engridg@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(212,128,'ZW5ncmlkIHBpbmVkYVYtMTQ3NTk0MzItOGVuZ3JpZGdAaG90bWFpbC5jb20yNy0xMC0xNiAwOTo0NDozMA==','2016-10-27 22:44:30',0,'engridg@hotmail.com','engridg@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(213,129,'ZW5ncmlkIHBpbmVkYVYtMTQ3NTk0MzJlbmdyaWRnQGhvdG1haWwuY29tMjctMTAtMTYgMDk6NTg6MzU=','2016-10-27 22:58:35',0,'engridg@hotmail.com','engridg@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(214,128,'ZW5ncmlkIHBpbmVkYVYtMTQ3NTk0MzItOGVuZ3JpZGdAaG90bWFpbC5jb20yNy0xMC0xNiAxMDowMDozNw==','2016-10-27 23:00:37',0,'engridg@hotmail.com','engridg@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(215,130,'SnVhbiBMZcOzblYtMTA2Nzk5ODlScWxsZW9uMUBnbWFpbC5jb20wMS0xMS0xNiAwODoyNDo1OA==','2016-11-01 21:24:58',0,'Rqlleon1@gmail.com','Rqlleon1@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(216,131,'SmVhbiBjYXJsb3MgYXJjaGlsYVYtMTM3MDgxMjVKZWFubHVpczEyMTRAZ21haWwuY29tMDYtMTEtMTYgMDg6NDU6Mzg=','2016-11-06 09:45:38',0,'Jeanluis1214@gmail.com','Jeanluis1214@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(217,131,'SmVhbiBjYXJsb3MgYXJjaGlsYVYtMTM3MDgxMjVKZWFubHVpczEyMTRAZ21haWwuY29uMDYtMTEtMTYgMDg6NDc6Mjc=','2016-11-06 09:47:27',0,'Jeanluis1214@gmail.con','Jeanluis1214@gmail.con','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(218,132,'SW52ZXJzaW9uZXMgQiZHIDYyIENBSi00MDMyNzIyMDRKb3NlZHVrZTYyQEdtYWlsLmNvbTA2LTExLTE2IDAxOjM0OjE2','2016-11-06 14:34:16',0,'Joseduke62@Gmail.com','Joseduke62@Gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(219,132,'SW52ZXJzaW9uZXMgQiZHIDYyIENBSi00MDMyNzIyMDRKb3NlZHVrZTYyQGdtYWlsLmNvbTA2LTExLTE2IDAxOjM3OjMx','2016-11-06 14:37:31',0,'Joseduke62@gmail.com','Joseduke62@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(220,132,'SW52ZXJzaW9uZXMgQiZHIDYyIENBSi00MDMyNzIyMDRKb3NlZHVrZTYyQGdtYWlsLmNvbTA2LTExLTE2IDAxOjQwOjEw','2016-11-06 14:40:10',0,'Joseduke62@gmail.com','Joseduke62@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(221,132,'SW52ZXJzaW9uZXMgQiZHIDYyIENBSi00MDMyNzIyMDRKb3NlZHVrZTYyQGdtYWlsLmNvbTA2LTExLTE2IDAxOjUxOjM4','2016-11-06 14:51:38',0,'Joseduke62@gmail.com','Joseduke62@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(222,133,'c2VydmljaW9zIHkgZ3LDumFzIE1lZGluYSBDLkEuSi00MDU2MTc4OC04c2VydmlncnVhc21lZGluYUBob3RtYWlsLmNvbTA3LTExLTE2IDEwOjU4OjMx','2016-11-07 11:58:31',0,'servigruasmedina@hotmail.com','servigruasmedina@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(223,133,'c2VydmljaW9zIHkgZ3LDumFzIG1lZGluYSBjLmFKLTQwNTYxNzg4LThzZXJ2aWdydWFzbWVkaW5hQGhvdG1haWwuY29tMDctMTEtMTYgMDI6MzI6NDk=','2016-11-07 15:32:49',0,'servigruasmedina@hotmail.com','servigruasmedina@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(224,134,'c2VydmljaW9zIHkgZ3J1YXMgbWVkaW5hIGMuYUotNDA1NjE3ODg4c2VydmlncnVhc21lZGluYUBob3RtYWlsLmNvbTA3LTExLTE2IDAyOjM5OjAw','2016-11-07 15:39:00',0,'servigruasmedina@hotmail.com','servigruasmedina@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(225,134,'U0VSVklDSU9TIFkgR1JVQVMgTUVESU5BIEMuQUotNDA1NjE3ODg4U0VSVklHUlVBU01FRElOQUBIT1RNQUlMLkNPTTA3LTExLTE2IDAyOjQzOjA5','2016-11-07 15:43:09',0,'SERVIGRUASMEDINA@HOTMAIL.COM','SERVIGRUASMEDINA@HOTMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(226,135,'U29uaWEgZGUgaGVybmFuZGV6Vi00NDc5MTY3Sm1oZXJuYW5kZXoxOEBob3RtYWlsLmNvbVkxMC0xMS0xNiAwNTo1NjozOA==','2016-11-10 18:56:38',0,'Jmhernandez18@hotmail.comY','Jmhernandez18@hotmail.comY','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(227,136,'T25lbGxhIE1lbnRhZG9WLTE5MjAzNTU5b25lbGxhbWVudGFkb0Bob3RtYWlsLmNvbTEwLTExLTE2IDA2OjAzOjQx','2016-11-10 19:03:41',1,'onellamentado@hotmail.com','onellamentado@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(228,137,'aGVjdG9yVi0xODIyMjExMGhlY3Rvci1fNTVAaG90bWFpbC5jb20xMC0xMS0xNiAwNjoyOTo0OA==','2016-11-10 19:29:48',0,'hector-_55@hotmail.com','hector-_55@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(229,137,'aGVjdG9yVi0xODIyMjExMGhlY3RvLV81NUBob3RtYWlsLmNvbTEwLTExLTE2IDA4OjI2OjA1','2016-11-10 21:26:05',0,'hecto-_55@hotmail.com','hecto-_55@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(230,138,'cGFvbG8gZmFsY29WLTEwMTA3OTM2LTRmYWxjb3BlcmV6XzIwMTNAaG90bWFpbC5jb20xMC0xMS0xNiAxMDo0OTowMw==','2016-11-10 23:49:03',0,'falcoperez_2013@hotmail.com','falcoperez_2013@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(231,139,'c2VydmlncnVhcyBsdWlzVi0xNjEyMzk2NHNlcnZpZ3J1YXNsdWlzQGdtYWlsLmNvbTEyLTExLTE2IDA5OjMxOjEz','2016-11-12 22:31:13',0,'servigruasluis@gmail.com','servigruasluis@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(232,140,'Sm9uYXRoYW4gSm9zw6kgcm9zYWxlcyBQw6lyZXpWLTE4NDIyMTM0am9uYXRoYW5qcnA5NjdrYWVAZ21haWwuY29tMTUtMTEtMTYgMDU6MDc6NDI=','2016-11-15 18:07:42',0,'jonathanjrp967kae@gmail.com','jonathanjrp967kae@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(233,140,'Sm9uYXRoYW4gam9zw6kgcm9zYWxlcyBQw6lyZXpWLTE4NDIyMTM0Sm9uYXRoYW5qcnA5NjdrYWVAR21haWwuY29tMTUtMTEtMTYgMDU6MTA6NTQ=','2016-11-15 18:10:54',0,'Jonathanjrp967kae@Gmail.com','Jonathanjrp967kae@Gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(234,141,'d2lsc29uIG1hcnRpbmV6Vi0xOTIwOTQwOXRyYW5zcG9ydGVzd2lsc29uMjU4NEBnbWFpbC5jb20xOC0xMS0xNiAwOToxNzo1Ng==','2016-11-18 22:17:56',0,'transporteswilson2584@gmail.com','transporteswilson2584@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(235,142,'TUlDSEFFTCBHQVJBWVYtMTkzMTg5ODRNSUNIQUVMR0FSQVkyMDEwQEhPVE1BSUwuQ09NMDYtMTItMTYgMDI6MDE6MDI=','2016-12-06 15:01:02',0,'MICHAELGARAY2010@HOTMAIL.COM','MICHAELGARAY2010@HOTMAIL.COM','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(236,143,'Q2FybG9zIEEuIFNhbmd1aW5vVi0zODgzMzk0Y3Nhbmd1aW5vMTNAZ21haWwuY29tMDgtMTItMTYgMDg6NTQ6NTQ=','2016-12-08 09:54:54',0,'csanguino13@gmail.com','csanguino13@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(237,144,'am9zZSBncmFmZmVWLTkyNjg3NjFqZ3JhZmZlakBob3RtYWlsLmNvbTA4LTEyLTE2IDA5OjQwOjA3','2016-12-08 10:40:07',0,'jgraffej@hotmail.com','jgraffej@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(238,145,'anVzdGlubyBtYWNoYWRvVi0yOTgyNTIyLTZqdXN0aW5vMjlAaG90bWFpbC5jb20wOC0xMi0xNiAwNjozNjozMA==','2016-12-08 19:36:30',0,'justino29@hotmail.com','justino29@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(239,146,'anVzdGlubyBtYWNoYWRvVi1WLTAyOTgyNTIyLWp1c3Rpbm8yOUBob3RtYWlsLmNvbTA4LTEyLTE2IDA2OjQwOjMz','2016-12-08 19:40:33',0,'justino29@hotmail.com','justino29@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(240,147,'anVzdGlubyBtYWNoYWRvVi0wMjk4MjUyMi02anVzdGlubzI5QGhvdG1haWwuY29tMDgtMTItMTYgMDY6NDM6NDk=','2016-12-08 19:43:49',0,'justino29@hotmail.com','justino29@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(241,148,'cmFuZmlzIGpvc2UgdG92YXJWLTYwNzQ0MjZyYW5maXN4ZXRyZW1vQGhvdG1haWwuY29tMDktMTItMTYgMDQ6MzA6MTQ=','2016-12-09 17:30:14',0,'ranfisxetremo@hotmail.com','ranfisxetremo@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(242,149,'RGVydml6IE7DusOxZXpWLTQzMjU1ODdkZXJ2aXpudW5lekBob3RtYWlsLmNvbTA2LTAxLTE3IDA5OjQ3OjIz','2017-01-06 10:47:23',0,'derviznunez@hotmail.com','derviznunez@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(243,150,'YW50b25pbyBmZXJuYW5kZXpWLTEyMDEyNDQ2YW50b25pb2Zlcm5hbmRlejEwMEBob3RtYWlsLmNvbTA5LTAxLTE3IDAxOjQ1OjM0','2017-01-09 14:45:34',0,'antoniofernandez100@hotmail.com','antoniofernandez100@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(244,150,'YW50b25pbyBmZXJuYW5kZXpWLTEyMDEyNDQ2YW50b25pb2Zlcm5hbmRlejEwMEBob3RtYWlsLmNvbTA5LTAxLTE3IDA1OjI1OjQ3','2017-01-09 18:25:47',0,'antoniofernandez100@hotmail.com','antoniofernandez100@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(245,151,'aW52ZXJzaW9uZXMgdmFsZXJhIDE4MTkgYy5hLkotNDA4OTUwNDIxa2FyaW5hZGV2YWxlcmFAZ21haWwuY29tMTktMDEtMTcgMTA6MDU6MDI=','2017-01-19 11:05:02',1,'karinadevalera@gmail.com','karinadevalera@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(246,152,'Y2FybG9zIHZhbGVyYVYtMTQ1OTE1OTdrYXJpbmFkZXZhbGVyYUBnbWFpbC5jb20xOS0wMS0xNyAxMDowNjozMQ==','2017-01-19 11:06:31',0,'karinadevalera@gmail.com','karinadevalera@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(247,151,'SU5WRVJTSU9ORVMgVkFMRVJBIDE4MTkgQy5BLkotNDA4OTUwNDIxa2FyaW5hZGV2YWxlcmFAZ21haWwuY29tMTktMDEtMTcgMTA6MDc6NDU=','2017-01-19 11:07:45',0,'karinadevalera@gmail.com','karinadevalera@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(248,153,'am9zZSBtaWd1ZWwgeWFuZXpWLTIxMTQzODkwZ3J1YWptMzVAZ21haWwuY29tMjYtMDItMTcgMDI6Mjg6MDc=','2017-02-26 15:28:07',0,'gruajm35@gmail.com','gruajm35@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(249,153,'am9zZSBtaWd1ZWwgeWFuZXpWLTIxMTQzODkwZ3J1YWptMzVAZ21haWwuY29tMjYtMDItMTcgMDI6Mjk6NTg=','2017-02-26 15:29:58',0,'gruajm35@gmail.com','gruajm35@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(250,154,'QWRlbGlubyBGZXJuYW5kZXNWLUU4MTUyNDkwMUVscG9ydHVfMjAyMUBob3RtYWlsLmNvbTI4LTAzLTE3IDAxOjIxOjEz','2017-03-28 02:21:13',1,'Elportu_2021@hotmail.com','Elportu_2021@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(251,155,'QWRlbGlubyBGZXJuYW5kZXNWLUUtODE1MjQ5MDFhdXJ5c2hlcm5hbmRlekBob3RtYWlsLmNvbTI4LTAzLTE3IDExOjU0OjAy','2017-03-29 00:54:02',0,'auryshernandez@hotmail.com','auryshernandez@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(252,156,'R3J1YXMgSGVybWFub3MgTG9wZXogMjAxNSBDLkFKLTQwNTc3NzMzOGdydWFzaGVybWFub3Nsb3BlejIwMTVAZ21haWwuY29tMTAtMDUtMTcgMDU6MzM6MDQ=','2017-05-10 18:33:04',0,'gruashermanoslopez2015@gmail.com','gruashermanoslopez2015@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(253,157,'SmVzdXMgTmlldG9WLTExMTYwMDkxZ2FicmllbHV6Y2F0ZWd1aThAZ21haWwuY29tMTItMDYtMTcgMDE6NTI6Mzk=','2017-06-12 14:52:39',0,'gabrieluzcategui8@gmail.com','gabrieluzcategui8@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(254,158,'dHJhbnNwb3J0ZSBzZWJhc3RpYW4sIGMuYS5KLTMwNzkwNTcxLTl0cmFuc2ViYXM2NEBob3RtYWlsLmNvbTI2LTA2LTE3IDExOjExOjUx','2017-06-27 00:11:51',0,'transebas64@hotmail.com','transebas64@hotmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(255,159,'QWJkaWVsIFRvcnJlYWxiYVYtMjAxODg5ODVhYmRpZWxfdG9ycmVhbGJhQG91dGxvb2suY29tMTQtMDgtMTcgMTI6MDc6MDM=','2017-08-14 13:07:03',0,'abdiel_torrealba@outlook.com','abdiel_torrealba@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(256,159,'QWJkaWVsIFRvcnJlYWxiYVYtMjAxODg5ODVhYmRpZWxfdG9ycmVhbGJhQG91dGxvb2suY29tMTQtMDgtMTcgMDE6MDg6Mzk=','2017-08-14 14:08:39',0,'abdiel_torrealba@outlook.com','abdiel_torrealba@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00');
 
 /* Trigger structure for table `SolicitudAprobada` */
 
