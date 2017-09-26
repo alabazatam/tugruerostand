@@ -155,7 +155,7 @@
                                 . '</tr>'
                                 . '<tr>'
                                 . '<td  colspan="3"  style="border-left-width:1px;">TIPO DE SERVICIOS DE GRUA:</td>'
-                                . '<td COLSPAN="3"> '.$datos_cuadro['TipoServicio'].'</td>'
+                                . '<td COLSPAN="3">'.$datos_cuadro['TipoServicio'].'</td>'
                                 . '<td colspan="2">KILOMETRAJE:</td>'
                                 . '<td colspan="" style="border-right-width:1px;">'.$datos_cuadro['Kilometraje'].'</td>'
                                 . '</tr>'
@@ -371,8 +371,8 @@
 								$html.='<p align="center">Av Francisco de Miranda, Edif Provincial, Piso 8, Oficina 8B. Los Dos Caminos, Municipio Sucre, Edo. Miranda, Caracas, Venezuela. Tlf: <b><font style="font-size: 12px;">0500-GRUERO-0 (0500-478376-0) / 0212-2379227 / 0212-4190105 · info@tugruero.com - tugruero@gmail.com</font></b></p>'
                                 ;
 			$pdf->writeHTML($html);				
-			$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');            
-            //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');   
+			//$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');            
+            $pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');   
             
             
         }
@@ -633,6 +633,184 @@
             
         }        
         
+     public function carnetTUGRUERO($values){
+			setlocale(LC_NUMERIC,"es_ES.UTF8");
+                        ob_start();
+                        $SolicitudPlan = new SolicitudPlan();
+                        $idSolicitudPlan = $values['idSolicitudPlan'];
+			$Utilitarios = new Utilitarios();			
+			$datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfo($idSolicitudPlan);
+                        //print_r($datos_cuadro);die;
+			// create new PDF document
+			$pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, 'LETTER', true, 'UTF-8', false);
+
+			// set document information
+			$pdf->SetCreator(PDF_CREATOR);
+			$pdf->SetAuthor('TU/GRUERO®');
+			$pdf->SetTitle('TU/GRUERO®');
+			$pdf->SetSubject('TU/GRUERO®');
+			$pdf->SetKeywords('TU/GRUERO®');
+
+			// set default header data
+			$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+
+			// set header and footer fonts
+			$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+			$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+			// set default monospaced font
+			$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+			// set margins
+			$pdf->SetMargins(15, 5, 15);
+			$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+			$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+			// set auto page breaks
+			$pdf->SetAutoPageBreak(TRUE, 1);
+
+			// set image scale factor
+			$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+			// set some language-dependent strings (optional)
+			if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+				require_once(dirname(__FILE__).'/lang/eng.php');
+				$pdf->setLanguageArray($l);
+			}
+
+			// ---------------------------------------------------------
+
+			// set font
+			$pdf->SetFont('helvetica', '', 9);
+
+			// add a page
+			$pdf->AddPage();
+                        
+			$image_file = K_PATH_IMAGES.'carnet1.png';
+			$pdf->Image($image_file, 16, 10, 171, 55, 'PNG', '', '', false, 300, '', false, false, 0);         
+			// set some text to print
+                       // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
+
+                        // set color for background
+                        $pdf->SetFillColor(255, 255, 255);
+
+                        // set color for text
+                        $pdf->SetTextColor(0, 0, 0);
+                        //CARA ANTERIOR
+                        $pdf->writeHTMLCell('', '', 28, 31, $datos_cuadro['Nombres'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Apellidos'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 28, 38, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 28, 49, strtoupper($datos_cuadro['Marca']), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Modelo'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 28, 56, $datos_cuadro['Color'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
+                        //CARA POSTERIOR
+                        $pdf->writeHTMLCell(30, 10, 114, 22, str_replace('(*)','',$datos_cuadro['TipoServicio']), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 137, 24, '', 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 155, '', $datos_cuadro['NumProducto'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 114, 32, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 155, '', $Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y'), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 114, 46, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 155, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
+                        $pdf->SetFont('helvetica', '', 15);
+                        $pdf->writeHTMLCell('', '', 114, 53, $datos_cuadro['concatenado_plan'], 0, 0, 1, true, 'L', true);
+
+                        // reset pointer to the last page
+                        $pdf->lastPage();
+			
+			$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');            
+            //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');   
+            
+            
+        }
         
+       public function carnetRCVAsistir($values){
+			setlocale(LC_NUMERIC,"es_ES.UTF8");
+            ob_start();
+            $SolicitudPlan = new SolicitudPlan();
+            $idSolicitudPlan = $values['idSolicitudPlan'];
+			$Utilitarios = new Utilitarios();			
+			$datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfoAsistir($idSolicitudPlan);
+            //print_r($datos_cuadro);die;
+			// create new PDF document
+			$pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, 'LETTER', true, 'UTF-8', false);
+
+			// set document information
+			$pdf->SetCreator(PDF_CREATOR);
+			$pdf->SetAuthor('TU/GRUERO®');
+			$pdf->SetTitle('TU/GRUERO®');
+			$pdf->SetSubject('TU/GRUERO®');
+			$pdf->SetKeywords('TU/GRUERO®');
+
+			// set default header data
+			$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+
+			// set header and footer fonts
+			$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+			$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+			// set default monospaced font
+			$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+			// set margins
+			$pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
+			$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+			$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+			// set auto page breaks
+			$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+			// set image scale factor
+			$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+			// set some language-dependent strings (optional)
+			if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+				require_once(dirname(__FILE__).'/lang/eng.php');
+				$pdf->setLanguageArray($l);
+			}
+
+			// ---------------------------------------------------------
+
+			// set font
+			$pdf->SetFont('helvetica', '', 7);
+
+			// add a page
+			$pdf->AddPage();
+			//$image_file = K_PATH_IMAGES.'logo_tugruero.png';
+			//$pdf->Image($image_file, 15, 2, 25, '', 'PNG', '', 'T', false, 100, '', false, false, 0, false, false, false);          
+			// set some text to print
+                       
+			$image_file = K_PATH_IMAGES.'carnet2.png';
+			$pdf->Image($image_file, 16, 10, 171, 55, 'PNG', '', '', false, 300, '', false, false, 0);         
+			// set some text to print
+                       // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
+
+                        // set color for background
+                        $pdf->SetFillColor(255, 255, 255);
+
+                        // set color for text
+                        $pdf->SetTextColor(0, 0, 0);
+                        //CARA ANTERIOR
+                        $pdf->writeHTMLCell('', '', 28, 32, $datos_cuadro['Nombres'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Apellidos'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 28, 39, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 28, 49, strtoupper($datos_cuadro['Marca']), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Modelo'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 28, 55, $datos_cuadro['Color'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 28, 60, $datos_cuadro['Clase'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Tipo'], 0, 0, 1, true, 'L', true);
+                        //CARA POSTERIOR
+                        $pdf->writeHTMLCell(26, '', 162, 34, $datos_cuadro['NumProducto'], 0, 0, 1, true, 'C', true);
+                        $pdf->writeHTMLCell(26, '', 162, 46, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
+                        $pdf->writeHTMLCell(26, '', 162, 58, $Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
+
+                        // reset pointer to the last page
+                        $pdf->lastPage();
+			
+			$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');            
+            //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');            
+            
+        }     
         
     }
