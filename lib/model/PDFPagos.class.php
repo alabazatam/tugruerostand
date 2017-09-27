@@ -3,7 +3,7 @@
     class PDFPagos{
         
         
-        public function cuadroTUGRUERO($values){
+        public function oldCuadroTUGRUERO($values){
 			setlocale(LC_NUMERIC,"es_ES.UTF8");
                         ob_start();
                         $SolicitudPlan = new SolicitudPlan();
@@ -377,7 +377,7 @@
             
         }
         
-       public function cuadroRCVAsistir($values){
+       public function oldCuadroRCVAsistir($values){
 			setlocale(LC_NUMERIC,"es_ES.UTF8");
             ob_start();
             $SolicitudPlan = new SolicitudPlan();
@@ -629,11 +629,9 @@
 			
 			$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');            
                         //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');   
-            
-            
-        }        
+        }
         
-     public function carnetTUGRUERO($values){
+     public function cuadroTUGRUERO($values){
 			setlocale(LC_NUMERIC,"es_ES.UTF8");
                         ob_start();
                         $SolicitudPlan = new SolicitudPlan();
@@ -719,12 +717,12 @@
                         $pdf->lastPage();
 			
 			$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');            
-            //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');   
+                      //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');   
             
             
         }
         
-       public function carnetRCVAsistir($values){
+       public function cuadroRCVAsistir($values){
 			setlocale(LC_NUMERIC,"es_ES.UTF8");
             ob_start();
             $SolicitudPlan = new SolicitudPlan();
@@ -798,9 +796,15 @@
                         $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Modelo'], 0, 0, 1, true, 'L', true);
                         $pdf->writeHTMLCell('', '', 28, 55, $datos_cuadro['Color'], 0, 0, 1, true, 'L', true);
                         $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
-                        $pdf->writeHTMLCell('', '', 28, 60, $datos_cuadro['Clase'], 0, 0, 1, true, 'L', true);
-                        $pdf->writeHTMLCell('', '', 69, '', $datos_cuadro['Tipo'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 28, 60, mb_strtoupper($datos_cuadro['Clase'],'UTF8'), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 69, '', mb_strtoupper($datos_cuadro['Tipo'],'UTF8'), 0, 0, 1, true, 'L', true);
                         //CARA POSTERIOR
+                        $pdf->writeHTMLCell(19, '', 128, 32, number_format($datos_cuadro['RCVPersonas'],2,",","."), 0, 0, 1, true, 'R', true);
+                        $pdf->writeHTMLCell(19, '', 128, 39, number_format($datos_cuadro['RCVCosas'],2,",","."), 0, 0, 1, true, 'R', true);
+                        $pdf->writeHTMLCell(19, '', 128, 46, number_format($datos_cuadro['ExcesoLimites'],2,",","."), 0, 0, 1, true, 'R', true);
+                        $pdf->writeHTMLCell(19, '', 128, 53, number_format($datos_cuadro['DefensaPenal'],2,",","."), 0, 0, 1, true, 'R', true);
+                        $pdf->writeHTMLCell(19, '', 128, 60, number_format($datos_cuadro['APOVMuerte']+$datos_cuadro['APOVInvalidez']+$datos_cuadro['APOVGastos'],2,",","."), 0, 0, 1, true, 'R', true);
+
                         $pdf->writeHTMLCell(26, '', 162, 34, $datos_cuadro['NumProducto'], 0, 0, 1, true, 'C', true);
                         $pdf->writeHTMLCell(26, '', 162, 46, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
                         $pdf->writeHTMLCell(26, '', 162, 58, $Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
@@ -809,7 +813,7 @@
                         $pdf->lastPage();
 			
 			$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');            
-            //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');            
+                      //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');            
             
         }     
         
