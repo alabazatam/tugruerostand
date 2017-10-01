@@ -9,6 +9,9 @@ if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 }
              /*$PDFPagos = new PDFPagos();
             $pdf = $PDFPagos->cuadroRCVAsistir(array('idSolicitudPlan'=> 12));*/
+			/*$values["idSolicitudPlan"] = 13;
+			$Mail = new Mail();
+			$Mail->sendMessagePolizaBienvenida($values);die;*/
 $values = $_REQUEST;
     if(!isset($values['IdV']) or $values['IdV']==''){
         $values['IdV'] = '3';
@@ -462,10 +465,7 @@ $values = array_merge($values,$_FILES);
                         }
                     }
                 }
-            
-            
-            
-            
+           
             
 
 			

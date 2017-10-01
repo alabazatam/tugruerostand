@@ -702,6 +702,7 @@
             $Apellidos = strtoupper($data['Apellidos']);
             $ConcatenadoPlan = $data['concatenado_plan'];
             $plan_tugruero = $data['plan_tugruero'];
+			
                 if(isset($data['IdV']) and $data['IdV']!=1)
                 {
                     $datos_vendedor = $SolicitudPlan->getDatosVendedor($data['IdV']);
@@ -712,6 +713,7 @@
 
                 }
             try{
+				
             //$smtp = "server-0116a.gconex.net";
             $smtp = "tugruero.com";
             $port = 465;
@@ -773,12 +775,13 @@
         </body>
     </html>
     ',"text/html");
+			
                     $message->attach(Swift_Attachment::fromPath(dir_cuadros."/".$NumProducto.".pdf"));
                     $planes_rcv = $SolicitudPlan->getPlanesRCV($idSolicitudPlan);
                     if(isset($planes_rcv['idPlan']) and $planes_rcv['idPlan']!=''){
-                            $message->attach(Swift_Attachment::fromPath(dir_cuadros."/".$idSolicitudPlan."_rcv.pdf"));
+						
+						$message->attach(Swift_Attachment::fromPath(dir_cuadros."/".$data_aprobada['PolizaAsistir'].".pdf"));
                     }
-
                     $message->setFrom(array ($mail_from => 'TU/GRUERO®'));
                     $message->setTo($email);
 
