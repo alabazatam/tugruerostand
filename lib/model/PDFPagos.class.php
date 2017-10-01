@@ -812,7 +812,7 @@
                         // reset pointer to the last page
                         $pdf->lastPage();
 			
-			$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');            
+						$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');            
                       //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');            
             
         }     
