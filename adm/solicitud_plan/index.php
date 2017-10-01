@@ -471,10 +471,10 @@ $values = array_merge($values,$_FILES);
 			
 			$Mail = new Mail();
                         if($mail_poliza_tugruero == true){
-                            //$Mail->sendMessagePolizaBienvenida($values);
+                            $Mail->sendMessagePolizaBienvenida($values);
 
                         }else{
-                            //$Mail->sendMessagePolizaBienvenidaRCV($values);
+                            $Mail->sendMessagePolizaBienvenidaRCV($values);
                         }
 			
         }
