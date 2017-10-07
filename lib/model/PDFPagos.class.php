@@ -377,7 +377,7 @@
             
         }
         
-       public function oldCuadroRCVAsistir($values){
+       public function cuadroRCVAsistir($values){
 			setlocale(LC_NUMERIC,"es_ES.UTF8");
             ob_start();
             $SolicitudPlan = new SolicitudPlan();
@@ -722,7 +722,7 @@
             
         }
         
-       public function cuadroRCVAsistir($values){
+       public function oldcuadroRCVAsistir($values){
 			setlocale(LC_NUMERIC,"es_ES.UTF8");
             ob_start();
             $SolicitudPlan = new SolicitudPlan();
@@ -805,7 +805,7 @@
                         $pdf->writeHTMLCell(19, '', 128, 53, number_format($datos_cuadro['DefensaPenal'],2,",","."), 0, 0, 1, true, 'R', true);
                         $pdf->writeHTMLCell(19, '', 128, 60, number_format($datos_cuadro['APOVMuerte']+$datos_cuadro['APOVInvalidez']+$datos_cuadro['APOVGastos'],2,",","."), 0, 0, 1, true, 'R', true);
 
-                        $pdf->writeHTMLCell(26, '', 162, 34, $datos_cuadro['NumProducto'], 0, 0, 1, true, 'C', true);
+                        $pdf->writeHTMLCell(26, '', 162, 34, $datos_cuadro['PolizaAsistir'], 0, 0, 1, true, 'C', true);
                         $pdf->writeHTMLCell(26, '', 162, 46, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
                         $pdf->writeHTMLCell(26, '', 162, 58, $Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
 
