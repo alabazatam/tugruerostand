@@ -695,14 +695,14 @@
             $SolicitudPlan = new SolicitudPlan();
             $data = $SolicitudPlan->getSolicitudPlanInfo($idSolicitudPlan);
 			$data_aprobada = $SolicitudPlan->getSolicitudPlanAprobadaInfo($idSolicitudPlan);
-			$NumProducto = $data_aprobada['NumProducto'];
+      $NumProducto = $data_aprobada['NumProducto'];
 			$Cedula = strtoupper($data['Cedula']);
 			$Placa= strtoupper($data['Placa']);
             $Nombres = strtoupper($data['Nombres']);
             $Apellidos = strtoupper($data['Apellidos']);
             $ConcatenadoPlan = $data['concatenado_plan'];
             $plan_tugruero = $data['plan_tugruero'];
-			
+
                 if(isset($data['IdV']) and $data['IdV']!=1)
                 {
                     $datos_vendedor = $SolicitudPlan->getDatosVendedor($data['IdV']);
@@ -711,11 +711,12 @@
                     $correo3_vendedor = $datos_vendedor['Correo3'];
                     $NombreVendedor = $datos_vendedor['NombreVendedor'];
 
+
                 }
             try{
-				
+
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "tugruero.com";
+            $smtp = "mail.tugruero.com";
             $port = 465;
             $secure = "ssl";
             $username = "suscripcion@tugruero.com";
@@ -775,11 +776,13 @@
         </body>
     </html>
     ',"text/html");
-			
+
+
+
                     $message->attach(Swift_Attachment::fromPath(dir_cuadros."/".$NumProducto.".pdf"));
                     $planes_rcv = $SolicitudPlan->getPlanesRCV($idSolicitudPlan);
                     if(isset($planes_rcv['idPlan']) and $planes_rcv['idPlan']!=''){
-						
+
 						$message->attach(Swift_Attachment::fromPath(dir_cuadros."/".$data_aprobada['PolizaAsistir'].".pdf"));
                     }
                     $message->setFrom(array ($mail_from => 'TU/GRUERO®'));
@@ -787,7 +790,7 @@
 
                     $result = $mailer->send($message);
                     }catch(Exception $e){
-                            //echo $e->getMessage().$e->getTraceAsString();
+                            echo $e->getMessage().$e->getTraceAsString();
                             die;
                     }
 

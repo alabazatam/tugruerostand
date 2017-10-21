@@ -440,7 +440,9 @@ $values = array_merge($values,$_FILES);
 
                 $planes_seleccionados = $SolicitudPlan -> getPlanesSeleccionados($values['idSolicitudPlan']);
 		if(count($planes_seleccionados)>0){
+
                     foreach($planes_seleccionados as $seleccionados){
+
                         if($seleccionados['Tipo']=='tugruero.com'){
                             $mail_poliza_tugruero = true;
                             $pdf = $PDFPagos->cuadroTUGRUERO($values);
@@ -470,6 +472,7 @@ $values = array_merge($values,$_FILES);
 
 
 			$Mail = new Mail();
+			
                         if($mail_poliza_tugruero == true){
                             $Mail->sendMessagePolizaBienvenida($values);
 
