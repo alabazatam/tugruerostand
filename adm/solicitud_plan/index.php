@@ -1,4 +1,4 @@
-<?php include("../../autoload.php");?>	
+<?php include("../../autoload.php");?>
 <?php include("validator.php");?>
 <?php include("../security/security.php");?>
 
@@ -7,8 +7,8 @@ setlocale(LC_NUMERIC,"es_ES.UTF8");
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
 }
-            /*$PDFPagos = new PDFPagos();
-            $pdf = $PDFPagos->cuadroRCVAsistir(array('idSolicitudPlan'=> 15));*/
+            // $PDFPagos = new PDFPagos();
+            // $pdf = $PDFPagos->cuadroTUGRUERO(array('idSolicitudPlan'=> 1));
 			/*$values["idSolicitudPlan"] = 13;
 			$Mail = new Mail();
 			$Mail->sendMessagePolizaBienvenida($values);die;*/
@@ -20,40 +20,40 @@ $values = $_REQUEST;
         $cuenta_idv = $SolicitudPlan->getCuentaIdV($values['IdV']);
         if(count($cuenta_idv)==0){
             echo "No puede continuar con la petición";die;
-        } 
-        
+        }
+
     }
 $values = array_merge($values,$_FILES);
 	switch ($action) {
 		case "index":
-			executeIndex($values);	
+			executeIndex($values);
 		break;
 		case "new":
-			executeNew($values);	
+			executeNew($values);
 		break;
 		case "add":
-			executeAdd($values);	
+			executeAdd($values);
 		break;
 		case "edit":
-			executeEdit($values);	
+			executeEdit($values);
 		break;
 		case "update":
-			executeUpdate($values);	
-		break;		
+			executeUpdate($values);
+		break;
 		case "list_json":
-			executeListJson($values);	
+			executeListJson($values);
 		break;
 		case "aprobar":
-			executeAprobar($values);	
+			executeAprobar($values);
 		break;
 		case "rechazar":
-			executeRechazar($values);	
+			executeRechazar($values);
 		break;
 		case "precio_tugruero":
-			executePrecioTugruero($values);	
+			executePrecioTugruero($values);
 		break;
 		case "precio_rcv":
-			executePrecioRcv($values);	
+			executePrecioRcv($values);
 		break;
 		default:
 			executeIndex($values);
@@ -64,8 +64,8 @@ $values = array_merge($values,$_FILES);
 		require('list_view.php');
 	}
 	function executeNew($values = null,$errors = null)
-	{       
-                
+	{
+
 		$values['action'] = 'add';
 		require('form_view.php');
 	}
@@ -79,7 +79,7 @@ $values = array_merge($values,$_FILES);
 	{
                 //subirDocumentos($values, $_FILES);
                 $errors = validate($values,$_FILES);
-                
+
 				if(count($errors)>0){
 					executeNew($values,$errors);die;
 				}else{
@@ -92,17 +92,17 @@ $values = array_merge($values,$_FILES);
 
                                                 //subir documentos
                                                 subirDocumentos($values, $_FILES);
-                                               
+
                                                 //executeMercadoPago($values,$errors);
-                                                
-                                                
+
+
 					}else
 					{
                                                 if(($_FILES['DEP1']['size']>0) or ($_FILES['DEP2']['size']>0) or ($_FILES['DEP3']['size']>0)){
                                                 $values['PagoRealizado'] = 'S';
-   
+
                                                 }
-                                                    
+
 						$values = $SolicitudPlan->saveSolicitudPlanAdmin($values);
                                                 //print_r($values);die;
                                                 //subir documentos
@@ -110,16 +110,16 @@ $values = array_merge($values,$_FILES);
                                                 //executePagado($values);
                                                 //$Mail->sendMessageDepositoPago($values);
 
-                                                
+
                                         }
 					executeIndex($values);die;
 				}
-                
+
 	}
 	function executeEdit($values = null,$msg = null, $errors = null)
 	{
-        
-        
+
+
 		$SolicitudPlan = new SolicitudPlan();
 		$values = $SolicitudPlan->getSolicitudPlanById($values);
         //print_r($values);die;
@@ -136,11 +136,11 @@ $values = array_merge($values,$_FILES);
 		}
         if($values['SerialCarroceria'] == '' and $_REQUEST['SerialCarroceria'] !=''){
 			$values['SerialCarroceria'] = $_REQUEST['SerialCarroceria'];
-		}  
-                
+		}
+
 		if(isset($mercadopagodata["id"]) and $mercadopagodata['id'] !=''){
 			$values['id'] = $mercadopagodata["id"];
-		}	
+		}
 		if(isset($mercadopagodata["payment_method_id"]) and $mercadopagodata['payment_method_id'] !=''){
 			$values['payment_method_id'] = $mercadopagodata["payment_method_id"];
 		}
@@ -149,13 +149,13 @@ $values = array_merge($values,$_FILES);
 		}
 		if(isset($mercadopagodata["carholder_name"]) and $mercadopagodata['carholder_name'] !=''){
 			$values['carholder_name'] = $mercadopagodata["carholder_name"];
-		}	
+		}
 		if(isset($mercadopagodata["transaction_amount"]) and $mercadopagodata['transaction_amount'] !=''){
 			$values['transaction_amount'] = $mercadopagodata["transaction_amount"];
 		}else{
             $values['transaction_amount'] = $values['precio'];
         }
-        			
+
 		$planes_seleccionados = $SolicitudPlan -> getPlanesSeleccionados($values['idSolicitudPlan']);
 		if(count($planes_seleccionados)>0){
                     foreach($planes_seleccionados as $seleccionados){
@@ -169,53 +169,53 @@ $values = array_merge($values,$_FILES);
                 }
                 $values['action'] = 'update';
 		$values['msg'] = $msg;
-		
+
 		require('form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
-		$SolicitudPlan = new SolicitudPlan();           
+		$SolicitudPlan = new SolicitudPlan();
         $errors = array();
-		
+
 				if($values["Estatus"] == "ACT"){
                     subirDocumentos($values,$_FILES);
-                   
-                    executeEdit($values,message_updated);die; 
+
+                    executeEdit($values,message_updated);die;
 				}
-				
+
 				$errors = validate($values);
 
-				
-				
-				
+
+
+
                 if(count($errors)>0){
 					//print_r($errors);die;
-                   executeEdit($values,null,$errors); 
+                   executeEdit($values,null,$errors);
                 }else{
-                    
+
                     $SolicitudPlan->updateSolicitudPlan($values);
 					$SolicidPagoDetalle = new SolicitudPagoDetalle();
-					
+
 					$datos_pago = $SolicidPagoDetalle->getPagoDetalleByID($values['idSolicitudPlan']);
-					
+
 					if(!isset($datos_pago['idSolicitudPlan']) or $datos_pago['idSolicitudPlan'] == '' ){
-						
+
 							//echo "aaa";die;
 							$SolicidPagoDetalle->savePagoDetalle($values);
-												
+
 					}else{
-							
-							
+
+
 							$SolicidPagoDetalle->updatePagoDetalle($values);
-						
+
 					}
                     subirDocumentos($values,$_FILES);
-                   
-                    executeEdit($values,message_updated);die;   
-                }
-                
 
-	}	
+                    executeEdit($values,message_updated);die;
+                }
+
+
+	}
 	function executeListJson($values)
 	{
 		$SolicitudPlan = new SolicitudPlan();
@@ -227,9 +227,9 @@ $values = array_merge($values,$_FILES);
 		$SolicitudDocumentos = new SolicitudDocumentos();
 		if(count($list_json)>0)
 		{
-            
-			foreach ($list_json as $list) 
-			{   
+
+			foreach ($list_json as $list)
+			{
                 $indicador_documento_vacio = "";
                 $indicador_respaldo = "";
 				$idSolicitudPlan = $list['idSolicitudPlan'];
@@ -242,7 +242,7 @@ $values = array_merge($values,$_FILES);
 				{
 					$message_status = "<label class='label label-success'>Activo</label>";
 				}
-				
+
 				$NombreDocumento = $SolicitudDocumentos->getDocumentoByTipo($idSolicitudPlan,"Cedula");
 				if($NombreDocumento==''){
 					$indicador_documento_vacio = "<div><label class='label label-danger'>Falta documento</label></div>";
@@ -250,7 +250,7 @@ $values = array_merge($values,$_FILES);
                 if($list["Respaldo"]==1){
                     $indicador_respaldo = "<div><label class='label label-success'>Respaldo efectuado</label></div>";
                 }
-                
+
 				if($list['EstatusAbr']=="ENV")
 				{
 					$array_json['data'][] = array(
@@ -261,12 +261,12 @@ $values = array_merge($values,$_FILES);
 						"Plan" => $list['concatenado_plan'],
 						"Rif" => $list['Rif'],
 						"PrecioTotal" => number_format($list['PrecioTotal'],2,",","."),
-						"documentos" => $NombreDocumento, 
+						"documentos" => $NombreDocumento,
 						"Estatus" => $list['Estatus'],
 											"FechaSolicitud" => $list['FechaSolicitud'],
                                             "NombreVendedor" => $list['NombreVendedor'],
 											"TipoPago" => $list['TipoPago'],
-											"actions" => 
+											"actions" =>
 											'<div class="btn-group">
 											<button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											  <i class="fa fa-gear"></i> <span class="caret"></span>
@@ -275,7 +275,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												</ul>
 										  </div>'.$indicador_documento_vacio.$indicador_respaldo
-						);	
+						);
 				}else
 				{
                                         $plan_gruero = false;
@@ -289,11 +289,11 @@ $values = array_merge($values,$_FILES);
                                                 if($seleccionados['Tipo']=='RCV'){
                                                     $plan_rcv= true;
                                                 }
-                                            } 
+                                            }
                                         }
 					$planes_rcv = $SolicitudPlan->getPlanesRCV($idSolicitudPlan);
 					if($plan_tugruero == true and $plan_rcv == true){
-                                           
+
 					$array_json['data'][] = array(
 						"idSolicitudPlan" => $idSolicitudPlan,
 						"Nombres" => $list['Nombres'],
@@ -302,12 +302,12 @@ $values = array_merge($values,$_FILES);
 						"Plan" => $list['concatenado_plan'],
 						"Rif" => $list['Rif'],
 						"PrecioTotal" => number_format($list['PrecioTotal'],2,",","."),
-						"documentos" => $NombreDocumento, 
+						"documentos" => $NombreDocumento,
 						"Estatus" => $list['Estatus'],
 											"FechaSolicitud" => $list['FechaSolicitud'],
                                                                                         "NombreVendedor" => $list['NombreVendedor'],
 											"TipoPago" => $list['TipoPago'],
-											"actions" => 
+											"actions" =>
 											'<div class="btn-group">
 											<button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											  <i class="fa fa-gear"></i> <span class="caret"></span>
@@ -318,7 +318,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['PolizaAsistir'].'.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
 												</ul>
 										  </div>'.$indicador_documento_vacio.$indicador_respaldo
-						);	
+						);
 					}elseif($plan_tugruero == true and $plan_rcv == false){
 					$array_json['data'][] = array(
 						"idSolicitudPlan" => $idSolicitudPlan,
@@ -328,12 +328,12 @@ $values = array_merge($values,$_FILES);
 						"Plan" => $list['concatenado_plan'],
 						"Rif" => $list['Rif'],
 						"PrecioTotal" => number_format($list['PrecioTotal'],2,",","."),
-						"documentos" => $NombreDocumento, 
+						"documentos" => $NombreDocumento,
 						"Estatus" => $list['Estatus'],
 											"FechaSolicitud" => $list['FechaSolicitud'],
                                                                                         "NombreVendedor" => $list['NombreVendedor'],
 											"TipoPago" => $list['TipoPago'],
-											"actions" => 
+											"actions" =>
 											'<div class="btn-group">
 											<button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											  <i class="fa fa-gear"></i> <span class="caret"></span>
@@ -343,7 +343,7 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Cuadro producto</a></li>
 												</ul>
 										  </div>'.$indicador_documento_vacio.$indicador_respaldo
-						);	
+						);
                                         }elseif($plan_tugruero == false and $plan_rcv == true){
                                                 $array_json['data'][] = array(
 						"idSolicitudPlan" => $idSolicitudPlan,
@@ -353,12 +353,12 @@ $values = array_merge($values,$_FILES);
 						"Plan" => $list['concatenado_plan'],
 						"Rif" => $list['Rif'],
 						"PrecioTotal" => number_format($list['PrecioTotal'],2,",","."),
-						"documentos" => $NombreDocumento, 
+						"documentos" => $NombreDocumento,
 						"Estatus" => $list['Estatus'],
 											"FechaSolicitud" => $list['FechaSolicitud'],
                                                                                         "NombreVendedor" => $list['NombreVendedor'],
 											"TipoPago" => $list['TipoPago'],
-											"actions" => 
+											"actions" =>
 											'<div class="btn-group">
 											<button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											  <i class="fa fa-gear"></i> <span class="caret"></span>
@@ -368,16 +368,16 @@ $values = array_merge($values,$_FILES);
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['PolizaAsistir'].'.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
 												</ul>
 										  </div>'.$indicador_documento_vacio.$indicador_respaldo
-						);	 
+						);
                                         }
-					
 
-					
-					
-					
+
+
+
+
 				}
 
-			}		
+			}
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
@@ -397,17 +397,17 @@ $values = array_merge($values,$_FILES);
 				"actions"=>"");
 		}
 		echo json_encode($array_json);die;
-		
+
 	}
         function subirDocumentos($values,$files){
-        $SolicitudDocumentos = new SolicitudDocumentos; 
+        $SolicitudDocumentos = new SolicitudDocumentos;
         $idSolicitudPlan = $values['idSolicitudPlan'];
-       
+
 	$carpeta = "../../web/files/Solicitudes";
 	$fichero_subido = $carpeta."/";
             //print_r($_FILES);die;
             if(isset($files['CedulaDoc']) and $files['CedulaDoc']['size']>0){
-				
+
                 $nombreArchivo = "Cedula_CCCT_".$values['idSolicitudPlan'].".".pathinfo($_FILES['CedulaDoc']['name'],PATHINFO_EXTENSION);
                 if (move_uploaded_file($files['CedulaDoc']['tmp_name'], $fichero_subido.$nombreArchivo)){
                     //inserto en bd;
@@ -417,27 +417,27 @@ $values = array_merge($values,$_FILES);
                     }else{
                         $SolicitudDocumentos->updateSolicitudDocumentos($idSolicitudPlan, "Cedula", $nombreArchivo);
                     }
-                        
+
                 }
 
             }
         }
         function executeAprobar($values){
-			
+
             $mail_poliza_tugruero = false;
             $PDFPagos = new PDFPagos();
             $idSolicitudPlan = @$values['idSolicitudPlan'];
             $VigenciaDesde = @$values['VigenciaDesde'];
             $VigenciaHasta = @$values['VigenciaHasta'];
             $idSolicitudPlan = @$values['idSolicitudPlan'];
-			
+
             $SolicitudPlan = new SolicitudPlan();
 
             $SolicitudPlan->updateSeriales($values);
             $SolicitudAprobada = new SolicitudAprobada();
             $SolicitudAprobada->aprobar($idSolicitudPlan, $VigenciaDesde, $VigenciaHasta);
-            
-            
+
+
                 $planes_seleccionados = $SolicitudPlan -> getPlanesSeleccionados($values['idSolicitudPlan']);
 		if(count($planes_seleccionados)>0){
                     foreach($planes_seleccionados as $seleccionados){
@@ -460,15 +460,15 @@ $values = array_merge($values,$_FILES);
                                                     break;
                                     }
 
-                            }                        
-                            
+                            }
+
                         }
                     }
                 }
-           
-            
 
-			
+
+
+
 			$Mail = new Mail();
                         if($mail_poliza_tugruero == true){
                             $Mail->sendMessagePolizaBienvenida($values);
@@ -476,15 +476,15 @@ $values = array_merge($values,$_FILES);
                         }else{
                             $Mail->sendMessagePolizaBienvenidaRCV($values);
                         }
-			
+
         }
         function executeRechazar($values){
-            
+
             $Observacion = $values['Observacion'];
             $idSolicitudPlan = $values['idSolicitudPlan'];
             $SolicitudPlan = new SolicitudPlan();
             $SolicitudPlan->rechazarSolicitud($idSolicitudPlan,$Observacion);
-            
+
         }
 	function executePrecioTugruero($values = null,$errors = array())
 	{
@@ -493,7 +493,7 @@ $values = array_merge($values,$_FILES);
             $Planes = new Planes();
             $Puestos = $values['Puestos'];
             $idPlan = $values['id_plan'];
-            $precio_plan = 0;   
+            $precio_plan = 0;
 			$Anio = $values['Anio'];
             if($idPlan!=''){
             $detalle_plan = $Planes->getDetallePlan($idPlan);
@@ -502,18 +502,18 @@ $values = array_merge($values,$_FILES);
             $precio_plan = ($Planes->getPrecioPlan($idPlan));
                 if(isset($Anio) and $Anio !=''){
                     $recarga = $Planes->getDatosPreciosRecargas($idPlan,$Anio);
-                    $precio_plan = $recarga["PrecioRecarga"];    
+                    $precio_plan = $recarga["PrecioRecarga"];
 					$cantidad_servicios = $recarga["CantidadServicios"];
 					$kilometraje = $recarga["Kilometraje"];
-                    
+
                 }
             $precio_plan_formateado = number_format($precio_plan,2,",",".");
-            $array= array("kilometraje"=>$kilometraje,"cantidad_servicios"=>$cantidad_servicios ,'precio' => $precio_plan_formateado, 'precio_sin_formato' => $precio_plan);  
-            
-             
+            $array= array("kilometraje"=>$kilometraje,"cantidad_servicios"=>$cantidad_servicios ,'precio' => $precio_plan_formateado, 'precio_sin_formato' => $precio_plan);
+
+
             }else{
-                $array= array('precio' => 0, 'precio_sin_formato' => 0);  
-  
+                $array= array('precio' => 0, 'precio_sin_formato' => 0);
+
             }
             echo json_encode($array);
         }
@@ -528,12 +528,12 @@ $values = array_merge($values,$_FILES);
                 if(isset($values['RCV']) and $values['RCV']=='SI' ){
                     $precio_rcv = $Planes->getPrecioRCV($Puestos);
                     $precio_plan = $precio_plan + $precio_rcv;
-                     
+
                 }
             $precio_plan_formateado = number_format($precio_plan,2,",",".");
-            $array= array('precio' => $precio_plan_formateado, 'precio_sin_formato' => $precio_plan);  
+            $array= array('precio' => $precio_plan_formateado, 'precio_sin_formato' => $precio_plan);
             echo json_encode($array);
-            
-            
-                
+
+
+
 	}
