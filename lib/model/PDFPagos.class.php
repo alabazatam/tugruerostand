@@ -2,8 +2,8 @@
 
     class PDFPagos{
 
-        /*
-        public function oldCuadroTUGRUERO($values){
+
+        public function CuadroTUGRUERO($values){
 	setlocale(LC_NUMERIC,"es_ES.UTF8");
                         ob_start();
                         $SolicitudPlan = new SolicitudPlan();
@@ -371,13 +371,13 @@
 	$html.='<p align="center">Av Francisco de Miranda, Edif Provincial, Piso 8, Oficina 8B. Los Dos Caminos, Municipio Sucre, Edo. Miranda, Caracas, Venezuela. Tlf: <b><font style="font-size: 12px;">0500-GRUERO-0 (0500-478376-0) / 0212-2379227 / 0212-4190105 · info@tugruero.com - tugruero@gmail.com</font></b></p>'
                                 ;
 	$pdf->writeHTML($html);
-	//$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');
-            $pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');
+	$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');
+            //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');
 
 
         }
 
-       public function oldCuadroRCVAsistir($values){
+       public function CuadroRCVAsistir($values){
 	setlocale(LC_NUMERIC,"es_ES.UTF8");
             ob_start();
             $SolicitudPlan = new SolicitudPlan();
@@ -630,8 +630,8 @@
 	$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');
                         //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');
         }
-        */
-     public function cuadroTUGRUERO($values){
+
+     public function cuadroTUGRUEROCarnet($values){
 	setlocale(LC_NUMERIC,"es_ES.UTF8");
                         ob_start();
                         $SolicitudPlan = new SolicitudPlan();
@@ -717,13 +717,13 @@
                         // reset pointer to the last page
                         $pdf->lastPage();
 
-	                   $pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');
+	                   $pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto']."_carnet.pdf", 'F');
                       //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');
 
 
         }
 
-       public function cuadroRCVAsistir($values){
+       public function cuadroRCVAsistirCarnet($values){
 	setlocale(LC_NUMERIC,"es_ES.UTF8");
             ob_start();
             $SolicitudPlan = new SolicitudPlan();
@@ -815,7 +815,7 @@
                         // reset pointer to the last page
                         $pdf->lastPage();
 
-                        $pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');
+                        $pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir']."_carnet.pdf", 'F');
                       //  $pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');
 
         }

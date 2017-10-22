@@ -315,7 +315,10 @@ $values = array_merge($values,$_FILES);
 												<ul class="dropdown-menu dropdown-menu-right">
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Cuadro Producto</a></li>
+													<li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'_carnet.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Carnet Producto</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['PolizaAsistir'].'.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
+													<li><a href="'.full_url.'/web/files/Cuadros/'.$list['PolizaAsistir'].'_carnet.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Carnet RCV</a></li>
+
 												</ul>
 										  </div>'.$indicador_documento_vacio.$indicador_respaldo
 						);
@@ -341,6 +344,8 @@ $values = array_merge($values,$_FILES);
 												<ul class="dropdown-menu dropdown-menu-right">
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Cuadro producto</a></li>
+													<li><a href="'.full_url.'/web/files/Cuadros/'.$list['NumProducto'].'_carnet.pdf" class="" target="_blank" title="Imprimir Cuadro"><i class="fa fa-file-pdf-o"></i> Carnet producto</a></li>
+
 												</ul>
 										  </div>'.$indicador_documento_vacio.$indicador_respaldo
 						);
@@ -366,6 +371,8 @@ $values = array_merge($values,$_FILES);
 												<ul class="dropdown-menu dropdown-menu-right">
 												  <li><a href="'.full_url.'/adm/solicitud_plan/index.php?action=edit&idSolicitudPlan='.$idSolicitudPlan.'"> <i class="fa fa-edit"></i> Editar</a></li>
 												  <li><a href="'.full_url.'/web/files/Cuadros/'.$list['PolizaAsistir'].'.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Cuadro RCV</a></li>
+													<li><a href="'.full_url.'/web/files/Cuadros/'.$list['PolizaAsistir'].'_carnet.pdf" class="" target="_blank" title="Imprimir RCV"><i class="fa fa-file-pdf-o"></i> Carnet RCV</a></li>
+
 												</ul>
 										  </div>'.$indicador_documento_vacio.$indicador_respaldo
 						);
@@ -446,6 +453,7 @@ $values = array_merge($values,$_FILES);
                         if($seleccionados['Tipo']=='tugruero.com'){
                             $mail_poliza_tugruero = true;
                             $pdf = $PDFPagos->cuadroTUGRUERO($values);
+														$pdf = $PDFPagos->cuadroTUGRUEROCarnet($values);
                         }
                         if($seleccionados['Tipo']=='RCV'){
                             $planes_rcv = $SolicitudPlan->getPlanesRCV($idSolicitudPlan);
@@ -455,10 +463,12 @@ $values = array_merge($values,$_FILES);
                                     switch ($Aseguradora) {
                                             case 'Asistir':
                                                     $pdf2 = $PDFPagos->cuadroRCVAsistir($values);
+																										$pdf = $PDFPagos->cuadroRCVAsistirCarnet($values);
                                                     break;
 
                                             default:
                                                     $pdf2 = $PDFPagos->cuadroRCVAsistir($values);
+																										$pdf = $PDFPagos->cuadroRCVAsistirCarnet($values);
                                                     break;
                                     }
 
@@ -472,7 +482,7 @@ $values = array_merge($values,$_FILES);
 
 
 			$Mail = new Mail();
-			
+
                         if($mail_poliza_tugruero == true){
                             $Mail->sendMessagePolizaBienvenida($values);
 

@@ -716,15 +716,20 @@
             try{
 
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "mail.tugruero.com";
+            $smtp = "tugruero.com";
             $port = 465;
             $secure = "ssl";
             $username = "suscripcion@tugruero.com";
             $password = "tugruero123!";
             $mail_from = 'suscripcion@tugruero.com';
-            $transport = Swift_SmtpTransport::newInstance( $smtp, $port, $secure)
-              ->setUsername($username)
-              ->setPassword($password);
+
+            $https['ssl']['verify_peer'] = FALSE;
+            $https['ssl']['verify_peer_name'] = FALSE; // seems to work fine without this line so far
+            $transport = Swift_SmtpTransport::newInstance($smtp, $port, $secure)
+            ->setUsername($username)
+            ->setPassword($password)
+            ->setStreamOptions($https)
+            ;
             $mailer = Swift_Mailer::newInstance($transport);
             $email = array($data_aprobada['Correo']);
 
@@ -832,9 +837,13 @@
             $username = "suscripcion@tugruero.com";
             $password = "tugruero123!";
             $mail_from = 'suscripcion@tugruero.com';
-            $transport = Swift_SmtpTransport::newInstance( $smtp, $port, $secure)
-              ->setUsername($username)
-              ->setPassword($password);
+            $https['ssl']['verify_peer'] = FALSE;
+            $https['ssl']['verify_peer_name'] = FALSE; // seems to work fine without this line so far
+            $transport = Swift_SmtpTransport::newInstance($smtp, $port, $secure)
+            ->setUsername($username)
+            ->setPassword($password)
+            ->setStreamOptions($https)
+            ;
             $mailer = Swift_Mailer::newInstance($transport);
             $email = array($data_aprobada['Correo']);
 
@@ -882,7 +891,7 @@
 
                     $result = $mailer->send($message);
                     }catch(Exception $e){
-                            //echo $e->getMessage().$e->getTraceAsString();
+                            echo $e->getMessage().$e->getTraceAsString();
                             die;
                     }
 
