@@ -704,7 +704,9 @@
                         $pdf->writeHTMLCell('', '', 36, 53, $datos_cuadro['Color'], 0, 0, 1, true, 'L', true);
                         $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
                         //CARA POSTERIOR
+                        $pdf->SetFont('helvetica', '', 7);
                         $pdf->writeHTMLCell(30, 10, 116, 22, str_replace('(*)','',$datos_cuadro['TipoServicio']), 0, 0, 1, true, 'L', true);
+                        $pdf->SetFont('helvetica', '', 9);
                         $pdf->writeHTMLCell('', '', 137, 22, '', 0, 0, 1, true, 'L', true);
                         $pdf->writeHTMLCell('', '', 155, '', $datos_cuadro['NumProducto'], 0, 0, 1, true, 'L', true);
                         $pdf->writeHTMLCell('', '', 116, 30, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'L', true);
