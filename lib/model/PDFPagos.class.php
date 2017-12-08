@@ -184,7 +184,7 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>TERCERA:</strong> Los servicios adquiridos mediante el plan pre-pagado sólo se prestaran si el vehículo sufre o sufrió una avería que le imposibilite andar y será auxiliado a nivel nacional hacia el lugar requerido por la persona, siempre y cuando el tramo a recorrer no exceda en ningún momento a cincuenta (50) kilómetros desde el sitio de origen de avería hacia el lugar requerido por Ud.'
+    . '<br><strong>TERCERA:</strong> Los servicios adquiridos mediante los planes pre-pagados TUGRUERO PLUS y TUGRUERO GOLD sólo se prestaran si el vehículo sufre o sufrió una avería que le imposibilite andar y será auxiliado a nivel nacional hacia el lugar requerido por la persona, siempre y cuando el tramo a recorrer no exceda en ningún momento a cincuenta (50) kilómetros desde el sitio de origen de avería hacia el lugar requerido por Ud. Si posee un plan pre-pagado TUGRUERO BASICO contará con un (01) solo servicio de máximo veinticinco (25) kilómetros esde el sitio de origen de avería hacia el lugar requerido por Ud.'
     . '</td>'
     . '</tr>'
     . '<tr>'
@@ -239,7 +239,7 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>DECIMA CUARTA:</strong> Para mayor información le recomendamos que se tome el tiempo de leer los términos y condiciones, así como nuestra política de privacidad CUIDADOSAMENTE del producto que está adquiriendo a través de nuestro portal web www.tugruero.com y www.tugruero.com.ve.'
+    . '<br><strong>DECIMA CUARTA:</strong> Para mayor información le recomendamos que se tome el tiempo de leer los términos y condiciones, así como nuestra política de privacidad CUIDADOSAMENTE del producto que está adquiriendo a través de nuestro portal web www.tugruero.io'
     . '</td>'
     . '</tr>'
     . '</table>';
@@ -267,7 +267,7 @@ class PDFPagos{
     ;
     $pdf->writeHTML($html);
     $pdf->AddPage();
-    $html = '<table width="100%" border="0">'
+ $html = '<table width="100%" border="0">'
     . '<tr>'
     . '<td colspan="2" align="center"><img src="'.full_url.'/web/img/logo_tugruero.png" width="40"></td>'
     . '<td colspan="7"><strong>SOLUCIONES TU GRUERO C.A.</strong><br>RIF.- J-40680605-6</td>'
@@ -277,7 +277,7 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>DECIMA QUINTA:</strong> El servicio de grúas TUGRUERO PLUS y TUGRUERO GOLD estará activo, y el cliente lo podrá disfrutar, luego de diez (10) días hábiles del pago del mismo y entrega de esta planilla firmada y sellada.'
+    . '<br><strong>DECIMA QUINTA:</strong> El servicio de grúas TUGRUERO BASICO, TUGRUERO PLUS y TUGRUERO GOLD estará activo, y el cliente lo podrá disfrutar, luego de diez (10) días hábiles del pago del mismo y entrega de esta planilla firmada y sellada.'
     . '</td>'
     . '</tr>'
     . '<tr>'
@@ -287,7 +287,7 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>DECIMA SÉPTIMA:</strong>  Cuando el vehículo afiliado es del año 2000 en adelante, usted cuenta con servicios urbanos ilimitados a nivel nacional. A pesar que las averías/fallas que puede sufrir un vehículo son ilimitadas, usted cuenta solo con 3 servicios de grúa por avería/falla reportada durante la vigencia de su plan de grúas.'
+    . '<br><strong>DECIMA SÉPTIMA:</strong>  Cuando el vehículo afiliado es del año 2000 en adelante, usted cuenta con servicios urbanos ilimitados a nivel nacional (Solo disponible para TUGRUERO PLUS y TUGRUERO GOLD). A pesar que las averías/fallas que puede sufrir un vehículo son ilimitadas, usted cuenta solo con 3 servicios de grúa por avería/falla reportada durante la vigencia de su plan de grúas.'
     . '</td>'
     . '</tr>'
     . '<tr>'
@@ -307,7 +307,7 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>VIGESIMA PRIMERA:</strong> Soluciones Tu Gruero, C.A. no garantiza la prestación de los servicios de grúa en las denominadas zonas rojas del territorio nacional. Entendiendose como zonas rojas: barrios, vecindarios, calles o cualquier territorio altamente peligroso debido a la inseguridad. Estas zonas rojas pueden ser verificadas en www.tugruero.com'
+    . '<br><strong>VIGESIMA PRIMERA:</strong> Soluciones Tu Gruero, C.A. no garantiza la prestación de los servicios de grúa en las denominadas zonas rojas del territorio nacional. Entendiendose como zonas rojas: barrios, vecindarios, calles o cualquier territorio altamente peligroso debido a la inseguridad. Estas zonas rojas pueden ser verificadas en www.tugruero.io'
     . '</td>'
     . '</tr>'
     . '<tr>'
