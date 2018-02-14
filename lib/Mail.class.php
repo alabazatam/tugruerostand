@@ -4,10 +4,10 @@
 
     function __construct()
     {
-        $this->smtp = "tugruero.com";
+        $this->smtp = "tugruero.io";
         $this->port = 465;
         $this->secure = "ssl";
-        $this->username = "mercadeo@tugruero.com";
+        $this->username = "mercadeo@tugruero.io";
         $this->password = "tugruero123!";
 
     }
@@ -48,7 +48,7 @@
 				<p align='center'><strong>Para seguir con su proceso de registro en nuestra plataforma como gruero Master, dele click al siguiente botón.</strong></p>
 
 				<p align='center'>
-				<a href='".$values['url']."'><img src='".$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/haz_click_aqui.png'))."' alt='' /></a>
+				<a href='".$values['url']."'><img src='".$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/haz_click_aqui.png'))."' alt='' /></a>
 				</p>
 
 
@@ -57,7 +57,7 @@
 
 				<br><br>
 				<p align='center'>
-				<img src='".$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/logo_tugruero_mail.png'))."' alt='' />
+				<img src='".$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/logo_tugruero_mail.png'))."' alt='' />
 
 				</p>
 				<p align='center' style='color: #f1452b !important;font-style: italic !important;'>
@@ -118,7 +118,7 @@
 
 				<br><br>
 				<p align='center'>
-				<img src='".$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/logo_tugruero_mail.png'))."' alt='' />
+				<img src='".$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/logo_tugruero_mail.png'))."' alt='' />
 
 				</p>
 				<p align='center' style='color: #f1452b !important;font-style: italic !important;'>
@@ -175,7 +175,7 @@
 
 				<p align='justify'>Puede cambiar su clave una vez inicie sesión en el módulo de <strong>Modificación de Clave</strong> dentro de su cuenta.</p>
 				<p align='center'>
-				<a href='".full_url."/ap/index.php'><img src='".$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/inicie_sesion.png'))."' alt='' /></a>
+				<a href='".full_url."/ap/index.php'><img src='".$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/inicie_sesion.png'))."' alt='' /></a>
 				</p>
 
 				<p align='justify'>Si aún no ha descargado la aplicación en su teléfono, le invitamos
@@ -183,8 +183,8 @@
 				inteligente que tenga (Play Store o App Store), con el
 				nombre de: <strong>Tu Gruero</strong></p>
 				<p align='center'>
-				<a href='#'><img src='".$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/apps_store.png'))."' alt='' /></a>
-				<a href='#'><img src='".$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/google_play.png'))."' alt='' /></a>
+				<a href='#'><img src='".$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/apps_store.png'))."' alt='' /></a>
+				<a href='#'><img src='".$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/google_play.png'))."' alt='' /></a>
 
 				</p>
 
@@ -195,7 +195,7 @@
 				<p align='left'>Equipo – <strong>TU/GRUERO®</strong></p>
 				<br><br>
 				<p align='center'>
-				<img src='".$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/logo_tugruero_mail.png'))."' alt='' />
+				<img src='".$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/logo_tugruero_mail.png'))."' alt='' />
 
 				</p>
 				<p align='center' style='color: #f1452b !important;font-style: italic !important;'>
@@ -242,7 +242,7 @@
 
 				<br><br>
 				<p align='center'>
-				<img src='".$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/logo_tugruero_mail.png'))."' alt='' />
+				<img src='".$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/logo_tugruero_mail.png'))."' alt='' />
 
 				</p>
 				<p align='center' style='color: #f1452b !important;font-style: italic !important;'>
@@ -271,10 +271,10 @@
                             <html>
                             <body>
                             <p align='center'>
-				<a href='www.tugruero.com' target='_blank'><img width='600'  src='http://www.tugruero.com/web/img/mail/flyer1.png' alt='tugruero.com' /></a>
+				<a href='www.tugruero.com' target='_blank'><img width='600'  src='https://www.tugruero.io/web/img/mail/flyer1.png' alt='tugruero.com' /></a>
 
                             </p>
-                            <p align='justify'>Si no puede observar la imagen dele click <strong><a href='http://www.tugruero.com/tugruero.php' target='_blank'>Aquí</a></strong</p>
+                            <p align='justify'>Si no puede observar la imagen dele click <strong><a href='https://www.tugruero.io/tugruero.php' target='_blank'>Aquí</a></strong</p>
                             <p align='justify'><strong>2016. TU/GRUERO®.</strong> <strong style='color: #4C4C4C;'>Todos los Derechos Reservados.</strong></p>
                             </body>
                             </html>
@@ -290,18 +290,18 @@
 
             try{
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "tugruero.com";
+            $smtp = "tugruero.io";
             $port = 465;
             $secure = "ssl";
-            $username = "suscripcion@tugruero.com";
+            $username = "suscripcion@tugruero.io";
             $password = "tugruero123!";
-            $mail_from = 'suscripcion@tugruero.com';
+            $mail_from = 'suscripcion@tugruero.io';
 
             $transport = Swift_SmtpTransport::newInstance( $smtp, $port, $secure)
               ->setUsername($username)
               ->setPassword($password);
             $mailer = Swift_Mailer::newInstance($transport);
-            $email = array('deandrademarcos@gmail.com','suscripcion@tugruero.com','info@tugruero.com','acostantini@tugruero.com');
+            $email = array('deandrademarcos@gmail.com','suscripcion@tugruero.io','info@tugruero.io','acostantini@tugruero.io');
             $mensaje = $values['names']." ".$values['email']." ".$values['phone']." ".$values['message'];
 
             $message = Swift_Message::newInstance('Solicitud de información');
@@ -338,7 +338,7 @@
 
             $message->setFrom(array ($mail_from => 'TU/GRUERO®'));
                     $message->setTo($email);
-                    //$message->setBcc('info@tugruero.com');
+                    //$message->setBcc('info@tugruero.io');
             // Send the message
 
 
@@ -368,12 +368,12 @@
 			$Marca= $data['Marca'];
 			$Anio= $data['Anio'];
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "tugruero.com";
+            $smtp = "tugruero.io";
             $port = 465;
             $secure = "ssl";
-            $username = "suscripcion@tugruero.com";
+            $username = "suscripcion@tugruero.io";
             $password = "tugruero123!";
-            $mail_from = 'suscripcion@tugruero.com';
+            $mail_from = 'suscripcion@tugruero.io';
             $transport = Swift_SmtpTransport::newInstance( $smtp, $port, $secure)
               ->setUsername($username)
               ->setPassword($password);
@@ -401,15 +401,15 @@
 				<p align="justify" style="font-size: 12px;">Para más información puede comunicarse directamente al 0500-GRUERO-0 (0500-478376-0)</p>
             </div>
 			<br><br>--<br>
-			<p><img src="'.$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/firma_alessandro.png')).'" alt="" /></p>
-            <p><a href="http://www.tugruero.com" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
+			<p><img src="'.$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/firma_alessandro.png')).'" alt="" /></p>
+            <p><a href="https://www.tugruero.io" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
         </body>
     </html>
     ',"text/html");
 
             $message->setFrom(array ($mail_from => 'TU/GRUERO®'));
                     $message->setTo($email);
-                    $message->setBcc('suscripcion@tugruero.com');
+                    $message->setBcc('suscripcion@tugruero.io');
             // Send the message
 
 
@@ -452,12 +452,12 @@
 
                 }
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "tugruero.com";
+            $smtp = "tugruero.io";
             $port = 465;
             $secure = "ssl";
-            $username = "suscripcion@tugruero.com";
+            $username = "suscripcion@tugruero.io";
             $password = "tugruero123!";
-            $mail_from = 'suscripcion@tugruero.com';
+            $mail_from = 'suscripcion@tugruero.io';
             $transport = Swift_SmtpTransport::newInstance( $smtp, $port, $secure)
               ->setUsername($username)
               ->setPassword($password);
@@ -485,15 +485,15 @@
 		<p align="justify" style="font-size: 12px;">Para más información puede comunicarse directamente al 0500-GRUERO-0 (0500-478376-0)</p>
             </div>
 			<br><br>--<br>
-			<p><img src="'.$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/firma_alessandro.png')).'" alt="" /></p>
-            <p><a href="http://www.tugruero.com" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
+			<p><img src="'.$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/firma_alessandro.png')).'" alt="" /></p>
+            <p><a href="https://www.tugruero.io" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
         </body>
     </html>
     ',"text/html");
 
             $message->setFrom(array ($mail_from => 'TU/GRUERO®'));
                     $message->setTo($email);
-                    $message->setBcc('suscripcion@tugruero.com');
+                    $message->setBcc('suscripcion@tugruero.io');
                     if($correo1_vendedor!=''){
                        $message->setBcc($correo1_vendedor);
                     }
@@ -533,12 +533,12 @@
 
             try{
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "tugruero.com";
+            $smtp = "tugruero.io";
             $port = 465;
             $secure = "ssl";
-            $username = "suscripcion@tugruero.com";
+            $username = "suscripcion@tugruero.io";
             $password = "tugruero123!";
-            $mail_from = 'suscripcion@tugruero.com';
+            $mail_from = 'suscripcion@tugruero.io';
             $transport = Swift_SmtpTransport::newInstance( $smtp, $port, $secure)
               ->setUsername($username)
               ->setPassword($password);
@@ -566,15 +566,15 @@
 		<p align="justify" style="font-size: 12px;">Para más información puede comunicarse directamente al 0500-GRUERO-0 (0500-478376-0)</p>
             </div>
 			<br><br>--<br>
-			<p><img src="'.$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/firma_alessandro.png')).'" alt="" /></p>
-            <p><a href="http://www.tugruero.com" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
+			<p><img src="'.$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/firma_alessandro.png')).'" alt="" /></p>
+            <p><a href="https://www.tugruero.io" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
         </body>
     </html>
     ',"text/html");
 
             $message->setFrom(array ($mail_from => 'TU/GRUERO®'));
                     $message->setTo($values['Correo']);
-                    $message->setBcc('suscripcion@tugruero.com');
+                    $message->setBcc('suscripcion@tugruero.io');
 
 
             // Send the message
@@ -620,12 +620,12 @@
                 }
             try{
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "tugruero.com";
+            $smtp = "tugruero.io";
             $port = 465;
             $secure = "ssl";
-            $username = "suscripcion@tugruero.com";
+            $username = "suscripcion@tugruero.io";
             $password = "tugruero123!";
-            $mail_from = 'suscripcion@tugruero.com';
+            $mail_from = 'suscripcion@tugruero.io';
             $transport = Swift_SmtpTransport::newInstance( $smtp, $port, $secure)
               ->setUsername($username)
               ->setPassword($password);
@@ -653,15 +653,15 @@
 		<p align="justify" style="font-size: 12px;">Para más información puede comunicarse directamente al 0500-GRUERO-0 (0500-478376-0)</p>
             </div>
 			<br><br>--<br>
-			<p><img src="'.$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/firma_alessandro.png')).'" alt="" /></p>
-           <p><a href="http://www.tugruero.com" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
+			<p><img src="'.$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/firma_alessandro.png')).'" alt="" /></p>
+           <p><a href="https://www.tugruero.io" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
         </body>
     </html>
     ',"text/html");
 
             $message->setFrom(array ($mail_from => 'TU/GRUERO®'));
                     $message->setTo($values['Correo']);
-                    $message->setBcc('suscripcion@tugruero.com');
+                    $message->setBcc('suscripcion@tugruero.io');
                     if($correo1_vendedor!=''){
                        $message->setBcc($correo1_vendedor);
                     }
@@ -716,12 +716,12 @@
             try{
 
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "tugruero.com";
+            $smtp = "tugruero.io";
             $port = 465;
             $secure = "ssl";
-            $username = "suscripcion@tugruero.com";
+            $username = "suscripcion@tugruero.io";
             $password = "tugruero123!";
-            $mail_from = 'suscripcion@tugruero.com';
+            $mail_from = 'suscripcion@tugruero.io';
 
             $https['ssl']['verify_peer'] = FALSE;
             $https['ssl']['verify_peer_name'] = FALSE; // seems to work fine without this line so far
@@ -774,8 +774,8 @@
 		<p align="justify" style="font-size: 12px;">Para más información puede comunicarse directamente al 0500-GRUERO-0 (0500-478376-0)</p>
             </div>
 			<br><br>--<br>
-			<p><img src="'.$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/firma_alessandro.png')).'" alt="" /></p>
-            <p><a href="http://www.tugruero.com" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
+			<p><img src="'.$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/firma_alessandro.png')).'" alt="" /></p>
+            <p><a href="https://www.tugruero.io" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
 		</div>
 
         </body>
@@ -831,12 +831,12 @@
                 }
             try{
             //$smtp = "server-0116a.gconex.net";
-            $smtp = "tugruero.com";
+            $smtp = "tugruero.io";
             $port = 465;
             $secure = "ssl";
-            $username = "suscripcion@tugruero.com";
+            $username = "suscripcion@tugruero.io";
             $password = "tugruero123!";
-            $mail_from = 'suscripcion@tugruero.com';
+            $mail_from = 'suscripcion@tugruero.io';
             $https['ssl']['verify_peer'] = FALSE;
             $https['ssl']['verify_peer_name'] = FALSE; // seems to work fine without this line so far
             $transport = Swift_SmtpTransport::newInstance($smtp, $port, $secure)
@@ -874,8 +874,8 @@
 		<p align="justify" style="font-size: 12px;">Para más información puede comunicarse directamente al 0500-GRUERO-0 (0500-478376-0)</p>
             </div>
 			<br><br>--<br>
-			<p><img src="'.$message->embed(Swift_Image::fromPath('http://www.tugruero.com/web/img/firma_alessandro.png')).'" alt="" /></p>
-            <p><a href="http://www.tugruero.com" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
+			<p><img src="'.$message->embed(Swift_Image::fromPath('https://www.tugruero.io/web/img/firma_alessandro.png')).'" alt="" /></p>
+            <p><a href="https://www.tugruero.io" target="_blank" style="text-decoration: none;"><font style="color:#1155CC;font-size: 18px;"><b>www.tugruero.com</b></font></a></p>
 		</div>
 
         </body>
