@@ -81,6 +81,7 @@ $disabled_pagos = "";
 	  <label for="idPlan" class="">Plan </label> <label class="text-danger"> * </label>
     <div class="">
         <select <?php echo $disabled;?> <?php echo $disabled_plan;?> class="form-control" id="idPlan" name="idPlan">
+            <option value="">Seleccione el plan</option>
             <option value="13" <?php if(isset($values['idPlan']) and $values['idPlan']==13) echo "selected='selected'";?>>TU GRUERO BASICO (Semestral)</option>
             <option value="10" <?php if(isset($values['idPlan']) and $values['idPlan']==10) echo "selected='selected'";?>>TU GRUERO BASICO (Anual)</option>
                <option value="11" <?php if(isset($values['idPlan']) and $values['idPlan']==11) echo "selected='selected'";?>>TU GRUERO PLUS (Semestral)</option>
@@ -97,9 +98,9 @@ $disabled_pagos = "";
         <?php endif;?> 
   </div> 	
   <div class="form-group col-sm-3">
-    <label for="Cedula" class="control-label">Cédula</label> <label class="text-danger"> * </label>
+    <label for="Cedula" class="control-label">Cédula / RIF</label> <label class="text-danger"> * </label>
     <div class="">
-        <input <?php echo $disabled;?> type="text" name="Cedula" class="form-control" autocomplete="off" id="Cedula" maxlength="10" value="<?php if(isset($values['Cedula']) and $values['Cedula']!='') echo $values['Cedula'];?>" placeholder="Ejemplo: V-12345678">
+        <input <?php echo $disabled;?> type="text" name="Cedula" class="form-control" autocomplete="off" id="Cedula" maxlength="11" value="<?php if(isset($values['Cedula']) and $values['Cedula']!='') echo $values['Cedula'];?>" placeholder="Ejemplo: V-12345678">
     </div>
     
         <?php if(isset($errors['Cedula']) and $errors['Cedula']!=''):?>
@@ -596,7 +597,7 @@ $disabled_pagos = "";
 <script>
 
 $(document).ready(function(){
-    
+calculaPrecioTugruero();
 $('#aprobacion').hide();    
 $('#rechazo').hide();       
 <?php if(isset($values['RCV']) and $values['RCV']=='SI'):?>

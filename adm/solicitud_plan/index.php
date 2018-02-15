@@ -7,12 +7,12 @@ setlocale(LC_NUMERIC,"es_ES.UTF8");
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
 }
-			$id_temp = 460;
+			/*$id_temp = 1232;
             $PDFPagos = new PDFPagos();
-            /*$pdf = $PDFPagos->cuadroTUGRUERO(array('idSolicitudPlan'=> $id_temp));
+            $pdf = $PDFPagos->cuadroTUGRUERO(array('idSolicitudPlan'=> $id_temp));
 			$pdf = $PDFPagos->CuadroRCVAsistir(array('idSolicitudPlan'=> $id_temp));
 			$pdf = $PDFPagos->cuadroTUGRUEROCarnet(array('idSolicitudPlan'=> $id_temp));
-			$pdf = $PDFPagos->cuadroRCVAsistirCarnet(array('idSolicitudPlan'=> $id_temp));die;*/
+			$pdf = $PDFPagos->cuadroRCVAsistirCarnet(array('idSolicitudPlan'=> $id_temp));*/
 			/*$values["idSolicitudPlan"] = 13;
 			$Mail = new Mail();
 			$Mail->sendMessagePolizaBienvenida($values);die;*/
@@ -457,7 +457,7 @@ $values = array_merge($values,$_FILES);
                         if($seleccionados['Tipo']=='tugruero.com'){
                             $mail_poliza_tugruero = true;
                             $pdf = $PDFPagos->cuadroTUGRUERO($values);
-														$pdf = $PDFPagos->cuadroTUGRUEROCarnet($values);
+							$pdf = $PDFPagos->cuadroTUGRUEROCarnet($values);
                         }
                         if($seleccionados['Tipo']=='RCV'){
                             $planes_rcv = $SolicitudPlan->getPlanesRCV($idSolicitudPlan);

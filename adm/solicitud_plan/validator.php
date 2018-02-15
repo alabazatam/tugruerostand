@@ -52,7 +52,7 @@
 		$validator_values['Cedula'] = array(
 			
 			"minlength" => 7,
-			"maxlength" => 10,
+			"maxlength" => 11,
 			"type" => "text",
 			"label" => "Cédula",
 			"required" => true
@@ -177,7 +177,7 @@
                 {
                     $errors['Apellidos'] = "El campo debe contener solamente letras";
                 }
-                if (!preg_match("/^[Vv,Ee][-][1-9][0-9]{5,7}$/", $values['Cedula'], $matches))      
+                if (!preg_match("/^[Vv,Ee,Jj,Gg][-][1-9][0-9]{5,8}$/", $values['Cedula'], $matches))      
                 {
                     $errors['Cedula'] = "Verifique el formato de la cédula (V-1234567)";
                 }
