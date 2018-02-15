@@ -468,6 +468,7 @@
 			
 		}
 		function saveSolicitudPlanAdmin($values){
+
 			        $precio_tugruero = 0;
 					$precio_rcv = 0;
              
@@ -479,7 +480,8 @@
                     }
                     
 
-            $Utilitarios = new Utilitarios();           
+            $Utilitarios = new Utilitarios();  
+
 			$array_solicitud_plan = array(
 				'Nombres' => @$values['Nombres'],
 				'Apellidos' => @$values['Apellidos'],
@@ -512,12 +514,15 @@
                                 'PagoRealizado' => @$values['PagoRealizado'],
                                 'IdV' => @$values['IdV'],
 				"SerialMotor" =>  @$values['SerialMotor'],
-				"SerialCarroceria" =>  @$values['SerialCarroceria']
+				"SerialCarroceria" =>  @$values['SerialCarroceria'],
+				"Kilometraje" =>  @$values['Kilometraje'],
+				'CantidadServicios' => @$values['CantidadServicios'],
 			);
               
 			try{
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->SolicitudPlan()->insert($array_solicitud_plan);
+
 			$values['idSolicitudPlan'] = $ConnectionORM->getConnect()->SolicitudPlan()->insert_id();
 
                         //en caso de ser TDC almaceno en pago detalle
@@ -548,7 +553,7 @@
                         if(isset($values['idPlan']) and $values['idPlan']!=""){
                                     //actualizo el km acorde a lo que existe en la tabla planes
                                     $datos_plan = $this->getDatosPlan($values['idPlan']);
-                                    $this->updateCantidadServiciosKm($values['idSolicitudPlan'],$datos_plan);
+                                    $this->updateCantidadServiciosKm($values['idSolicitudPlan'],$datos_plan, $values);
                                     /////////////////////////////////////////////
                                     $array_planes = array($values['idPlan']);
                                     $TotalConIva = $precio_tugruero;
@@ -628,7 +633,6 @@
 				'SerialCarroceria' => @$values['SerialCarroceria'],
                                 'Kilometraje' => @$values['Kilometraje'],
                                 'CantidadServicios' => @$values['CantidadServicios'],
-								'CantidadServicios' => @$values['CantidadServicios'],
 								'TotalSinIva' => $precio_nuevo,
 								'TotalConIva' => $precio_nuevo,
 								
@@ -840,6 +844,8 @@
 			->join("SolicitudAprobada","INNER JOIN SolicitudAprobada sa on sa.idSolicitudPlan = SolicitudPlan.idSolicitudPlan")
 			->where("SolicitudPlan.idSolicitudPlan=?",$idSolicitudPlan)
 			->fetch();
+			//->toSql();
+		
 			return $q; 				
 			
 		}
@@ -966,10 +972,10 @@
                             return $q; 
 
             }
-        function updateCantidadServiciosKm($idSolicitudPlan,$datos_plan){	
+        function updateCantidadServiciosKm($idSolicitudPlan,$datos_plan, $values){	
+
 			$Planes = new Planes();
             $recarga = $Planes->getDatosPreciosRecargas($datos_plan['idPlan'],$values['Anio']);
-			
             $array = array(
                     'Kilometraje' => $recarga['Kilometraje'],
                     'CantidadServicios' => $recarga['CantidadServicios']);
