@@ -7,11 +7,15 @@ setlocale(LC_NUMERIC,"es_ES.UTF8");
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
 }
-/*$PDFPagos = new PDFPagos();
-$pdf = $PDFPagos->cuadroTUGRUERO(array('idSolicitudPlan'=> 1));*/
-/*$values["idSolicitudPlan"] = 13;
-$Mail = new Mail();
-$Mail->sendMessagePolizaBienvenida($values);die;*/
+			/*$id_temp = 1232;
+            $PDFPagos = new PDFPagos();
+            $pdf = $PDFPagos->cuadroTUGRUERO(array('idSolicitudPlan'=> $id_temp));
+			$pdf = $PDFPagos->CuadroRCVAsistir(array('idSolicitudPlan'=> $id_temp));
+			$pdf = $PDFPagos->cuadroTUGRUEROCarnet(array('idSolicitudPlan'=> $id_temp));
+			$pdf = $PDFPagos->cuadroRCVAsistirCarnet(array('idSolicitudPlan'=> $id_temp));*/
+			/*$values["idSolicitudPlan"] = 13;
+			$Mail = new Mail();
+			$Mail->sendMessagePolizaBienvenida($values);die;*/
 $values = $_REQUEST;
 if(!isset($values['IdV']) or $values['IdV']==''){
 	$values['IdV'] = '3';
@@ -450,15 +454,15 @@ function executeListJson($values)
 
 			foreach($planes_seleccionados as $seleccionados){
 
-				if($seleccionados['Tipo']=='tugruero.com'){
-					$mail_poliza_tugruero = true;
-					$pdf = $PDFPagos->cuadroTUGRUERO($values);
-					$pdf = $PDFPagos->cuadroTUGRUEROCarnet($values);
-				}
-				if($seleccionados['Tipo']=='RCV'){
-					$planes_rcv = $SolicitudPlan->getPlanesRCV($idSolicitudPlan);
-					if(isset($planes_rcv['idPlan']) and $planes_rcv['idPlan']!=''){
-						$Aseguradora = $planes_rcv['Aseguradora'];
+                        if($seleccionados['Tipo']=='tugruero.com'){
+                            $mail_poliza_tugruero = true;
+                            $pdf = $PDFPagos->cuadroTUGRUERO($values);
+							$pdf = $PDFPagos->cuadroTUGRUEROCarnet($values);
+                        }
+                        if($seleccionados['Tipo']=='RCV'){
+                            $planes_rcv = $SolicitudPlan->getPlanesRCV($idSolicitudPlan);
+                            if(isset($planes_rcv['idPlan']) and $planes_rcv['idPlan']!=''){
+                                    $Aseguradora = $planes_rcv['Aseguradora'];
 
 						switch ($Aseguradora) {
 							case 'Asistir':
