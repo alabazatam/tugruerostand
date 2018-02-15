@@ -1,65 +1,65 @@
 <?php
 
-class PDFPagos{
+    class PDFPagos{
 
 
-  public function CuadroTUGRUERO($values){
-    setlocale(LC_NUMERIC,"es_ES.UTF8");
-    ob_start();
-    $SolicitudPlan = new SolicitudPlan();
-    $idSolicitudPlan = $values['idSolicitudPlan'];
-    $Utilitarios = new Utilitarios();
-    $datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfo($idSolicitudPlan);
-    //print_r($datos_cuadro);die;
-    // create new PDF document
-    $pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        public function CuadroTUGRUERO($values){
+	setlocale(LC_NUMERIC,"es_ES.UTF8");
+                        ob_start();
+                        $SolicitudPlan = new SolicitudPlan();
+                        $idSolicitudPlan = $values['idSolicitudPlan'];
+	$Utilitarios = new Utilitarios();
+	$datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfo($idSolicitudPlan);
+                        //print_r($datos_cuadro);die;
+	// create new PDF document
+	$pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-    // set document information
-    $pdf->SetCreator(PDF_CREATOR);
-    $pdf->SetAuthor('TU/GRUERO®');
-    $pdf->SetTitle('TU/GRUERO®');
-    $pdf->SetSubject('TU/GRUERO®');
-    $pdf->SetKeywords('TU/GRUERO®');
+	// set document information
+	$pdf->SetCreator(PDF_CREATOR);
+	$pdf->SetAuthor('TU/GRUERO®');
+	$pdf->SetTitle('TU/GRUERO®');
+	$pdf->SetSubject('TU/GRUERO®');
+	$pdf->SetKeywords('TU/GRUERO®');
 
-    // set default header data
-    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+	// set default header data
+	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 
-    // set header and footer fonts
-    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+	// set header and footer fonts
+	$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+	$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-    // set default monospaced font
-    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+	// set default monospaced font
+	$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-    // set margins
-    $pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
-    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+	// set margins
+	$pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-    // set auto page breaks
-    $pdf->SetAutoPageBreak(TRUE, 0);
+	// set auto page breaks
+	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
-    // set image scale factor
-    $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+	// set image scale factor
+	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-    // set some language-dependent strings (optional)
-    if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-      require_once(dirname(__FILE__).'/lang/eng.php');
-      $pdf->setLanguageArray($l);
-    }
+	// set some language-dependent strings (optional)
+	if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+	}
 
-    // ---------------------------------------------------------
+	// ---------------------------------------------------------
 
-    // set font
-    $pdf->SetFont('helvetica', '', 8);
+	// set font
+	$pdf->SetFont('helvetica', '', 8);
 
-    // add a page
-    $pdf->AddPage();
-    //$image_file = K_PATH_IMAGES.'logo_tugruero.png';
-    //$pdf->Image($image_file, 15, 2, 25, '', 'PNG', '', 'T', false, 100, '', false, false, 0, false, false, false);
-    // set some text to print
+	// add a page
+	$pdf->AddPage();
+	//$image_file = K_PATH_IMAGES.'logo_tugruero.png';
+	//$pdf->Image($image_file, 15, 2, 25, '', 'PNG', '', 'T', false, 100, '', false, false, 0, false, false, false);
+	// set some text to print
 
-    $html = '<table width="100%">'
+	$html = '<table width="100%">'
     . '<tr>'
     . '<td colspan="2" align="center"><br><br><img src="'.full_url.'/web/img/logo_tugruero.png" width="40"></td>'
     . '<td colspan="5"><br><br>SOLUCIONES TU GRUERO C.A.<br>RIF.- J-40680605-6</td>'
@@ -179,7 +179,7 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>SEGUNDA:</strong> Ud., podrá solicitar nuestros servicios mediante nuestra aplicación para Smartphones (teléfonos inteligentes) “TUGRUERO app clientes”, la cual podrá ser descargada de forma gratuita desde la respectiva tienda del sistema operativo de su teléfono. A todo evento, igual podrá solicitar los servicios mediante nuestro Call-Center por los números telefónicos <b style="font-size: 12px;">(0212) 2379227 / 0500 GRUERO-0 (0500 478376-0)</b>.'
+    . '<br><strong>SEGUNDA:</strong> Ud., podrá solicitar nuestros servicios mediante nuestra aplicación para Smartphones (teléfonos inteligentes) “TUGRUERO app clientes”, la cual podrá ser descargada de forma gratuita desde la respectiva tienda del sistema operativo de su teléfono. A todo evento, igual podrá solicitar los servicios mediante nuestro Call-Center por los números telefónicos <b>(0212) 2370491 / 2379113 / 2379762 / 2379227/ 0500 GRUERO - 0 (0500 478376 - 0)</b>.'
     . '</td>'
     . '</tr>'
     . '<tr>'
@@ -189,7 +189,7 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>CUARTA:</strong> El presente plan pre-pagado de auxilio vial posee validez de un (1) año y estará activo a partir de la fecha del pago de la totalidad del mismo.'
+    . '<br><strong>CUARTA:</strong> El presente plan pre-pagado de auxilio vial posee validez de seis (06) meses o un (1) año,  según las condiciones de compra establecidas en el proceso de venta del producto. La duración del mismo se encuentra reflejada en la parte superior derecha del Cuadro Producto.'
     . '</td>'
     . '</tr>'
     . '<tr>'
@@ -239,35 +239,34 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>DECIMA CUARTA:</strong> Para mayor información le recomendamos que se tome el tiempo de leer los términos y condiciones, así como nuestra política de privacidad CUIDADOSAMENTE del producto que está adquiriendo a través de nuestro portal web www.tugruero.io'
+    . '<br><strong>DECIMA CUARTA:</strong> Para mayor información le recomendamos que se tome el tiempo de leer los términos y condiciones, así como nuestra política de privacidad <b>CUIDADOSAMENTE</b> del producto que está adquiriendo a través de nuestro portal web www.tugruero.io'
     . '</td>'
     . '</tr>'
     . '</table>';
+
     $html.='<div align="center">'
     . '<br><table width="100%" border="0">'
     . '<tr>'
-    . '<td><img src="'.full_url.'/web/img/FIRMA1.jpg" width="50"></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td><img src="'.full_url.'/web/img/SELLO1.jpg" width="90"></td>'
+    . '<td><img src="'.full_url.'/web/img/FIRMA1.jpg" width="50"> <img src="'.full_url.'/web/img/SELLO1.jpg" width="90"></td>'
     . '</tr>'
     . '</table></div>';;
-    if($datos_cuadro['Urbano'] == 'S')
-    {
-      $html.='<span style="font-size: 10px;"><strong>(*) Servicio Urbano:</strong> Servicios de máximo 50km de recorrido.</span>';
 
-    }
-    if($datos_cuadro['ExtraUrbano'] == 'S')
-    {
-      $html.='<br><span style="font-size: 10px;"><strong>(*) Servicio Extraurbano:</strong> Servicios de máximo 300km de recorrido.</span>';
+	if($datos_cuadro['Urbano'] == 'S')
+	{
+	$html.='<span style="font-size: 10px;"><strong>(*) Servicio Urbano:</strong> Servicios de máximo 50km de recorrido.</span>';
 
-    }
+	}
+	if($datos_cuadro['ExtraUrbano'] == 'S')
+	{
+	$html.='<br><span style="font-size: 10px;"><strong>(*) Servicio Extraurbano:</strong> Servicios de máximo 300km de recorrido.</span>';
 
-    $html.='<p align="center">Av Francisco de Miranda, Edif Provincial, Piso 8, Oficina 8B. Los Dos Caminos, Municipio Sucre, Edo. Miranda, Caracas, Venezuela. Tlf: <b><font style="font-size: 10px;">0500-GRUERO-0 (0500-478376-0) / 0212-2379227 / 0212-4190105 · info@tugruero.com - tugruero@gmail.com</font></b></p>'
-    ;
-    $pdf->writeHTML($html);
-    $pdf->AddPage();
- $html = '<table width="100%" border="0">'
+	}
+
+	$html.='<br><span align="center">Caracas, Venezuela. <br>Tlf: <b><font style="font-size: 10px;">0500-GRUERO-0 (0500-478376-0) / 0212-2379227 / 0212-4190105 · info@tugruero.com - tugruero@gmail.com</font></b></span>'
+                                ;
+	$pdf->writeHTML($html);
+	$pdf->AddPage();
+	$html = '<table width="100%" border="0">'
     . '<tr>'
     . '<td colspan="2" align="center"><img src="'.full_url.'/web/img/logo_tugruero.png" width="40"></td>'
     . '<td colspan="7"><strong>SOLUCIONES TU GRUERO C.A.</strong><br>RIF.- J-40680605-6</td>'
@@ -287,12 +286,12 @@ class PDFPagos{
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>DECIMA SÉPTIMA:</strong>  Cuando el vehículo afiliado es del año 2000 en adelante, usted cuenta con servicios urbanos ilimitados a nivel nacional (Solo disponible para TUGRUERO PLUS y TUGRUERO GOLD). A pesar que las averías/fallas que puede sufrir un vehículo son ilimitadas, usted cuenta solo con 3 servicios de grúa por avería/falla reportada durante la vigencia de su plan de grúas.'
+    . '<br><strong>DECIMA SÉPTIMA:</strong>  Cuando el vehículo afiliado es del año 2000 en adelante, usted cuenta con servicios ilimitados de 50 Km (Solo disponible para TUGRUERO PLUS y TUGRUERO GOLD). A pesar que las averías/fallas que puede sufrir un vehículo son ilimitadas, usted cuenta solo con 3 servicios de grúa por avería/falla reportada durante la vigencia de su plan de grúas.'
     . '</td>'
     . '</tr>'
     . '<tr>'
     . '<td colspan="9" style="border-style: solid; border-top-width: -1px; border-right-width: 1px; border-bottom-width: -1px; border-left-width: 1px">'
-    . '<br><strong>DECIMA OCTAVA:</strong>  El plan de grúas TUGRUERO GOLD cuenta con un (01) servicio extraurbano de máximo 300Km y podrá ser utilizado sólo si el vehículo accidentado se encuentra en plena vía o en un lugar de resguardo y requiere el traslado hasta el lugar de domicilio establecido en el plan adquirido.'
+    . '<br><strong>DECIMA OCTAVA:</strong>  EEl plan de grúas TUGRUERO GOLD cuenta con un (01) servicio extraurbano de máximo 100 Km y podrá ser utilizado sólo si el vehículo accidentado se encuentra en plena vía o en un lugar de resguardo y requiere el traslado hasta el lugar de domicilio establecido en el plan adquirido.'
     . '</td>'
     . '</tr>'
     . '<tr>'
@@ -381,479 +380,478 @@ class PDFPagos{
     . '</td>'
     . '</tr>'
     . '</table>';
+
     $html.='<div align="center">'
     . '<br><table width="100%" border="0">'
     . '<tr>'
-    . '<td><img src="'.full_url.'/web/img/FIRMA1.jpg" width="50"></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td><img src="'.full_url.'/web/img/SELLO1.jpg" width="90"></td>'
+    . '<td><img src="'.full_url.'/web/img/FIRMA1.jpg" width="50"> <img src="'.full_url.'/web/img/SELLO1.jpg" width="90"></td>'
     . '</tr>'
     . '</table></div>';;
 
-    if($datos_cuadro['Urbano'] == 'S')
-    {
-      $html.='<span style="font-size: 10px;"><strong>(*) Servicio Urbano:</strong> Servicios de máximo 50km de recorrido.</span>';
 
-    }
-    if($datos_cuadro['ExtraUrbano'] == 'S')
-    {
-      $html.='<span style="font-size: 10px;"><strong>(*) Servicio Extraurbano:</strong> Servicios de máximo 300km de recorrido.</span>';
+	if($datos_cuadro['Urbano'] == 'S')
+	{
+	$html.='<span style="font-size: 10px;"><strong>(*) Servicio Urbano:</strong> Servicios de máximo 50km de recorrido.</span>';
 
-    }
+	}
+	if($datos_cuadro['ExtraUrbano'] == 'S')
+	{
+	$html.='<br><span style="font-size: 10px;"><strong>(*) Servicio Extraurbano:</strong> Servicios de máximo 300km de recorrido.</span>';
 
-    $html.='<p align="center">Av Francisco de Miranda, Edif Provincial, Piso 8, Oficina 8B. Los Dos Caminos, Municipio Sucre, Edo. Miranda, Caracas, Venezuela. Tlf: <b><font style="font-size: 10px;">0500-GRUERO-0 (0500-478376-0) / 0212-2379227 / 0212-4190105 · info@tugruero.com - tugruero@gmail.com</font></b></p>'
-    ;
-    $pdf->writeHTML($html);
-    $pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');
-    //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');
+	}
 
-
-  }
-
-  public function CuadroRCVAsistir($values){
-    setlocale(LC_NUMERIC,"es_ES.UTF8");
-    ob_start();
-    $SolicitudPlan = new SolicitudPlan();
-    $idSolicitudPlan = $values['idSolicitudPlan'];
-    $Utilitarios = new Utilitarios();
-    $datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfoAsistir($idSolicitudPlan);
-    //print_r($datos_cuadro);die;
-    // create new PDF document
-    $pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-    // set document information
-    $pdf->SetCreator(PDF_CREATOR);
-    $pdf->SetAuthor('TU/GRUERO®');
-    $pdf->SetTitle('TU/GRUERO®');
-    $pdf->SetSubject('TU/GRUERO®');
-    $pdf->SetKeywords('TU/GRUERO®');
-
-    // set default header data
-    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
-
-    // set header and footer fonts
-    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
-    // set default monospaced font
-    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
-    // set margins
-    $pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
-    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
-    // set auto page breaks
-    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
-    // set image scale factor
-    $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-    // set some language-dependent strings (optional)
-    if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-      require_once(dirname(__FILE__).'/lang/eng.php');
-      $pdf->setLanguageArray($l);
-    }
-
-    // ---------------------------------------------------------
-
-    // set font
-    $pdf->SetFont('helvetica', '', 7);
-
-    // add a page
-    $pdf->AddPage();
-    //$image_file = K_PATH_IMAGES.'logo_tugruero.png';
-    //$pdf->Image($image_file, 15, 2, 25, '', 'PNG', '', 'T', false, 100, '', false, false, 0, false, false, false);
-    // set some text to print
-
-    $html = '<table width="100%">'
-    . '<tr>'
-    . '<td colspan="3" align="center"><br><br><br><img src="'.full_url.'/web/img/fresh/asistir_pdf.png" width="150"></td>'
-    . '<td colspan="5" align="center"><br><br><br><br><br><b>CUADRO PÓLIZA RECIBO</b><br><br><b>SEGURO DE VEHICULOS TERRESTRES</b></td>'
-    . '<td colspan="3">&nbsp;</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;border-top-width:1px;"> N° de Póliza:</td>'
-    . '<td colspan="3" style="border-top-width:1px;">'.$datos_cuadro['PolizaAsistir'].'</td>'
-    . '<td colspan="2" style="border-top-width:1px;">No de Recibo:</td>'
-    . '<td style="border-top-width:1px;">'.$datos_cuadro['ReciboAsistir'].'</td>'
-    . '<td colspan="2" style="border-top-width:1px;">Forma de Pago:</td>'
-    . '<td style="border-right-width:1px;border-top-width:1px;">Anual</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Vigencia de la Póliza:</td>'
-    . '<td colspan="3">Anual</td>'
-    . '<td colspan="2">Desde:</td>'
-    . '<td>'.$Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y').'</td>'
-    . '<td colspan="2">Hasta:</td>'
-    . '<td style="border-right-width:1px;">'.$Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y').'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Tomador:</td>'
-    . '<td colspan="7">'.$datos_cuadro['Nombres'].', '.$datos_cuadro['Apellidos'].'</td>'
-    . '<td colspan="2" align="right" style="border-right-width:1px;"><label style="font-size:6px;">Hasta 12 M Hora Oficial</label></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Caracter:</td>'
-    . '<td colspan="3">Natural</td>'
-    . '<td colspan="2">Rif/C.I:</td>'
-    . '<td>'.$datos_cuadro['Cedula'].'</td>'
-    . '<td colspan="2">Teléfono:</td>'
-    . '<td style="border-right-width:1px;">'.$datos_cuadro['Celular'].'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Dirección del Tomador:</td>'
-    . '<td colspan="9" style="border-right-width:1px;">'.$datos_cuadro['Domicilio'].'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Asegurado:</td>'
-    . '<td colspan="6">'.$datos_cuadro['Nombres'].', '.$datos_cuadro['Apellidos'].'</td>'
-    . '<td colspan="2">Rif/C.I:</td>'
-    . '<td style="border-right-width:1px;">'.$datos_cuadro['Cedula'].'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Dirección del Asegurado:</td>'
-    . '<td colspan="6">'.$datos_cuadro['Domicilio'].'</td>'
-    . '<td colspan="2">Teléfono:</td>'
-    . '<td style="border-right-width:1px;">'.$datos_cuadro['Celular'].'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Beneficiario:</td>'
-    . '<td colspan="6">'.$datos_cuadro['Nombres'].', '.$datos_cuadro['Apellidos'].'</td>'
-    . '<td colspan="2">Rif/C.I:</td>'
-    . '<td style="border-right-width:1px;">'.$datos_cuadro['Cedula'].'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Dirección de Cobro:</td>'
-    . '<td colspan="6">'.$datos_cuadro['Domicilio'].'</td>'
-    . '<td colspan="2">Teléfono:</td>'
-    . '<td style="border-right-width:1px;">'.$datos_cuadro['Celular'].'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="11" align="center" style="border-left-width:1px;border-bottom-width:1px;border-top-width:1px;border-right-width:1px;"><br><br style="font-size: 10px;">DATOS DEL VEHICULO ASEGURADO<br></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td style="border-left-width:1px;"> Marca:</td>'
-    . '<td colspan="2">'.$datos_cuadro['Marca'].'</td>'
-    . '<td>Modelo:</td>'
-    . '<td>'.$datos_cuadro['Modelo'].'</td>'
-    . '<td>Clase:</td>'
-    . '<td colspan="2">'.$datos_cuadro['Clase'].'</td>'
-    . '<td colspan="3" style="border-right-width:1px;">Serial de Motor: '.$datos_cuadro['SerialMotor'].'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" style="border-left-width:1px;"> Serial de Carroceria:</td>'
-    . '<td colspan="4">'.$datos_cuadro['SerialCarroceria'].'</td>'
-    . '<td>N° Placa:</td>'
-    . '<td>'.$datos_cuadro['Placa'].'</td>'
-    . '<td>Uso:</td>'
-    . '<td colspan="2" style="border-right-width:1px;">Particular</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td style="border-left-width:1px;border-bottom-width:1px;"> Tipo:</td>'
-    . '<td style="border-bottom-width:1px;" colspan="2">'.$datos_cuadro['Tipo'].'</td>'
-    . '<td style="border-bottom-width:1px;">Color:</td>'
-    . '<td style="border-bottom-width:1px;">'.$datos_cuadro['Color'].'</td>'
-    . '<td style="border-bottom-width:1px;">N° Puestos:</td>'
-    . '<td style="border-bottom-width:1px;" colspan="2">'.$datos_cuadro['Puestos'].'</td>'
-    . '<td style="border-bottom-width:1px;">Año:</td>'
-    . '<td colspan="2" style="border-right-width:1px;border-bottom-width:1px;">'.$datos_cuadro['Anio'].'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="4" align="center" style="border-left-width:1px;border-bottom-width:1px;"><br><br>Coberturas<br></td>'
-    . '<td colspan="2" align="right" style="border-bottom-width:1px;"><br><br>Suma asegurada<br></td>'
-    . '<td colspan="2" align="center" style="border-bottom-width:1px;"><br><br>Deducible<br></td>'
-    . '<td colspan="" align="center" style="border-bottom-width:1px;"><br><br>Tasa<br></td>'
-    . '<td colspan="2" align="center" style="border-bottom-width:1px;border-right-width:1px;"><br><br>Prima<br></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RCV<br></td>'
-    . '<td colspan="2" align="left"><br><br>DAÑOS A COSAS<br>DANÕS A PERSONAS</td>'
-    . '<td colspan="2" align="right"><br><br>Bs. '.number_format($datos_cuadro['RCVCosas'],2,",",".").'<br>Bs. '.number_format($datos_cuadro['RCVPersonas'],2,",",".").'</td>'
-    . '<td colspan="2" align="center"><br><br><br></td>'
-    . '<td colspan="" align="center"><br><br><br></td>'
-    . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br>Bs. '.number_format($datos_cuadro['RCVPrima'],2,",",".").'<br></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXCESO DE LIMITES<br></td>'
-    . '<td colspan="2" align="left"><br><br>EXCESO DE LIMITE<br></td>'
-    . '<td colspan="2" align="right"><br><br>Bs. '.number_format($datos_cuadro['ExcesoLimites'],2,",",".").'</td>'
-    . '<td colspan="2" align="center"><br><br><br></td>'
-    . '<td colspan="" align="center"><br><br><br></td>'
-    . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br>Bs. '.number_format($datos_cuadro['ExcesoPrima'],2,",",".").'<br></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEFENSA PENAL<br></td>'
-    . '<td colspan="2" align="left"><br><br>DEFENSA PENAL<br></td>'
-    . '<td colspan="2" align="right"><br><br>Bs. '.number_format($datos_cuadro['DefensaPenal'],2,",",".").'</td>'
-    . '<td colspan="2" align="center"><br><br><br></td>'
-    . '<td colspan="" align="center"><br><br><br></td>'
-    . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br>Bs. '.number_format($datos_cuadro['DefensaPrima'],2,",",".").'<br></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A.P.O.V.<br></td>'
-    . '<td colspan="2" align="left"><br><br>MUERTE<br>INVALIDEZ<br>PERMANENTE<br>GASTOS MEDICOS</td>'
-    . '<td colspan="2" align="right"><br><br>Bs. '.number_format($datos_cuadro['APOVMuerte'],2,",",".").'<br>Bs. '.number_format($datos_cuadro['APOVInvalidez'],2,",",".").'<br><br>Bs. '.number_format($datos_cuadro['APOVGastos'],2,",",".").'</td>'
-    . '<td colspan="2" align="center"><br><br><br></td>'
-    . '<td colspan="" align="center"><br><br><br></td>'
-    . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br><br><br><br>Bs. '.number_format($datos_cuadro['APOVPrima'],2,",",".").'</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASISTENCIA VIAL<br></td>'
-    . '<td colspan="2" align="left" ><br><br>INCLUIDO<br></td>'
-    . '<td colspan="2" align="right"><br><br></td>'
-    . '<td colspan="2" align="center"><br><br><br></td>'
-    . '<td colspan="" align="center" ><br><br><br></td>'
-    . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br>Bs. '.number_format($datos_cuadro['costoplantugruero'],2,",",".").'<br></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="2" align="left" style="border-left-width:1px;border-bottom-width:1px;"><br><br><br></td>'
-    . '<td colspan="" align="left" style="border-bottom-width:1px;"><br><br><br></td>'
-    . '<td colspan="4" align="right" style="border-bottom-width:1px;">TOTAL POLIZA RCV Y COMPLEMENTARIOS</td>'
-    . '<td colspan="" align="center" style="border-bottom-width:1px;"><br><br><br></td>'
-    . '<td colspan="" align="center" style="border-bottom-width:1px;"><br><br><br></td>'
-    . '<td colspan="2" align="center" style="border-right-width:1px;border-bottom-width:1px;"><br>Bs. '.number_format($datos_cuadro['TotalConIva'],2,",",".").'<br></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="11" align="center" style=""><br><br></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td colspan="9" align="right" style="border-left-width:1px;border-bottom-width:1px;border-top-width:1px;"><br><br><b>TOTAL PRIMA NETA ANUAL</b><br></td>'
-    . '<td colspan="2" align="center" style="border-bottom-width:1px;border-top-width:1px;border-right-width:1px;"><br><br><b>Bs. '.number_format($datos_cuadro['TotalConIva'],2,",",".").'</b><br></td>'
-
-    . '</tr>'
-    . '</table>';
-    $pdf->writeHTML($html);
-    $html = '<br>'
-    . '<br>'
-    . '<p>El tomador y/o Asegurado declara(n) recibir en este Acto las condiciones generales y particulares de la Póliza</p>'
-    . '<p><b>Autorización y Compromiso:</b> Autorizo a las Compañías o Instituciones, para suministrar a la ASEGURADORA, todos los datos que posean antes o
-    despues del siniestro, asimismo autorizo a la ASEGURADORA, a recabar cualquier información relacionada con el riesgo y a verificar los datos de este
-    CUADRO RECIBO DE LA PÓLIZA</p>
-    <br>
-    <p>Declaro que el dinero utilizado para el pago de la prima de la Póliza a suscribir, proviene de una fuente lícita, por lo tanto no tiene relación alguna con
-    dinero, capitales, bienes haberes o beneficios derivados de actividades ilícitas o de los delitos de legitimación de capitales previstos en la Ley Orgánica
-    Contra la Delincuencia Organizada</p>';
-    $pdf->writeHTML($html);
-    $html = '<br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asociado Promotor: MARIA SOLEDAD RODRIGUEZ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Código: 10253</p>';
-    $pdf->writeHTML($html);
-    $html = ''
-    . '<table width="100%">'
-
-    . '<tr>'
-    . '<td align="center">&nbsp;</td>'
-    . '<td align="center">&nbsp;</td>'
-    . '<td align="center"><div align="center"><img src="'.full_url.'/web/img/firma_asistir.png" width="140"></div></td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td align="center">__________________________________________</td>'
-    . '<td align="center">ASEGURADO</td>'
-    . '<td align="center">__________________________________________</td>'
-    . '</tr>'
-    . '<tr>'
-    . '<td align="center"><br><br><br>El Asegurado </td>'
-    . '<td align="center"></td>'
-    . '<td align="center"><br><br><br>Por: Asistir</td>'
-    . '</tr>'
-    . '</table>';
-    $pdf->writeHTML($html);
+	$html.='<br><span align="center">Caracas, Venezuela.<br> Tlf: <b><font style="font-size: 10px;">0500-GRUERO-0 (0500-478376-0) / 0212-2379227 / 0212-4190105 · info@tugruero.com - tugruero@gmail.com</font></b></span>'
+                                ;
+	$pdf->writeHTML($html);
+	$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'F');
+            //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');
 
 
+        }
 
-    $pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');
-    //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');
-  }
+       public function CuadroRCVAsistir($values){
+	setlocale(LC_NUMERIC,"es_ES.UTF8");
+            ob_start();
+            $SolicitudPlan = new SolicitudPlan();
+            $idSolicitudPlan = $values['idSolicitudPlan'];
+	$Utilitarios = new Utilitarios();
+	$datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfoAsistir($idSolicitudPlan);
+            //print_r($datos_cuadro);die;
+	// create new PDF document
+	$pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-  public function cuadroTUGRUEROCarnet($values){
-    setlocale(LC_NUMERIC,"es_ES.UTF8");
-    ob_start();
-    $SolicitudPlan = new SolicitudPlan();
-    $idSolicitudPlan = $values['idSolicitudPlan'];
-    $Utilitarios = new Utilitarios();
-    $datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfo($idSolicitudPlan);
-    //print_r($datos_cuadro);die;
-    // create new PDF document
-    $pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, 'LETTER', true, 'UTF-8', false);
+	// set document information
+	$pdf->SetCreator(PDF_CREATOR);
+	$pdf->SetAuthor('TU/GRUERO®');
+	$pdf->SetTitle('TU/GRUERO®');
+	$pdf->SetSubject('TU/GRUERO®');
+	$pdf->SetKeywords('TU/GRUERO®');
 
-    // set document information
-    $pdf->SetCreator(PDF_CREATOR);
-    $pdf->SetAuthor('TU/GRUERO®');
-    $pdf->SetTitle('TU/GRUERO®');
-    $pdf->SetSubject('TU/GRUERO®');
-    $pdf->SetKeywords('TU/GRUERO®');
+	// set default header data
+	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 
-    // set default header data
-    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+	// set header and footer fonts
+	$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+	$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-    // set header and footer fonts
-    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+	// set default monospaced font
+	$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-    // set default monospaced font
-    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+	// set margins
+	$pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-    // set margins
-    $pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
-    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+	// set auto page breaks
+	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
-    // set auto page breaks
-    $pdf->SetAutoPageBreak(TRUE, 1);
+	// set image scale factor
+	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-    // set image scale factor
-    $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+	// set some language-dependent strings (optional)
+	if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+	}
 
-    // set some language-dependent strings (optional)
-    if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-      require_once(dirname(__FILE__).'/lang/eng.php');
-      $pdf->setLanguageArray($l);
-    }
+	// ---------------------------------------------------------
 
-    // ---------------------------------------------------------
+	// set font
+	$pdf->SetFont('helvetica', '', 7);
 
-    // set font
-    $pdf->SetFont('helvetica', '', 9);
+	// add a page
+	$pdf->AddPage();
+	//$image_file = K_PATH_IMAGES.'logo_tugruero.png';
+	//$pdf->Image($image_file, 15, 2, 25, '', 'PNG', '', 'T', false, 100, '', false, false, 0, false, false, false);
+	// set some text to print
 
-    // add a page
-    $pdf->AddPage();
+	$html = '<table width="100%">'
+                                . '<tr>'
+                                . '<td colspan="3" align="center"><br><br><br><img src="'.full_url.'/web/img/fresh/asistir_pdf.png" width="150"></td>'
+                                . '<td colspan="5" align="center"><br><br><br><br><br><b>CUADRO PÓLIZA RECIBO</b><br><br><b>SEGURO DE VEHICULOS TERRESTRES</b></td>'
+                                . '<td colspan="3">&nbsp;</td>'
+	. '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;border-top-width:1px;"> N° de Póliza:</td>'
+                                . '<td colspan="3" style="border-top-width:1px;">'.$datos_cuadro['PolizaAsistir'].'</td>'
+                                . '<td colspan="2" style="border-top-width:1px;">No de Recibo:</td>'
+                                . '<td style="border-top-width:1px;">'.$datos_cuadro['ReciboAsistir'].'</td>'
+                                . '<td colspan="2" style="border-top-width:1px;">Forma de Pago:</td>'
+                                . '<td style="border-right-width:1px;border-top-width:1px;">Anual</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Vigencia de la Póliza:</td>'
+                                . '<td colspan="3">Anual</td>'
+                                . '<td colspan="2">Desde:</td>'
+                                . '<td>'.$Utilitarios->formateaFecha($datos_cuadro['VigenciaDesdeRcv'], 'd/m/Y').'</td>'
+                                . '<td colspan="2">Hasta:</td>'
+                                . '<td style="border-right-width:1px;">'.$Utilitarios->formateaFecha($datos_cuadro['VigenciaHastaRcv'], 'd/m/Y').'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Tomador:</td>'
+                                . '<td colspan="7">'.$datos_cuadro['Nombres'].', '.$datos_cuadro['Apellidos'].'</td>'
+                                . '<td colspan="2" align="right" style="border-right-width:1px;"><label style="font-size:6px;">Hasta 12 M Hora Oficial</label></td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Caracter:</td>'
+                                . '<td colspan="3">Natural</td>'
+                                . '<td colspan="2">Rif/C.I:</td>'
+                                . '<td>'.$datos_cuadro['Cedula'].'</td>'
+                                . '<td colspan="2">Teléfono:</td>'
+                                . '<td style="border-right-width:1px;">'.$datos_cuadro['Celular'].'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Dirección del Tomador:</td>'
+                                . '<td colspan="9" style="border-right-width:1px;">'.$datos_cuadro['Domicilio'].'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Asegurado:</td>'
+                                . '<td colspan="6">'.$datos_cuadro['Nombres'].', '.$datos_cuadro['Apellidos'].'</td>'
+                                . '<td colspan="2">Rif/C.I:</td>'
+                                . '<td style="border-right-width:1px;">'.$datos_cuadro['Cedula'].'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Dirección del Asegurado:</td>'
+                                . '<td colspan="6">'.$datos_cuadro['Domicilio'].'</td>'
+                                . '<td colspan="2">Teléfono:</td>'
+                                . '<td style="border-right-width:1px;">'.$datos_cuadro['Celular'].'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Beneficiario:</td>'
+                                . '<td colspan="6">'.$datos_cuadro['Nombres'].', '.$datos_cuadro['Apellidos'].'</td>'
+                                . '<td colspan="2">Rif/C.I:</td>'
+                                . '<td style="border-right-width:1px;">'.$datos_cuadro['Cedula'].'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Dirección de Cobro:</td>'
+                                . '<td colspan="6">'.$datos_cuadro['Domicilio'].'</td>'
+                                . '<td colspan="2">Teléfono:</td>'
+                                . '<td style="border-right-width:1px;">'.$datos_cuadro['Celular'].'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="11" align="center" style="border-left-width:1px;border-bottom-width:1px;border-top-width:1px;border-right-width:1px;"><br><br style="font-size: 10px;">DATOS DEL VEHICULO ASEGURADO<br></td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td style="border-left-width:1px;"> Marca:</td>'
+                                . '<td colspan="2">'.$datos_cuadro['Marca'].'</td>'
+                                . '<td>Modelo:</td>'
+                                . '<td>'.$datos_cuadro['Modelo'].'</td>'
+                                . '<td>Clase:</td>'
+	. '<td colspan="2">'.$datos_cuadro['Clase'].'</td>'
+                                . '<td colspan="3" style="border-right-width:1px;">Serial de Motor: '.$datos_cuadro['SerialMotor'].'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" style="border-left-width:1px;"> Serial de Carroceria:</td>'
+                                . '<td colspan="4">'.$datos_cuadro['SerialCarroceria'].'</td>'
+                                . '<td>N° Placa:</td>'
+                                . '<td>'.$datos_cuadro['Placa'].'</td>'
+                                . '<td>Uso:</td>'
+	. '<td colspan="2" style="border-right-width:1px;">Particular</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td style="border-left-width:1px;border-bottom-width:1px;"> Tipo:</td>'
+                                . '<td style="border-bottom-width:1px;" colspan="2">'.$datos_cuadro['Tipo'].'</td>'
+                                . '<td style="border-bottom-width:1px;">Color:</td>'
+                                . '<td style="border-bottom-width:1px;">'.$datos_cuadro['Color'].'</td>'
+                                . '<td style="border-bottom-width:1px;">N° Puestos:</td>'
+	. '<td style="border-bottom-width:1px;" colspan="2">'.$datos_cuadro['Puestos'].'</td>'
+                                . '<td style="border-bottom-width:1px;">Año:</td>'
+                                . '<td colspan="2" style="border-right-width:1px;border-bottom-width:1px;">'.$datos_cuadro['Anio'].'</td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="4" align="center" style="border-left-width:1px;border-bottom-width:1px;"><br><br>Coberturas<br></td>'
+                                . '<td colspan="2" align="right" style="border-bottom-width:1px;"><br><br>Suma asegurada<br></td>'
+                                . '<td colspan="2" align="center" style="border-bottom-width:1px;"><br><br>Deducible<br></td>'
+                                . '<td colspan="" align="center" style="border-bottom-width:1px;"><br><br>Tasa<br></td>'
+                                . '<td colspan="2" align="center" style="border-bottom-width:1px;border-right-width:1px;"><br><br>Prima<br></td>'
+	. '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RCV<br></td>'
+	. '<td colspan="2" align="left"><br><br>DAÑOS A COSAS<br>DANÕS A PERSONAS</td>'
+                                . '<td colspan="2" align="right"><br><br>Bs. '.number_format($datos_cuadro['RCVCosas'],2,",",".").'<br>Bs. '.number_format($datos_cuadro['RCVPersonas'],2,",",".").'</td>'
+                                . '<td colspan="2" align="center"><br><br><br></td>'
+                                . '<td colspan="" align="center"><br><br><br></td>'
+                                . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br>Bs. '.number_format($datos_cuadro['RCVPrima'],2,",",".").'<br></td>'
+	. '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXCESO DE LIMITES<br></td>'
+	. '<td colspan="2" align="left"><br><br>EXCESO DE LIMITE<br></td>'
+                                . '<td colspan="2" align="right"><br><br>Bs. '.number_format($datos_cuadro['ExcesoLimites'],2,",",".").'</td>'
+                                . '<td colspan="2" align="center"><br><br><br></td>'
+                                . '<td colspan="" align="center"><br><br><br></td>'
+                                . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br>Bs. '.number_format($datos_cuadro['ExcesoPrima'],2,",",".").'<br></td>'
+	. '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEFENSA PENAL<br></td>'
+	. '<td colspan="2" align="left"><br><br>DEFENSA PENAL<br></td>'
+                                . '<td colspan="2" align="right"><br><br>Bs. '.number_format($datos_cuadro['DefensaPenal'],2,",",".").'</td>'
+                                . '<td colspan="2" align="center"><br><br><br></td>'
+                                . '<td colspan="" align="center"><br><br><br></td>'
+                                . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br>Bs. '.number_format($datos_cuadro['DefensaPrima'],2,",",".").'<br></td>'
+	. '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A.P.O.V.<br></td>'
+	. '<td colspan="2" align="left"><br><br>MUERTE<br>INVALIDEZ<br>PERMANENTE<br>GASTOS MEDICOS</td>'
+                                . '<td colspan="2" align="right"><br><br>Bs. '.number_format($datos_cuadro['APOVMuerte'],2,",",".").'<br>Bs. '.number_format($datos_cuadro['APOVInvalidez'],2,",",".").'<br><br>Bs. '.number_format($datos_cuadro['APOVGastos'],2,",",".").'</td>'
+                                . '<td colspan="2" align="center"><br><br><br></td>'
+                                . '<td colspan="" align="center"><br><br><br></td>'
+                                . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br><br><br><br>Bs. '.number_format($datos_cuadro['APOVPrima'],2,",",".").'</td>'
+	. '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" align="left" style="border-left-width:1px;"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASISTENCIA VIAL<br></td>'
+	. '<td colspan="2" align="left" ><br><br>INCLUIDO<br></td>'
+                                . '<td colspan="2" align="right"><br><br></td>'
+                                . '<td colspan="2" align="center"><br><br><br></td>'
+                                . '<td colspan="" align="center" ><br><br><br></td>'
+                                . '<td colspan="2" align="center" style="border-right-width:1px;"><br><br>Bs. '.number_format($datos_cuadro['costoplantugruero'],2,",",".").'<br></td>'
+	. '</tr>'
+                                . '<tr>'
+                                . '<td colspan="2" align="left" style="border-left-width:1px;border-bottom-width:1px;"><br><br><br></td>'
+	. '<td colspan="" align="left" style="border-bottom-width:1px;"><br><br><br></td>'
+                                . '<td colspan="4" align="right" style="border-bottom-width:1px;">TOTAL POLIZA RCV Y COMPLEMENTARIOS</td>'
+                                . '<td colspan="" align="center" style="border-bottom-width:1px;"><br><br><br></td>'
+                                . '<td colspan="" align="center" style="border-bottom-width:1px;"><br><br><br></td>'
+                                . '<td colspan="2" align="center" style="border-right-width:1px;border-bottom-width:1px;"><br>Bs. '.number_format($datos_cuadro['TotalConIva'],2,",",".").'<br></td>'
+	. '</tr>'
+                                . '<tr>'
+                                . '<td colspan="11" align="center" style=""><br><br></td>'
+                                . '</tr>'
+                                . '<tr>'
+                                . '<td colspan="9" align="right" style="border-left-width:1px;border-bottom-width:1px;border-top-width:1px;"><br><br><b>TOTAL PRIMA NETA ANUAL</b><br></td>'
+                                . '<td colspan="2" align="center" style="border-bottom-width:1px;border-top-width:1px;border-right-width:1px;"><br><br><b>Bs. '.number_format($datos_cuadro['TotalConIva'],2,",",".").'</b><br></td>'
 
-    $image_file = K_PATH_IMAGES.'carnet1.png';
+	. '</tr>'
+	. '</table>';
+	$pdf->writeHTML($html);
+	$html = '<br>'
+	. '<br>'
+	. '<p>El tomador y/o Asegurado declara(n) recibir en este Acto las condiciones generales y particulares de la Póliza</p>'
+	. '<p><b>Autorización y Compromiso:</b> Autorizo a las Compañías o Instituciones, para suministrar a la ASEGURADORA, todos los datos que posean antes o
+	despues del siniestro, asimismo autorizo a la ASEGURADORA, a recabar cualquier información relacionada con el riesgo y a verificar los datos de este
+	CUADRO RECIBO DE LA PÓLIZA</p>
+	<br>
+	<p>Declaro que el dinero utilizado para el pago de la prima de la Póliza a suscribir, proviene de una fuente lícita, por lo tanto no tiene relación alguna con
+	dinero, capitales, bienes haberes o beneficios derivados de actividades ilícitas o de los delitos de legitimación de capitales previstos en la Ley Orgánica
+	Contra la Delincuencia Organizada</p>';
+	$pdf->writeHTML($html);
+	$html = '<br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asociado Promotor: MARIA SOLEDAD RODRIGUEZ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Código: 10253</p>';
+	$pdf->writeHTML($html);
+	$html = ''
+	. '<table width="100%">'
+
+	. '<tr>'
+	. '<td align="center">&nbsp;</td>'
+	. '<td align="center">&nbsp;</td>'
+	. '<td align="center"><div align="center"><img src="'.full_url.'/web/img/firma_asistir.png" width="140"></div></td>'
+	. '</tr>'
+	. '<tr>'
+	. '<td align="center">__________________________________________</td>'
+	. '<td align="center">ASEGURADO</td>'
+	. '<td align="center">__________________________________________</td>'
+	. '</tr>'
+	. '<tr>'
+	. '<td align="center"><br><br><br>El Asegurado </td>'
+	. '<td align="center"></td>'
+	. '<td align="center"><br><br><br>Por: Asistir</td>'
+	. '</tr>'
+	. '</table>';
+	$pdf->writeHTML($html);
+
+
+
+	$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'F');
+                        //$pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');
+        }
+
+     public function cuadroTUGRUEROCarnet($values){
+	setlocale(LC_NUMERIC,"es_ES.UTF8");
+                        ob_start();
+                        $SolicitudPlan = new SolicitudPlan();
+                        $idSolicitudPlan = $values['idSolicitudPlan'];
+	$Utilitarios = new Utilitarios();
+	$datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfo($idSolicitudPlan);
+                        //print_r($datos_cuadro);die;
+	// create new PDF document
+	$pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, 'LETTER', true, 'UTF-8', false);
+
+	// set document information
+	$pdf->SetCreator(PDF_CREATOR);
+	$pdf->SetAuthor('TU/GRUERO®');
+	$pdf->SetTitle('TU/GRUERO®');
+	$pdf->SetSubject('TU/GRUERO®');
+	$pdf->SetKeywords('TU/GRUERO®');
+
+	// set default header data
+	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+
+	// set header and footer fonts
+	$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+	$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+	// set default monospaced font
+	$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+	// set margins
+	$pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+	// set auto page breaks
+	$pdf->SetAutoPageBreak(TRUE, 1);
+
+	// set image scale factor
+	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+	// set some language-dependent strings (optional)
+	if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+	}
+
+	// ---------------------------------------------------------
+
+	// set font
+	$pdf->SetFont('helvetica', '', 9);
+
+	// add a page
+	$pdf->AddPage();
+
+	$image_file = K_PATH_IMAGES.'carnet1.png';
     //// Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
     $pdf->Image($image_file, 25, 9, 160, 52, 'PNG', '', 'C', false, 300, '', false, false, 0);
-    // set some text to print
-    // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
+	// set some text to print
+                       // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 
-    // set color for background
-    $pdf->SetFillColor(255, 255, 255);
+                        // set color for background
+                        $pdf->SetFillColor(255, 255, 255);
 
-    // set color for text
-    $pdf->SetTextColor(0, 0, 0);
-    //CARA ANTERIOR
-    $pdf->writeHTMLCell('', '', 36, 29, $datos_cuadro['Nombres'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Apellidos'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 36, 35, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 36, 46, strtoupper($datos_cuadro['Marca']), 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Modelo'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 36, 53, $datos_cuadro['Color'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
-    //CARA POSTERIOR
-    $pdf->SetFont('helvetica', '', 7);
-    $pdf->writeHTMLCell(30, 10, 116, 22, str_replace('(*)','',$datos_cuadro['TipoServicio']), 0, 0, 1, true, 'L', true);
-    $pdf->SetFont('helvetica', '', 9);
-    $pdf->writeHTMLCell('', '', 137, 22, '', 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 155, '', $datos_cuadro['NumProducto'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 116, 30, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 155, '', $Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y'), 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 116, 42, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 155, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
-    $pdf->SetFont('helvetica', '', 15);
-    $pdf->writeHTMLCell('', '', 116, 50, $datos_cuadro['concatenado_plan'], 0, 0, 1, true, 'L', true);
+                        // set color for text
+                        $pdf->SetTextColor(0, 0, 0);
+                        //CARA ANTERIOR
+                        $pdf->writeHTMLCell('', '', 36, 29, $datos_cuadro['Nombres'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Apellidos'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 36, 35, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 36, 46, strtoupper($datos_cuadro['Marca']), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Modelo'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 36, 53, $datos_cuadro['Color'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
+                        //CARA POSTERIOR
+						$pdf->SetFont('helvetica', '', 7);
+                        $pdf->writeHTMLCell(30, 10, 116, 22, str_replace('(*)','',$datos_cuadro['TipoServicio']), 0, 0, 1, true, 'L', true);
+						$pdf->SetFont('helvetica', '', 9);
+                        $pdf->writeHTMLCell('', '', 137, 22, '', 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 155, '', $datos_cuadro['NumProducto'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 116, 30, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 155, '', $Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y'), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 116, 42, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 155, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
+                        $pdf->SetFont('helvetica', '', 15);
+                        $pdf->writeHTMLCell('', '', 116, 50, $datos_cuadro['concatenado_plan'], 0, 0, 1, true, 'L', true);
 
-    // reset pointer to the last page
-    $pdf->lastPage();
+                        // reset pointer to the last page
+                        $pdf->lastPage();
 
-    $pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto']."_carnet.pdf", 'F');
-    //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');
+	                   $pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto']."_carnet.pdf", 'F');
+                      //$pdf->Output(dir_cuadros."/".$datos_cuadro['NumProducto'].".pdf", 'I');
 
 
-  }
+        }
 
-  public function cuadroRCVAsistirCarnet($values){
-    setlocale(LC_NUMERIC,"es_ES.UTF8");
-    ob_start();
-    $SolicitudPlan = new SolicitudPlan();
-    $idSolicitudPlan = $values['idSolicitudPlan'];
-    $Utilitarios = new Utilitarios();
-    $datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfoAsistir($idSolicitudPlan);
-    //print_r($datos_cuadro);die;
-    // create new PDF document
-    $pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, 'LETTER', true, 'UTF-8', false);
+       public function cuadroRCVAsistirCarnet($values){
+	setlocale(LC_NUMERIC,"es_ES.UTF8");
+            ob_start();
+            $SolicitudPlan = new SolicitudPlan();
+            $idSolicitudPlan = $values['idSolicitudPlan'];
+	$Utilitarios = new Utilitarios();
+	$datos_cuadro = $SolicitudPlan->getSolicitudPlanAprobadaInfoAsistir($idSolicitudPlan);
+            //print_r($datos_cuadro);die;
+	// create new PDF document
+	$pdf = new MYPDF2(PDF_PAGE_ORIENTATION, PDF_UNIT, 'LETTER', true, 'UTF-8', false);
 
-    // set document information
-    $pdf->SetCreator(PDF_CREATOR);
-    $pdf->SetAuthor('TU/GRUERO®');
-    $pdf->SetTitle('TU/GRUERO®');
-    $pdf->SetSubject('TU/GRUERO®');
-    $pdf->SetKeywords('TU/GRUERO®');
+	// set document information
+	$pdf->SetCreator(PDF_CREATOR);
+	$pdf->SetAuthor('TU/GRUERO®');
+	$pdf->SetTitle('TU/GRUERO®');
+	$pdf->SetSubject('TU/GRUERO®');
+	$pdf->SetKeywords('TU/GRUERO®');
 
-    // set default header data
-    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+	// set default header data
+	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 
-    // set header and footer fonts
-    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+	// set header and footer fonts
+	$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+	$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-    // set default monospaced font
-    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+	// set default monospaced font
+	$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-    // set margins
-    $pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
-    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+	// set margins
+	$pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-    // set auto page breaks
-    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+	// set auto page breaks
+	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
-    // set image scale factor
-    $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+	// set image scale factor
+	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-    // set some language-dependent strings (optional)
-    if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-      require_once(dirname(__FILE__).'/lang/eng.php');
-      $pdf->setLanguageArray($l);
-    }
+	// set some language-dependent strings (optional)
+	if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+	}
 
-    // ---------------------------------------------------------
+	// ---------------------------------------------------------
 
-    // set font
-    $pdf->SetFont('helvetica', '', 7);
+	// set font
+	$pdf->SetFont('helvetica', '', 7);
 
-    // add a page
-    $pdf->AddPage();
-    //$image_file = K_PATH_IMAGES.'logo_tugruero.png';
-    //$pdf->Image($image_file, 15, 2, 25, '', 'PNG', '', 'T', false, 100, '', false, false, 0, false, false, false);
-    // set some text to print
+	// add a page
+	$pdf->AddPage();
+	//$image_file = K_PATH_IMAGES.'logo_tugruero.png';
+	//$pdf->Image($image_file, 15, 2, 25, '', 'PNG', '', 'T', false, 100, '', false, false, 0, false, false, false);
+	// set some text to print
 
-    $image_file = K_PATH_IMAGES.'carnet2.png';
+	$image_file = K_PATH_IMAGES.'carnet2.png';
     $pdf->Image($image_file, 25, 9, 160, 52, 'PNG', '', 'C', false, 300, '', false, false, 0);
-    //$pdf->Image($image_file, 16, 10, 171, 55, 'PNG', '', '', false, 300, '', false, false, 0);
-    //$pdf->Image($image_file, 27, 2, 158, 49, 'PNG', '', '', false, 300, '', false, false, 0);
-    // set some text to print
-    // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
+	//$pdf->Image($image_file, 16, 10, 171, 55, 'PNG', '', '', false, 300, '', false, false, 0);
+	//$pdf->Image($image_file, 27, 2, 158, 49, 'PNG', '', '', false, 300, '', false, false, 0);
+	// set some text to print
+                       // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 
-    // set color for background
-    $pdf->SetFillColor(255, 255, 255);
+                        // set color for background
+                        $pdf->SetFillColor(255, 255, 255);
 
-    // set color for text
-    $pdf->SetTextColor(0, 0, 0);
-    //CARA ANTERIOR
-    $pdf->writeHTMLCell('', '', 36, 29, $datos_cuadro['Nombres'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Apellidos'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 36, 36, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 36, 46, strtoupper($datos_cuadro['Marca']), 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Modelo'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 36, 51, $datos_cuadro['Color'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 36, 57, mb_strtoupper($datos_cuadro['Clase'],'UTF8'), 0, 0, 1, true, 'L', true);
-    $pdf->writeHTMLCell('', '', 74, '', mb_strtoupper($datos_cuadro['Tipo'],'UTF8'), 0, 0, 1, true, 'L', true);
-    //CARA POSTERIOR
-    $pdf->writeHTMLCell(19, '', 129, 29, number_format($datos_cuadro['RCVPersonas'],2,",","."), 0, 0, 1, true, 'R', true);
-    $pdf->writeHTMLCell(19, '', 129, 36, number_format($datos_cuadro['RCVCosas'],2,",","."), 0, 0, 1, true, 'R', true);
-    $pdf->writeHTMLCell(19, '', 129, 43, number_format($datos_cuadro['ExcesoLimites'],2,",","."), 0, 0, 1, true, 'R', true);
-    $pdf->writeHTMLCell(19, '', 129, 50, number_format($datos_cuadro['DefensaPenal'],2,",","."), 0, 0, 1, true, 'R', true);
-    $pdf->writeHTMLCell(19, '', 129, 56, number_format($datos_cuadro['APOVMuerte']+$datos_cuadro['APOVInvalidez']+$datos_cuadro['APOVGastos'],2,",","."), 0, 0, 1, true, 'R', true);
+                        // set color for text
+                        $pdf->SetTextColor(0, 0, 0);
+                        //CARA ANTERIOR
+                        $pdf->writeHTMLCell('', '', 36, 29, $datos_cuadro['Nombres'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Apellidos'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 36, 36, $datos_cuadro['Cedula'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 36, 46, strtoupper($datos_cuadro['Marca']), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Modelo'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 36, 51, $datos_cuadro['Color'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 74, '', $datos_cuadro['Placa'], 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 36, 57, mb_strtoupper($datos_cuadro['Clase'],'UTF8'), 0, 0, 1, true, 'L', true);
+                        $pdf->writeHTMLCell('', '', 74, '', mb_strtoupper($datos_cuadro['Tipo'],'UTF8'), 0, 0, 1, true, 'L', true);
+                        //CARA POSTERIOR
+                        $pdf->writeHTMLCell(19, '', 129, 29, number_format($datos_cuadro['RCVPersonas'],2,",","."), 0, 0, 1, true, 'R', true);
+                        $pdf->writeHTMLCell(19, '', 129, 36, number_format($datos_cuadro['RCVCosas'],2,",","."), 0, 0, 1, true, 'R', true);
+                        $pdf->writeHTMLCell(19, '', 129, 43, number_format($datos_cuadro['ExcesoLimites'],2,",","."), 0, 0, 1, true, 'R', true);
+                        $pdf->writeHTMLCell(19, '', 129, 50, number_format($datos_cuadro['DefensaPenal'],2,",","."), 0, 0, 1, true, 'R', true);
+                        $pdf->writeHTMLCell(19, '', 129, 56, number_format($datos_cuadro['APOVMuerte']+$datos_cuadro['APOVInvalidez']+$datos_cuadro['APOVGastos'],2,",","."), 0, 0, 1, true, 'R', true);
 
-    $pdf->writeHTMLCell(26, '', 160, 32, $datos_cuadro['PolizaAsistir'], 0, 0, 1, true, 'C', true);
-    $pdf->writeHTMLCell(26, '', 160, 42, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
-    $pdf->writeHTMLCell(26, '', 160, 52, $Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
+                        $pdf->writeHTMLCell(26, '', 160, 32, $datos_cuadro['PolizaAsistir'], 0, 0, 1, true, 'C', true);
+                        $pdf->writeHTMLCell(26, '', 160, 42, $Utilitarios->formateaFecha($datos_cuadro['VigenciaDesde'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
+                        $pdf->writeHTMLCell(26, '', 160, 52, $Utilitarios->formateaFecha($datos_cuadro['VigenciaHasta'], 'd/m/Y'), 0, 0, 1, true, 'C', true);
 
-    // reset pointer to the last page
-    $pdf->lastPage();
+                        // reset pointer to the last page
+                        $pdf->lastPage();
 
-    $pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir']."_carnet.pdf", 'F');
-    //  $pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');
+                        $pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir']."_carnet.pdf", 'F');
+                      //  $pdf->Output(dir_cuadros."/".$datos_cuadro['PolizaAsistir'].".pdf", 'I');
 
-  }
+        }
 
-}
+    }
